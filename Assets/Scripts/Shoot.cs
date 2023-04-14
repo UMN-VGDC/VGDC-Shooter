@@ -44,7 +44,7 @@ public class Shoot : MonoBehaviour
     private void Recoil()
     {
         Vector3 pos = transform.position;
-        transform.DOMove(new Vector3(pos.x, pos.y, pos.z - (0.01f * recoilStrength)), 0.05f);
+        transform.DOMove(new Vector3(pos.x, pos.y, pos.z - (0.01f * recoilStrength)), 0.02f);
     }
 
     public float getBulletSpeed()

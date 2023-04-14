@@ -24,16 +24,37 @@ public class Bullet : MonoBehaviour
         Destroy(gameObject);
     }
 
-    void OnTriggerEnter(Collider other)
-    {
-        Destroy(gameObject);
-    }
+    // void OnTriggerEnter(Collider other)
+    // {
+    //     Destroy(gameObject);
+    // }
 
     // Update is called once per frame
     void FixedUpdate()
     {
         Vector3 pos = transform.position;
         m_Rigidbody.MovePosition(pos + (transform.forward * 0.1f * speed));
+        StartCoroutine(Predict());
+    }
+
+    IEnumerator Predict()
+    {
+        Vector3 prediction = transform.position + m_Rigidbody.velocity * Time.fixedDeltaTime;
+        RaycastHit hit2;
+        int layerMask =~ LayerMask.GetMask("Bullet");
+        //Debug.DrawLine(transform.position, prediction);
+        if(Physics.Linecast(transform.position, prediction, out hit2, layerMask))
+        {
+            transform.position = hit2.point;
+            m_Rigidbody.collisionDetectionMode = CollisionDetectionMode.ContinuousSpeculative;
+            m_Rigidbody.isKinematic = true;
+            yield return 0;
+            OnTriggerEnterFixed();
+        }
+    }
+
+    void OnTriggerEnterFixed() {
+       Destroy(gameObject); 
     }
 
     void OnDestroy()
