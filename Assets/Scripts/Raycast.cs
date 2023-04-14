@@ -6,8 +6,6 @@ public class Raycast : MonoBehaviour
 {
     private Vector3 worldPosition;
     [SerializeField] private Vector3 offset;
-    [SerializeField] private GameObject target;
-    
 
     // Start is called before the first frame update
     void Start()
@@ -26,7 +24,5 @@ public class Raycast : MonoBehaviour
         Ray ray = new Ray(transform.position, transform.forward);
         RaycastHit hitData;
         Physics.Raycast(ray, out hitData);
-        target.transform.position = hitData.point;
-        Debug.Log(hitData.point);
     }
 }
