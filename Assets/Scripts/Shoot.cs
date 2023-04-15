@@ -8,7 +8,6 @@ public class Shoot : MonoBehaviour
     [SerializeField] private GameObject spawner;
     [SerializeField] private GameObject bullet;
     [SerializeField] private float fireRate = 10f;
-    [SerializeField] private float bulletSpeed = 10f;
 
     [SerializeField] private float recoilStrength = 5f;
     
@@ -47,9 +46,5 @@ public class Shoot : MonoBehaviour
         transform.DOMove(new Vector3(pos.x, pos.y, pos.z - (0.01f * recoilStrength)), 0.02f);
     }
 
-    public float getBulletSpeed()
-    {
-        return bulletSpeed;
-    }
 
 }
