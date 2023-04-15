@@ -49,6 +49,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shoot: {fileID: 1712193597380139849, guid: 0633fef954f0a15489930bba8b4bbb0a, type: 3}
   speed: 10
+  flashColor: {r: 39.396626, g: 0, b: 0, a: 1}
 --- !u!65 &2388599508789518424
 BoxCollider:
   m_ObjectHideFlags: 0

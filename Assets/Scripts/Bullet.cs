@@ -8,6 +8,9 @@ public class Bullet : MonoBehaviour
 
     [SerializeField] private Shoot shoot;
     [SerializeField] private float speed = 2f;
+    [ColorUsage(true, true)]
+    [SerializeField] private Color flashColor;
+
     Rigidbody m_Rigidbody;
     private bool isDestroyed;
     // Start is called before the first frame update
@@ -23,11 +26,6 @@ public class Bullet : MonoBehaviour
         if (isDestroyed) return;
         Destroy(gameObject);
     }
-
-    // void OnTriggerEnter(Collider other)
-    // {
-    //     Destroy(gameObject);
-    // }
 
     // Update is called once per frame
     void FixedUpdate()
@@ -50,11 +48,36 @@ public class Bullet : MonoBehaviour
             m_Rigidbody.isKinematic = true;
             yield return 0;
             OnTriggerEnterFixed();
+            EntityHitFlash(hit2.collider.gameObject);
         }
     }
 
-    void OnTriggerEnterFixed() {
+    void OnTriggerEnterFixed()
+    {
        Destroy(gameObject); 
+    }
+
+    async void EntityHitFlash(GameObject entity)
+    {   
+        var renderer = entity.transform.root.GetComponentsInChildren<Renderer>();
+        for (int i = 0; i < renderer.Length; i++)
+        {
+            SetRenderColor(renderer[i], flashColor);
+        }
+        await UniTask.DelayFrame(10);
+        for (int i = 0; i < renderer.Length; i++)
+        {
+            SetRenderColor(renderer[i], new Color(1, 1, 1, 1));
+        }
+        
+    }
+
+    private void SetRenderColor(Renderer rend, Color color)
+    {
+        for (int i = 0; i < rend.materials.Length; i++)
+        {
+            rend.materials[i].SetColor("_Hit_Flash_1", color);
+        }
     }
 
     void OnDestroy()
