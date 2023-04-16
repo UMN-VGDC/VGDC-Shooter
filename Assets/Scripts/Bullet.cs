@@ -48,7 +48,7 @@ public class Bullet : MonoBehaviour
             m_Rigidbody.isKinematic = true;
             yield return 0;
             OnTriggerEnterFixed();
-            EntityHitFlash(hit2.collider.gameObject);
+            EntityHit(hit2.collider.gameObject);
         }
     }
 
@@ -57,26 +57,12 @@ public class Bullet : MonoBehaviour
        Destroy(gameObject); 
     }
 
-    async void EntityHitFlash(GameObject entity)
+    void EntityHit(GameObject entity)
     {   
-        var renderer = entity.transform.root.GetComponentsInChildren<Renderer>();
-        for (int i = 0; i < renderer.Length; i++)
+        var root = entity.transform.root;
+        if (root.tag == "Entity")
         {
-            SetRenderColor(renderer[i], flashColor);
-        }
-        await UniTask.DelayFrame(10);
-        for (int i = 0; i < renderer.Length; i++)
-        {
-            SetRenderColor(renderer[i], new Color(1, 1, 1, 1));
-        }
-        
-    }
-
-    private void SetRenderColor(Renderer rend, Color color)
-    {
-        for (int i = 0; i < rend.materials.Length; i++)
-        {
-            rend.materials[i].SetColor("_Hit_Flash_1", color);
+            root.GetComponent<EntityHealth>().DecreaseHealth();
         }
     }
 

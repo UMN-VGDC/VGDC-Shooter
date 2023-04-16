@@ -9,9 +9,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5497402965565803735}
+  - component: {fileID: 1228790894841182551}
+  - component: {fileID: -7904114514399744399}
   m_Layer: 0
   m_Name: Du
-  m_TagString: Untagged
+  m_TagString: Entity
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -32,6 +34,37 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1228790894841182551
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5497402965565803734}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd8c7907e1111174d9af4d0a22fd73ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 20
+  entityType: 0
+  flashColor: {r: 52, g: 0, b: 0, a: 1}
+--- !u!114 &-7904114514399744399
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5497402965565803734}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 247f163344dd8394fbfd406cd60e04cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deathType: 1
+  DeathFX: {fileID: 0}
+  hideObjects:
+  - {fileID: 8703181277258859374}
 --- !u!1001 &5497402963957393667
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -82,6 +115,10 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 106b1a7f6e95d8b45b844f6eb5ef70a8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -5436588449140020627, guid: 106b1a7f6e95d8b45b844f6eb5ef70a8, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 106b1a7f6e95d8b45b844f6eb5ef70a8, type: 3}
       propertyPath: m_Name
@@ -936,3 +973,8 @@ CharacterJoint:
   m_EnablePreprocessing: 0
   m_MassScale: 1
   m_ConnectedMassScale: 1
+--- !u!1 &8703181277258859374 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -5436588449140020627, guid: 106b1a7f6e95d8b45b844f6eb5ef70a8, type: 3}
+  m_PrefabInstance: {fileID: 5497402963957393667}
+  m_PrefabAsset: {fileID: 0}

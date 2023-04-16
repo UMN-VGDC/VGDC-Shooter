@@ -12,6 +12,11 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: Destroyer_Material
+    second: {fileID: 2100000, guid: 6c0a70d71117848418f22b15379ad643, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: Legs
     second: {fileID: 2100000, guid: 5372e470e60024d49abdb38306fd298c, type: 2}
   materials:

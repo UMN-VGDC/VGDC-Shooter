@@ -9,9 +9,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2528561163653043145}
+  - component: {fileID: -6596333586260187974}
+  - component: {fileID: 7781121442774139256}
   m_Layer: 0
   m_Name: Crooked
-  m_TagString: Untagged
+  m_TagString: Entity
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -32,6 +34,35 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-6596333586260187974
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2528561163653043146}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd8c7907e1111174d9af4d0a22fd73ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 50
+  entityType: 0
+  flashColor: {r: 52, g: 0, b: 0, a: 1}
+--- !u!114 &7781121442774139256
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2528561163653043146}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 247f163344dd8394fbfd406cd60e04cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deathType: 2
+  DeathFX: {fileID: 0}
 --- !u!1001 &2528561163073418544
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -113,6 +144,31 @@ CapsuleCollider:
   m_Height: 0.005347744
   m_Direction: 2
   m_Center: {x: 0.000020743308, y: 0.00040492142, z: 0.00016177764}
+--- !u!1 &3446987829355989089 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 390a1f4e9c31b7f42bb9095ec6828a20, type: 3}
+  m_PrefabInstance: {fileID: 2528561163073418544}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &6896073358219853582
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3446987829355989089}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4300261fdb40a144490f1e5b8fe7d60e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &3731289276005917764 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -8007554993192677004, guid: 390a1f4e9c31b7f42bb9095ec6828a20, type: 3}
