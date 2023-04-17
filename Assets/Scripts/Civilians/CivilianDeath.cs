@@ -1,12 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Cysharp.Threading.Tasks;
 
 public class CivilianDeath : MonoBehaviour
 {
+    [SerializeField] private GameObject[] DeathSpawn;
+    [SerializeField] private float spawnYOffset;
+    [SerializeField] private GameObject[] hideObjects;
+
     private Rigidbody[] deathRB;
-    
+    private FlickerDisappear flickerDisappear;
+
     void Start()
     {
         deathRB = GetComponentsInChildren<Rigidbody>();
@@ -14,6 +18,8 @@ public class CivilianDeath : MonoBehaviour
         {
             deathRB[i].isKinematic = true;
         }
+
+        flickerDisappear = GetComponent<FlickerDisappear>();
     }
 
     public void KillCivilian()
@@ -23,27 +29,34 @@ public class CivilianDeath : MonoBehaviour
             deathRB[i].isKinematic = false;
             deathRB[i].AddForce(transform.forward * 1000f);
         }
-        FlickerDisappear();
+        FadeObj();
+        SpawnDeathFX();
     }
 
-    private async void FlickerDisappear()
+    private void FadeObj()
     {
-        await UniTask.DelayFrame(2500);
-        var rend = GetComponentsInChildren<Renderer>();
-        for (int r = 0; r < 15; r++)
-        {
-            for (int i = 0; i < rend.Length; i++)
-            {
-                rend[i].enabled = false;
-            }
-            await UniTask.DelayFrame(5);
-            for (int i = 0; i < rend.Length; i++)
-            {
-                rend[i].enabled = true;
-            }
-            await UniTask.DelayFrame(5);
+        if (flickerDisappear == null) {
+            Debug.Log("FlickerDisappear script not added");
+            return;
         }
-        Destroy(gameObject);
+        flickerDisappear.Disappear();
+    }
+
+    private void SpawnDeathFX()
+    {
+        if (hideObjects.Length != 0) {
+            for (int i = 0; i < hideObjects.Length; i++) 
+            {
+                hideObjects[i].SetActive(false);
+            }
+        }
+
+        if (DeathSpawn.Length == 0) return;
+        for (int i = 0; i < DeathSpawn.Length; i ++) {
+            if (DeathSpawn[i] == null) continue;
+            var pos = transform.position;
+            Instantiate(DeathSpawn[i], new Vector3(pos.x, pos.y + spawnYOffset, pos.z), Quaternion.identity);
+        };
     }
     
 

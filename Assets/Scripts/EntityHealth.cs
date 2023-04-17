@@ -58,16 +58,24 @@ public class EntityHealth : MonoBehaviour
 
     private async void HitFlash()
     {
-        if (isDead) return;
-        for (int i = 0; i < renderer.Length; i++)
-        {
+        if (isDead) {
+            ResetRenderCol();
+            return;
+        }
+
+        for (int i = 0; i < renderer.Length; i++) {
             SetRenderColor(renderer[i], flashColor);
         }
+
         await UniTask.DelayFrame(10);
-        // Second check if entity death type = disappear
+
         if (isDead) return;
-        for (int i = 0; i < renderer.Length; i++)
-        {
+        ResetRenderCol();
+    }
+
+    private void ResetRenderCol()
+    {
+        for (int i = 0; i < renderer.Length; i++) {
             SetRenderColor(renderer[i], new Color(1, 1, 1, 1));
         }
     }

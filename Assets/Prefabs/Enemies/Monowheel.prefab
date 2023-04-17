@@ -62,7 +62,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deathType: 0
-  DeathFX: {fileID: 6143190691478136115, guid: 1f9deb6e8e5a07c48ad8e2702e82f45e, type: 3}
+  DeathSpawn:
+  - {fileID: 6143190691478136115, guid: 1f9deb6e8e5a07c48ad8e2702e82f45e, type: 3}
+  spawnYOffset: 0
   hideObjects: []
 --- !u!1001 &5209713722088325442
 PrefabInstance:

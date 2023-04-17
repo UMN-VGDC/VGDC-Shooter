@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8915605164204997287}
   - component: {fileID: -2539303901925196508}
   - component: {fileID: 3963779023026349787}
+  - component: {fileID: 2437525248610013590}
   m_Layer: 0
   m_Name: Primo
   m_TagString: Entity
@@ -62,7 +63,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deathType: 2
-  DeathFX: {fileID: 0}
+  DeathSpawn:
+  - {fileID: 7659967183269577210, guid: bb3e8a2531ed8d34a80ac4cb9fff5b25, type: 3}
+  spawnYOffset: 1
+  hideObjects: []
+--- !u!114 &2437525248610013590
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8915605164204997280}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38fbb8bd3b7bcdb49b057d23840686d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  useSetActive: 0
+  playOnAwake: 0
+  delay: 2500
+  flickerAmount: 15
+  destroyImmediate: []
 --- !u!1001 &8915605162658732648
 PrefabInstance:
   m_ObjectHideFlags: 0

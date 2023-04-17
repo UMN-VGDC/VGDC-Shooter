@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7089483912617480813}
   - component: {fileID: 7186523750416493044}
   - component: {fileID: -6301966384168028511}
+  - component: {fileID: 8515594301794697854}
   m_Layer: 0
   m_Name: Caesar
   m_TagString: Entity
@@ -62,8 +63,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deathType: 1
-  DeathFX: {fileID: 0}
+  DeathSpawn:
+  - {fileID: 4118392343417555835, guid: 119046c477f1b8a4da31a7fb53dcb641, type: 3}
+  spawnYOffset: 1.5
   hideObjects: []
+--- !u!114 &8515594301794697854
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7089483912617480810}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38fbb8bd3b7bcdb49b057d23840686d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  useSetActive: 0
+  playOnAwake: 0
+  delay: 2500
+  flickerAmount: 15
+  destroyImmediate: []
 --- !u!1001 &7089483912960269860
 PrefabInstance:
   m_ObjectHideFlags: 0

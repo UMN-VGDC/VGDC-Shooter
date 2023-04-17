@@ -62,7 +62,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deathType: 0
-  DeathFX: {fileID: 0}
+  DeathSpawn:
+  - {fileID: 1972911560631107848, guid: 284667cb9efafdc4dbf923261c9c9078, type: 3}
+  hideObjects: []
 --- !u!1001 &4381634383571123337
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -92,7 +94,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b22bb8ada81dc4a44a7e48b04797a4e2, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -1.03
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b22bb8ada81dc4a44a7e48b04797a4e2, type: 3}
       propertyPath: m_LocalPosition.z

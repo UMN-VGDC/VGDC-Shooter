@@ -110,6 +110,7 @@ GameObject:
   - component: {fileID: 3537869035644836156}
   - component: {fileID: -8535186378456026018}
   - component: {fileID: -4681713086281087993}
+  - component: {fileID: 8379207289193616858}
   m_Layer: 0
   m_Name: Fishie
   m_TagString: Entity
@@ -161,11 +162,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deathType: 1
-  DeathFX: {fileID: 0}
+  DeathSpawn:
+  - {fileID: 3310180537921111447, guid: b6516e19f4310af47a976a1c2347a64d, type: 3}
+  spawnYOffset: 2.17
   hideObjects:
   - {fileID: 4733893665289324052}
   - {fileID: 8556571753225220303}
   - {fileID: 3537869035169345309}
+--- !u!114 &8379207289193616858
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3537869035644836155}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38fbb8bd3b7bcdb49b057d23840686d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  useSetActive: 0
+  playOnAwake: 0
+  delay: 2500
+  flickerAmount: 15
+  destroyImmediate: []
 --- !u!1001 &3537869036086999481
 PrefabInstance:
   m_ObjectHideFlags: 0

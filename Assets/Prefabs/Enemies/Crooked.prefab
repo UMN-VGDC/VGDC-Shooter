@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2528561163653043145}
   - component: {fileID: -6596333586260187974}
   - component: {fileID: 7781121442774139256}
+  - component: {fileID: 7635573569540670498}
   m_Layer: 0
   m_Name: Crooked
   m_TagString: Entity
@@ -62,7 +63,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deathType: 2
-  DeathFX: {fileID: 0}
+  DeathSpawn:
+  - {fileID: 7659967183269577210, guid: bb3e8a2531ed8d34a80ac4cb9fff5b25, type: 3}
+  spawnYOffset: 1.5
+  hideObjects: []
+--- !u!114 &7635573569540670498
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2528561163653043146}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38fbb8bd3b7bcdb49b057d23840686d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  useSetActive: 0
+  playOnAwake: 0
+  delay: 2500
+  flickerAmount: 15
+  destroyImmediate: []
 --- !u!1001 &2528561163073418544
 PrefabInstance:
   m_ObjectHideFlags: 0

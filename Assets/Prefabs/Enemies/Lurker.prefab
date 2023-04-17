@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6251455603566913554}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.798, y: 0.0001001358, z: -4.98}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -62,7 +62,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deathType: 0
-  DeathFX: {fileID: 4264950233603357065, guid: a605f1373786a48459df5b7d6aa32e6d, type: 3}
+  DeathSpawn:
+  - {fileID: 4264950233603357065, guid: a605f1373786a48459df5b7d6aa32e6d, type: 3}
+  spawnYOffset: 0
   hideObjects: []
 --- !u!1001 &6251455602872271814
 PrefabInstance:
@@ -77,15 +79,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 971a0cf962851d44abcd2597b832ad29, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.289
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 971a0cf962851d44abcd2597b832ad29, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.07
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 971a0cf962851d44abcd2597b832ad29, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.936
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 971a0cf962851d44abcd2597b832ad29, type: 3}
       propertyPath: m_LocalRotation.w

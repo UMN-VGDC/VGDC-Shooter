@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4828684370327606239}
   - component: {fileID: -1411985161162095138}
   - component: {fileID: 4828684370327606238}
+  - component: {fileID: 8754056218393754468}
   m_Layer: 0
   m_Name: Bradwick
   m_TagString: Entity
@@ -61,6 +62,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 131519594d6b31a4d964e74c13faa90e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DeathSpawn:
+  - {fileID: 4118392343417555835, guid: 119046c477f1b8a4da31a7fb53dcb641, type: 3}
+  - {fileID: 4981127774945986350, guid: 6495ef75b28c7ef4d85bd44c6b0cc40e, type: 3}
+  spawnYOffset: 1.88
+  hideObjects:
+  - {fileID: 4507646408945875651}
+--- !u!114 &8754056218393754468
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4828684370327606209}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38fbb8bd3b7bcdb49b057d23840686d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  useSetActive: 0
+  playOnAwake: 0
+  delay: 2500
+  flickerAmount: 15
+  destroyImmediate: []
 --- !u!1001 &4828684368557862952
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -897,6 +921,11 @@ Transform:
 --- !u!4 &4220288118533344739 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8760512235419483595, guid: b2975846571c7cb48bdd163fd2f51688, type: 3}
+  m_PrefabInstance: {fileID: 4828684368557862952}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &4507646408945875651 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -176609745458181397, guid: b2975846571c7cb48bdd163fd2f51688, type: 3}
   m_PrefabInstance: {fileID: 4828684368557862952}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &4586821553213615755 stripped

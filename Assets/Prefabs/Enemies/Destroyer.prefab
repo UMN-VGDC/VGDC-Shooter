@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5464929596391763127}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.342, y: 0.000099897385, z: -6.271}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -62,7 +62,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deathType: 0
-  DeathFX: {fileID: 5646314227705141847, guid: 13d6b041146785c43b5d1bad7c0b2853, type: 3}
+  DeathSpawn:
+  - {fileID: 5646314227705141847, guid: 13d6b041146785c43b5d1bad7c0b2853, type: 3}
+  hideObjects: []
 --- !u!1001 &768725065163766718
 PrefabInstance:
   m_ObjectHideFlags: 0

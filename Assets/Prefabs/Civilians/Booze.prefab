@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6526468363975381466}
   - component: {fileID: -3905880691486726558}
   - component: {fileID: 6526468363975381467}
+  - component: {fileID: 4354572479446017619}
   m_Layer: 0
   m_Name: Booze
   m_TagString: Entity
@@ -61,6 +62,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 131519594d6b31a4d964e74c13faa90e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DeathSpawn:
+  - {fileID: 4118392343417555835, guid: 119046c477f1b8a4da31a7fb53dcb641, type: 3}
+  spawnYOffset: 1.5
+--- !u!114 &4354572479446017619
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6526468363975381464}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38fbb8bd3b7bcdb49b057d23840686d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  useSetActive: 0
+  playOnAwake: 0
+  delay: 2500
+  flickerAmount: 15
+  destroyImmediate: []
 --- !u!1001 &6526468363144545262
 PrefabInstance:
   m_ObjectHideFlags: 0

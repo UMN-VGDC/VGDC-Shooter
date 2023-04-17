@@ -13,12 +13,13 @@ public class EnemyDeath : MonoBehaviour
     }
     public DeathType deathType;
 
-    [SerializeField] private GameObject DeathFX;
+    [SerializeField] private GameObject[] DeathSpawn;
+    [SerializeField] private float spawnYOffset;
     [SerializeField] private GameObject[] hideObjects;
 
     private Animator animator;
     private Rigidbody[] deathRB;
-    private int disappearDelay = 2500;
+    private FlickerDisappear flickerDisappear;
 
     // Start is called before the first frame update
     void Start()
@@ -32,6 +33,7 @@ public class EnemyDeath : MonoBehaviour
             }
         }
         animator = GetComponentInChildren<Animator>();
+        flickerDisappear = GetComponent<FlickerDisappear>();
     }
 
     public void KillEnemy()
@@ -56,7 +58,7 @@ public class EnemyDeath : MonoBehaviour
         SpawnDeathFX();
     }
 
-    private async void DeathRagdoll()
+    private void DeathRagdoll()
     {
         for (int i = 0; i < deathRB.Length; i++) 
         {
@@ -64,36 +66,23 @@ public class EnemyDeath : MonoBehaviour
             deathRB[i].AddForce(transform.forward * 1000f);
         }
         SpawnDeathFX();
-        await UniTask.DelayFrame(disappearDelay);
-        FlickerDisappear();
-
+        FadeObj();
     }
 
-    private async void DeathAnimation()
+    private void DeathAnimation()
     {
         animator.SetBool("isDeathAnimation", true);
         SpawnDeathFX();
-        await UniTask.DelayFrame(disappearDelay);
-        FlickerDisappear();
+        FadeObj();
     }
 
-    private async void FlickerDisappear()
+    private void FadeObj()
     {
-        var rend = GetComponentsInChildren<Renderer>();
-        for (int r = 0; r < 15; r++)
-        {
-            for (int i = 0; i < rend.Length; i++)
-            {
-                rend[i].enabled = false;
-            }
-            await UniTask.DelayFrame(5);
-            for (int i = 0; i < rend.Length; i++)
-            {
-                rend[i].enabled = true;
-            }
-            await UniTask.DelayFrame(5);
+        if (flickerDisappear == null) {
+            Debug.Log("FlickerDisappear script not added");
+            return;
         }
-        Destroy(gameObject);
+        flickerDisappear.Disappear();
     }
 
     private void SpawnDeathFX()
@@ -105,8 +94,11 @@ public class EnemyDeath : MonoBehaviour
             }
         }
 
-        if (DeathFX != null) {
-            Instantiate(DeathFX, transform.position, Quaternion.identity);
+        if (DeathSpawn.Length == 0) return;
+        for (int i = 0; i < DeathSpawn.Length; i ++) {
+            if (DeathSpawn[i] == null) continue;
+            var pos = transform.position;
+            Instantiate(DeathSpawn[i], new Vector3(pos.x, pos.y + spawnYOffset, pos.z), Quaternion.identity);
         };
     }
 
