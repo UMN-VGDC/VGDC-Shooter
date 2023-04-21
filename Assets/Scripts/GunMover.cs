@@ -9,9 +9,12 @@ public class GunMover : MonoBehaviour {
     [SerializeField] private Transform reference;
     [SerializeField] private Transform viewportReference;
     [SerializeField] private Transform playerGunPos;
-    [SerializeField] private Quaternion rotationOffset;
+    [SerializeField] private Quaternion rotPreOffset;
+    [SerializeField] private Quaternion rotPostOffset;
     [SerializeField] private float YOffset;
     [SerializeField] private float moveSensitivity = 1f;
+    [SerializeField] private float lookSensitivity = 1f;
+    [SerializeField] private float lookStabilization = 1f;
 
 
     void Update() {
@@ -24,7 +27,11 @@ public class GunMover : MonoBehaviour {
 
         transform.position = new Vector3(pos.x + posViewport.x, pos.y + posViewport.y + YOffset, gunPos.z);
 
-        transform.rotation = MainCamera.rotation * Quaternion.Euler(0, 0, 180) * Quaternion.Inverse(ARCamera.rotation) * reference.rotation * rotationOffset;
+        Vector3 lookAngles = (Quaternion.Inverse(ARCamera.rotation) * reference.rotation * rotPreOffset).eulerAngles;
+        Quaternion lookRotation = Quaternion.Euler(lookAngles.x * lookSensitivity, lookAngles.y * lookSensitivity, lookAngles.z);
+        Quaternion rotation = MainCamera.rotation * Quaternion.Euler(0, 0, 180) * lookRotation * rotPostOffset;
+
+        transform.rotation = Quaternion.Lerp(transform.rotation, rotation, Time.deltaTime * lookStabilization);
     }
 
 }

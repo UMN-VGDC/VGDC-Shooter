@@ -18,13 +18,13 @@ public class EntityHealth : MonoBehaviour
     [ColorUsage(true, true)]
     [SerializeField] private Color flashColor = new Color(51, 0, 0, 1);
 
-    private Renderer[] renderer;
+    private Renderer[] renderers;
     private bool isDead;
 
     // Start is called before the first frame update
     void Start()
     {
-        renderer = GetComponentsInChildren<Renderer>();
+        renderers = GetComponentsInChildren<Renderer>();
     }
 
     public void DecreaseHealth()
@@ -63,8 +63,8 @@ public class EntityHealth : MonoBehaviour
             return;
         }
 
-        for (int i = 0; i < renderer.Length; i++) {
-            SetRenderColor(renderer[i], flashColor);
+        for (int i = 0; i < renderers.Length; i++) {
+            SetRenderColor(renderers[i], flashColor);
         }
 
         await UniTask.DelayFrame(10);
@@ -75,8 +75,8 @@ public class EntityHealth : MonoBehaviour
 
     private void ResetRenderCol()
     {
-        for (int i = 0; i < renderer.Length; i++) {
-            SetRenderColor(renderer[i], new Color(1, 1, 1, 1));
+        for (int i = 0; i < renderers.Length; i++) {
+            SetRenderColor(renderers[i], new Color(1, 1, 1, 1));
         }
     }
 
