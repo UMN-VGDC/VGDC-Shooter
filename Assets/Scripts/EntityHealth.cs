@@ -27,10 +27,10 @@ public class EntityHealth : MonoBehaviour
         renderers = GetComponentsInChildren<Renderer>();
     }
 
-    public void DecreaseHealth()
+    public void DecreaseHealth(int amount)
     {
-        health--;
-        if (health == 0) {
+        health -= amount;
+        if (health <= 0) {
             isDead = true;
             DeathType();
             return;

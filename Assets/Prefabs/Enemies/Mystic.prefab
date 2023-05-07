@@ -139,6 +139,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: dea9a1a326f2efd42ab9e75959fada33, type: 2}
+    - target: {fileID: -1875774609700720101, guid: 2f3ea49ea50a98c45b9d7805c2c10369, type: 3}
+      propertyPath: m_TagString
+      value: Head
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 2f3ea49ea50a98c45b9d7805c2c10369, type: 3}
       propertyPath: m_Name
       value: Mystic

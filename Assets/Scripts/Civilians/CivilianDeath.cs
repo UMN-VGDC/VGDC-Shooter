@@ -24,10 +24,12 @@ public class CivilianDeath : MonoBehaviour
 
     public void KillCivilian()
     {
+        gameObject.tag = "Untagged";
         for (int i = 0; i < deathRB.Length; i++) 
         {
             deathRB[i].isKinematic = false;
             deathRB[i].AddForce(transform.forward * 1000f);
+            deathRB[i].gameObject.tag = "Untagged";
         }
         FadeObj();
         SpawnDeathFX();

@@ -38,6 +38,7 @@ public class EnemyDeath : MonoBehaviour
 
     public void KillEnemy()
     {
+        gameObject.tag = "Untagged";
         switch (deathType)
         {
             case DeathType.Disappear:
@@ -64,6 +65,7 @@ public class EnemyDeath : MonoBehaviour
         {
             deathRB[i].isKinematic = false;
             deathRB[i].AddForce(transform.forward * 1000f);
+            deathRB[i].gameObject.tag = "Untagged";
         }
         SpawnDeathFX();
         FadeObj();

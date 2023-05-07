@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GunMover : MonoBehaviour {
+public class LegacyGunMover : MonoBehaviour {
 
     [SerializeField] private Transform ARCamera;
     [SerializeField] private Transform MainCamera;

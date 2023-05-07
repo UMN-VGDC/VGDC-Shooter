@@ -65,6 +65,7 @@ MonoBehaviour:
   DeathSpawn:
   - {fileID: 4118392343417555835, guid: 119046c477f1b8a4da31a7fb53dcb641, type: 3}
   spawnYOffset: 1.5
+  hideObjects: []
 --- !u!114 &4354572479446017619
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -132,6 +133,10 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 660ef75d35d4b4e48900114aadd48ac9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -1875774609700720101, guid: 660ef75d35d4b4e48900114aadd48ac9, type: 3}
+      propertyPath: m_TagString
+      value: Head
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 660ef75d35d4b4e48900114aadd48ac9, type: 3}
       propertyPath: m_Name

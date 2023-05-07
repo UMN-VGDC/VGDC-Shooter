@@ -2,14 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Cysharp.Threading.Tasks;
+using System;
+using static UnityEngine.EventSystems.EventTrigger;
 
 public class Bullet : MonoBehaviour
 {
 
-    [SerializeField] private Shoot shoot;
     [SerializeField] private float speed = 2f;
     [ColorUsage(true, true)]
     [SerializeField] private Color flashColor;
+    [SerializeField] private GameObject critEffect;
+
+    public static Action crit;
 
     Rigidbody m_Rigidbody;
     private bool isDestroyed;
@@ -49,6 +53,10 @@ public class Bullet : MonoBehaviour
             yield return 0;
             OnTriggerEnterFixed();
             EntityHit(hit2.collider.gameObject);
+            if (hit2.collider.gameObject.tag == "Head")
+            {
+                Instantiate(critEffect, hit2.point, Quaternion.identity);
+            }
         }
     }
 
@@ -60,9 +68,16 @@ public class Bullet : MonoBehaviour
     void EntityHit(GameObject entity)
     {   
         var root = entity.transform.root;
-        if (root.tag == "Entity")
+        if (root.tag != "Entity") return;
+
+        if (entity.tag == "Head")
         {
-            root.GetComponent<EntityHealth>().DecreaseHealth();
+            root.GetComponent<EntityHealth>().DecreaseHealth(2);
+            crit?.Invoke();
+        }
+        else
+        {
+            root.GetComponent<EntityHealth>().DecreaseHealth(1);
         }
     }
 

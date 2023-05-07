@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class PlayerController : MonoBehaviour
+public class LegacyPlayerController : MonoBehaviour
 {
     [SerializeField] private GameObject gun;
     private Vector3 worldPosition;

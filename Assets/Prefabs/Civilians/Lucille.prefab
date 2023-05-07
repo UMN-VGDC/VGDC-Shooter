@@ -65,6 +65,7 @@ MonoBehaviour:
   DeathSpawn:
   - {fileID: 4118392343417555835, guid: 119046c477f1b8a4da31a7fb53dcb641, type: 3}
   spawnYOffset: 1.5
+  hideObjects: []
 --- !u!114 &5512430781421591773
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -149,6 +150,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[1]
       value: 
       objectReference: {fileID: 2100000, guid: 8ad26ee302777554487c0573114a702a, type: 2}
+    - target: {fileID: -1875774609700720101, guid: 26ce49a410adf5f4bbc5e79f29b2cf31, type: 3}
+      propertyPath: m_TagString
+      value: Head
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 26ce49a410adf5f4bbc5e79f29b2cf31, type: 3}
       propertyPath: m_Name
       value: LucilleShowcase3

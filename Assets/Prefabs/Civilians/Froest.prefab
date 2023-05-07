@@ -65,6 +65,7 @@ MonoBehaviour:
   DeathSpawn:
   - {fileID: 4118392343417555835, guid: 119046c477f1b8a4da31a7fb53dcb641, type: 3}
   spawnYOffset: 1.5
+  hideObjects: []
 --- !u!114 &8190408992841584310
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -148,6 +149,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: c5a8739c748b11240b09828aab828c3c, type: 3}
       propertyPath: m_Name
       value: Froest
+      objectReference: {fileID: 0}
+    - target: {fileID: 3897462237488877691, guid: c5a8739c748b11240b09828aab828c3c, type: 3}
+      propertyPath: m_TagString
+      value: Head
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c5a8739c748b11240b09828aab828c3c, type: 3}

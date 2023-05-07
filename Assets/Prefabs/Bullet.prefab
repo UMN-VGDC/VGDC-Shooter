@@ -47,9 +47,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a326bd3fa49499747b9fdcc84340d90e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shoot: {fileID: 1712193597380139849, guid: 0633fef954f0a15489930bba8b4bbb0a, type: 3}
   speed: 10
   flashColor: {r: 39.396626, g: 0, b: 0, a: 1}
+  critEffect: {fileID: 5229937838949772737, guid: 826dcf84f3a15b9489ac7abada2f774b, type: 3}
 --- !u!65 &2388599508789518424
 BoxCollider:
   m_ObjectHideFlags: 0
