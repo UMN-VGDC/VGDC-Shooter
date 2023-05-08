@@ -8,6 +8,9 @@ TagManager:
   - Civilian
   - Entity
   - Head
+  - Truck
+  - SpeedTrigger
+  - SlowDownRadius
   layers:
   - Default
   - TransparentFX
