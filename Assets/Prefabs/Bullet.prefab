@@ -50,6 +50,7 @@ MonoBehaviour:
   speed: 10
   flashColor: {r: 39.396626, g: 0, b: 0, a: 1}
   critEffect: {fileID: 5229937838949772737, guid: 826dcf84f3a15b9489ac7abada2f774b, type: 3}
+  bulletImpactEffect: {fileID: 422913031894824930, guid: c2640cf83c54f4841ad9c5bd6f221235, type: 3}
 --- !u!65 &2388599508789518424
 BoxCollider:
   m_ObjectHideFlags: 0

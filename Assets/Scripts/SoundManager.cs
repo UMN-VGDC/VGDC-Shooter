@@ -2,47 +2,74 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
-
 public class SoundManager : MonoBehaviour
 {
     [SerializeField] private AudioClip critSound;
-    private AudioSource audioSource;
+    [SerializeField] private AudioClip[] playerDamageSounds;
+    [SerializeField] private AudioClip bulletImpact;
+    [SerializeField] private AudioClip enemyHit;
+    [SerializeField] private AudioClip shootSound;
 
-    private int CritSoundQueue;
-    private bool isCritSoundPlaying;
+    private static AudioSource audioSource;
+    private QueueSound critQueue, shootQueue, enemyHitQueue;
 
     // Start is called before the first frame update
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
-        Bullet.crit += PlayCritSound;
+        PlayerHealth.damageTaken += PlayerDamage;
+        Bullet.crit += AddCritQueue;
+        EntityHealth.enemyHit += AddEnemyHitQueue;
+        Shoot.shootBullet += AddShootQueue;
+        EnemyDeath.deathSound += EnemyDeathSound;
+
+        critQueue = new QueueSound(critSound, 100);
+        shootQueue = new QueueSound(shootSound, 100);
+        enemyHitQueue = new QueueSound(enemyHit, 100);
+
     }
 
-    void PlayCritSound()
+    private void EnemyDeathSound(AudioClip[] clip)
     {
-        if (CritSoundQueue < 2) CritSoundQueue++;
+        if (clip.Length == 0) return;
+        foreach(AudioClip c in clip) audioSource.PlayOneShot(c);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void PlayerDamage()
     {
-        if (CritSoundQueue > 0 && !isCritSoundPlaying)
-        {
-            PlayHitSound();
-            isCritSoundPlaying = true;
-        }
+        audioSource.PlayOneShot(playerDamageSounds[Random.Range(0, playerDamageSounds.Length)]);
     }
-
-    private async void PlayHitSound()
-    {
-        CritSoundQueue--;
-        audioSource.PlayOneShot(critSound);
-        await Task.Delay(100);
-        isCritSoundPlaying = false;
-    }
+    public static void PlaySound(AudioClip clip) => audioSource.PlayOneShot(clip);
+    private void AddCritQueue() => critQueue.SoundQueue();
+    private void AddShootQueue() => shootQueue.SoundQueue();
+    private void AddEnemyHitQueue() => enemyHitQueue.SoundQueue();
 
     private void OnDestroy()
     {
-        Bullet.crit -= PlayCritSound;
+        PlayerHealth.damageTaken -= PlayerDamage;
+        Bullet.crit -= AddCritQueue;
+        EntityHealth.enemyHit -= AddEnemyHitQueue;
+        Shoot.shootBullet -= AddShootQueue;
+    }
+}
+
+public class QueueSound
+{
+    private AudioClip audioClip;
+    private int audioDelay;
+    private bool isPlaying;
+    public QueueSound(AudioClip clip, int delay)
+    {
+        audioClip = clip;
+        audioDelay = delay;
+    }
+
+    public async void SoundQueue()
+    {
+        if (isPlaying) return;
+        isPlaying = true;
+        await Task.Delay(audioDelay);
+        SoundManager.PlaySound(audioClip);
+        isPlaying = false;
     }
 }

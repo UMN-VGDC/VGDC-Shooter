@@ -1,4 +1,5 @@
 using DG.Tweening;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Burst.CompilerServices;
@@ -16,8 +17,12 @@ public class Shoot : MonoBehaviour
     [SerializeField] private GameObject recoilObject;
     [SerializeField] private float recoilStrength = 5f;
 
+    [SerializeField] private ParticleSystem muzzleFlash;
+
     private float _currentFireCountdown = 1f;
     private bool isShooting;
+
+    public static Action shootBullet;
 
     // Start is called before the first frame update
     void Start()
@@ -47,6 +52,8 @@ public class Shoot : MonoBehaviour
         {
             Instantiate(bullet, spawner.position, transform.rotation);
             Recoil();
+            muzzleFlash.Play();
+            shootBullet?.Invoke();
             _currentFireCountdown = 1f;
         }
     }

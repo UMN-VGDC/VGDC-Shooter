@@ -130,9 +130,73 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1236172321103976500, guid: 9fd1c221a574a2b4d8cdcd2deda04507, type: 3}
+      propertyPath: m_EndAngleFade
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 1236172321103976500, guid: 9fd1c221a574a2b4d8cdcd2deda04507, type: 3}
+      propertyPath: m_StartAngleFade
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 1979238819438631629, guid: 9fd1c221a574a2b4d8cdcd2deda04507, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.016
+      objectReference: {fileID: 0}
+    - target: {fileID: 1979238819438631629, guid: 9fd1c221a574a2b4d8cdcd2deda04507, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 1979238819438631629, guid: 9fd1c221a574a2b4d8cdcd2deda04507, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 1979238819438631629, guid: 9fd1c221a574a2b4d8cdcd2deda04507, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1979238819438631629, guid: 9fd1c221a574a2b4d8cdcd2deda04507, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1979238819438631629, guid: 9fd1c221a574a2b4d8cdcd2deda04507, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
     - target: {fileID: 4027434676370667755, guid: 9fd1c221a574a2b4d8cdcd2deda04507, type: 3}
       propertyPath: m_Name
       value: Explosion Decal Purple
+      objectReference: {fileID: 0}
+    - target: {fileID: 5019414840499316174, guid: 9fd1c221a574a2b4d8cdcd2deda04507, type: 3}
+      propertyPath: m_EndAngleFade
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 5019414840499316174, guid: 9fd1c221a574a2b4d8cdcd2deda04507, type: 3}
+      propertyPath: m_StartAngleFade
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 5071988518537285151, guid: 9fd1c221a574a2b4d8cdcd2deda04507, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.008
+      objectReference: {fileID: 0}
+    - target: {fileID: 5071988518537285151, guid: 9fd1c221a574a2b4d8cdcd2deda04507, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.6982655
+      objectReference: {fileID: 0}
+    - target: {fileID: 5071988518537285151, guid: 9fd1c221a574a2b4d8cdcd2deda04507, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.6982655
+      objectReference: {fileID: 0}
+    - target: {fileID: 5071988518537285151, guid: 9fd1c221a574a2b4d8cdcd2deda04507, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.111469015
+      objectReference: {fileID: 0}
+    - target: {fileID: 5071988518537285151, guid: 9fd1c221a574a2b4d8cdcd2deda04507, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.111469015
+      objectReference: {fileID: 0}
+    - target: {fileID: 5071988518537285151, guid: 9fd1c221a574a2b4d8cdcd2deda04507, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9fd1c221a574a2b4d8cdcd2deda04507, type: 3}

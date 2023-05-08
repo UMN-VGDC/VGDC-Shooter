@@ -149,6 +149,7 @@ MonoBehaviour:
   health: 100
   entityType: 0
   flashColor: {r: 52, g: 0, b: 0, a: 1}
+  playerDamage: 1
 --- !u!114 &-4681713086281087993
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -169,6 +170,8 @@ MonoBehaviour:
   - {fileID: 4733893665289324052}
   - {fileID: 8556571753225220303}
   - {fileID: 3537869035169345309}
+  deathSounds: []
+  points: 100
 --- !u!114 &8379207289193616858
 MonoBehaviour:
   m_ObjectHideFlags: 0

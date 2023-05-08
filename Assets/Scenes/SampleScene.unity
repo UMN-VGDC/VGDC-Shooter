@@ -552,7 +552,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 69375875}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: HandIK-R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2865,8 +2865,8 @@ GameObject:
   m_Component:
   - component: {fileID: 269935793}
   - component: {fileID: 269935796}
-  - component: {fileID: 269935797}
   - component: {fileID: 269935798}
+  - component: {fileID: 269935799}
   m_Layer: 0
   m_Name: cm
   m_TagString: Untagged
@@ -2901,7 +2901,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac0b09e7857660247b1477e93731de29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &269935797
+--- !u!114 &269935798
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 269935792}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68bb026fafb42b14791938953eaace77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_NoiseProfile: {fileID: 11400000, guid: 69ce8388f6785dd4c8c39915efece2f4, type: 2}
+  m_PivotOffset: {x: 0, y: 0, z: 0}
+  m_AmplitudeGain: 0.32
+  m_FrequencyGain: -0.42
+  mNoiseOffsets: {x: 0, y: 0, z: 0}
+--- !u!114 &269935799
 MonoBehaviour:
   m_ObjectHideFlags: 3
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2923,9 +2940,9 @@ MonoBehaviour:
     m_InputAxisName: Mouse Y
     m_InputAxisValue: 0
     m_InvertInput: 1
-    m_MinValue: -180
-    m_MaxValue: 180
-    m_Wrap: 1
+    m_MinValue: -70
+    m_MaxValue: 70
+    m_Wrap: 0
     m_Recentering:
       m_enabled: 0
       m_WaitTime: 1
@@ -2935,7 +2952,7 @@ MonoBehaviour:
   m_VerticalRecentering:
     m_enabled: 1
     m_WaitTime: 1
-    m_RecenteringTime: 3
+    m_RecenteringTime: 0
     m_LegacyHeadingDefinition: -1
     m_LegacyVelocityFilterStrength: -1
   m_HorizontalAxis:
@@ -2959,27 +2976,10 @@ MonoBehaviour:
   m_HorizontalRecentering:
     m_enabled: 1
     m_WaitTime: 1
-    m_RecenteringTime: 3
+    m_RecenteringTime: 0
     m_LegacyHeadingDefinition: -1
     m_LegacyVelocityFilterStrength: -1
   m_ApplyBeforeBody: 0
---- !u!114 &269935798
-MonoBehaviour:
-  m_ObjectHideFlags: 3
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 269935792}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 68bb026fafb42b14791938953eaace77, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_NoiseProfile: {fileID: 11400000, guid: 69ce8388f6785dd4c8c39915efece2f4, type: 2}
-  m_PivotOffset: {x: 0, y: 0, z: 0}
-  m_AmplitudeGain: 0.32
-  m_FrequencyGain: -0.42
-  mNoiseOffsets: {x: 0, y: 0, z: 0}
 --- !u!1 &277799427
 GameObject:
   m_ObjectHideFlags: 0
@@ -3184,7 +3184,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh45692
+  m_Name: pb_Mesh61816
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -6677,6 +6677,7 @@ GameObject:
   m_Component:
   - component: {fileID: 619551380}
   - component: {fileID: 619551379}
+  - component: {fileID: 619551381}
   m_Layer: 0
   m_Name: CM vcam1
   m_TagString: Untagged
@@ -6729,7 +6730,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 619551378}
-  m_LocalRotation: {x: 0.041986752, y: 0.0048087183, z: -0.00020791941, w: 0.99910665}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.878, y: 1.863, z: -10.706}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -6738,6 +6739,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &619551381
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 619551378}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5cd1aa0577e71d6418b5c1fda560957a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &651693253 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 376445268668163531, guid: 0e1ff74798a42e242b7196a0a23d78bd, type: 3}
@@ -11249,7 +11262,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 72ece51f2901e7445ab60da3685d6b5f, type: 3}
   m_Name: 
@@ -16013,7 +16026,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1529585664}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: HandIK-L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -21967,6 +21980,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Su_Gun
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8365890d4c283bc4d9d4860fb8acda9a, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8365890d4c283bc4d9d4860fb8acda9a, type: 3}
 --- !u!1001 &2528561162945635371
@@ -22181,7 +22198,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5200412923001614191}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Recoil
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27296,7 +27313,7 @@ GameObject:
   - component: {fileID: 173389381689906502}
   - component: {fileID: 6658901546006925628}
   - component: {fileID: 1216622615001783846}
-  m_Layer: 13
+  m_Layer: 6
   m_Name: CrossHair
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27532,7 +27549,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8995104136267407091}
   - component: {fileID: 8995104136267407092}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Gun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27603,7 +27620,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8995104137065489724}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Bullet Spawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}

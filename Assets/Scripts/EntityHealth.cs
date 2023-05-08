@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Cysharp.Threading.Tasks;
+using System;
 
 public class EntityHealth : MonoBehaviour
 {
@@ -17,6 +18,9 @@ public class EntityHealth : MonoBehaviour
 
     [ColorUsage(true, true)]
     [SerializeField] private Color flashColor = new Color(51, 0, 0, 1);
+    [SerializeField] private int playerDamage = 1;
+
+    public static Action enemyHit;
 
     private Renderer[] renderers;
     private bool isDead;
@@ -35,6 +39,7 @@ public class EntityHealth : MonoBehaviour
             DeathType();
             return;
         }
+        enemyHit?.Invoke();
         HitFlash();
     }
 
@@ -86,6 +91,11 @@ public class EntityHealth : MonoBehaviour
         {
             rend.materials[i].SetColor("_Hit_Flash_1", color);
         }
+    }
+
+    public int GetPlayerDamage()
+    {
+        return playerDamage;
     }
 
     // Update is called once per frame

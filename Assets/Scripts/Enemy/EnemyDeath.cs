@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Cysharp.Threading.Tasks;
+using System;
 
 public class EnemyDeath : MonoBehaviour
 {
@@ -16,6 +17,11 @@ public class EnemyDeath : MonoBehaviour
     [SerializeField] private GameObject[] DeathSpawn;
     [SerializeField] private float spawnYOffset;
     [SerializeField] private GameObject[] hideObjects;
+    [SerializeField] private AudioClip[] deathSounds;
+    [SerializeField] private int points = 100;
+
+    public static Action<AudioClip[]> deathSound;
+    public static Action<int> killPoints;
 
     private Animator animator;
     private Rigidbody[] deathRB;
@@ -39,6 +45,8 @@ public class EnemyDeath : MonoBehaviour
     public void KillEnemy()
     {
         gameObject.tag = "Untagged";
+        deathSound?.Invoke(deathSounds);
+        killPoints?.Invoke(points / 100);
         switch (deathType)
         {
             case DeathType.Disappear:
@@ -100,7 +108,8 @@ public class EnemyDeath : MonoBehaviour
         for (int i = 0; i < DeathSpawn.Length; i ++) {
             if (DeathSpawn[i] == null) continue;
             var pos = transform.position;
-            Instantiate(DeathSpawn[i], new Vector3(pos.x, pos.y + spawnYOffset, pos.z), Quaternion.identity);
+            Quaternion randomRot = Quaternion.Euler(0, UnityEngine.Random.Range(-180, 180), 0);
+            Instantiate(DeathSpawn[i], new Vector3(pos.x, pos.y + spawnYOffset, pos.z), randomRot);
         };
     }
 

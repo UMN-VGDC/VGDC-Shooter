@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using Cysharp.Threading.Tasks;
 using System;
-using static UnityEngine.EventSystems.EventTrigger;
 
 public class Bullet : MonoBehaviour
 {
@@ -12,6 +11,7 @@ public class Bullet : MonoBehaviour
     [ColorUsage(true, true)]
     [SerializeField] private Color flashColor;
     [SerializeField] private GameObject critEffect;
+    [SerializeField] private GameObject bulletImpactEffect;
 
     public static Action crit;
 
@@ -57,6 +57,7 @@ public class Bullet : MonoBehaviour
             {
                 Instantiate(critEffect, hit2.point, Quaternion.identity);
             }
+            Instantiate(bulletImpactEffect, hit2.point, Quaternion.identity);
         }
     }
 

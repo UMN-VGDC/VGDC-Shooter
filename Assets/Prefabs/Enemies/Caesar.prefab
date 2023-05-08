@@ -50,6 +50,7 @@ MonoBehaviour:
   health: 20
   entityType: 0
   flashColor: {r: 52, g: 0, b: 0, a: 1}
+  playerDamage: 1
 --- !u!114 &-6301966384168028511
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -67,6 +68,8 @@ MonoBehaviour:
   - {fileID: 4118392343417555835, guid: 119046c477f1b8a4da31a7fb53dcb641, type: 3}
   spawnYOffset: 1.5
   hideObjects: []
+  deathSounds: []
+  points: 100
 --- !u!114 &8515594301794697854
 MonoBehaviour:
   m_ObjectHideFlags: 0
