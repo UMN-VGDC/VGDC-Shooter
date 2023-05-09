@@ -22,7 +22,7 @@ public class Shoot : MonoBehaviour
     private float _currentFireCountdown = 1f;
     private bool isShooting;
 
-    public static Action shootBullet;
+    public static event Action shootBullet;
 
     // Start is called before the first frame update
     void Start()

@@ -8,9 +8,9 @@ public class PlayerHealth : MonoBehaviour
 
     [SerializeField] private int playerHealth = 20;
 
-    public static Action damageTaken;
-    public static Action<int> damageTakenAmount;
-    public static Action<int> totalHealth;
+    public static event Action damageTaken;
+    public static event Action<int> damageTakenAmount;
+    public static event Action<int> totalHealth;
 
     // Start is called before the first frame update
     void Start()
