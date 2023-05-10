@@ -12,7 +12,7 @@ public class SlowDownEnemy : MonoBehaviour
         
     }
 
-    private void OnTriggerStay(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
         var root = other.gameObject.transform.root;
         if (root.tag != "Entity") return;

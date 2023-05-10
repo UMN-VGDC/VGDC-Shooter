@@ -15,7 +15,7 @@ public class FollowPath : MonoBehaviour
         speed = initialSpeed;
     }
 
-    private void OnTriggerStay(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag != "SpeedTrigger") return;
         speedTarget = other.gameObject.GetComponent<SpeedMultiplier>().speedTarget;
