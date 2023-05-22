@@ -14,6 +14,7 @@ public class CameraControl : MonoBehaviour
 
     [SerializeField] private Transform crossHair;
     [SerializeField] private float lookSensitivity = 50f;
+    [SerializeField] TagTracker tracker;
 
     // Start is called before the first frame update
     void Start()
@@ -46,10 +47,20 @@ public class CameraControl : MonoBehaviour
         });
     }
 
+    void UpdateCursor(Vector2 screenPos)
+    {
+        Vector2 cursorPosOffset = screenPos - new Vector2(0.5f, 0.5f);
+        float rotX = cursorPosOffset.y * -lookSensitivity;
+        float rotY = cursorPosOffset.x * lookSensitivity;
+        transform.localRotation = Quaternion.Euler(rotX, rotY, 0f);
+    }
+
+    
+
     // Update is called once per frame
     void Update()
     {
-        Vector2 cursorPos = Camera.main.ScreenToViewportPoint(Input.mousePosition);
+        Vector2 cursorPos = tracker.GetDampedScreenPos();
         Vector2 cursorPosOffset = cursorPos - new Vector2(0.5f, 0.5f);
         float rotX = cursorPosOffset.y * -lookSensitivity;
         float rotY = cursorPosOffset.x * lookSensitivity;

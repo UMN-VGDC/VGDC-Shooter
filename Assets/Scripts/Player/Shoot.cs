@@ -18,11 +18,12 @@ public class Shoot : MonoBehaviour
     [SerializeField] private float recoilStrength = 5f;
 
     [SerializeField] private ParticleSystem muzzleFlash;
-
+    [SerializeField] private TagTracker tracker;
     private float _currentFireCountdown = 1f;
     private bool isShooting;
 
     public static event Action shootBullet;
+
 
     // Start is called before the first frame update
     void Start()
@@ -30,10 +31,12 @@ public class Shoot : MonoBehaviour
         isShooting = true;
     }
 
+
+
     // Update is called once per frame
     void Update()
     {
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        Ray ray = Camera.main.ViewportPointToRay(tracker.GetDampedScreenPos());
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit, 10000, ~bulletLayerMask))
         {
