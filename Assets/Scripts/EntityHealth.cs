@@ -73,8 +73,6 @@ public class EntityHealth : MonoBehaviour
         }
 
         await UniTask.DelayFrame(10);
-
-        if (isDead) return;
         ResetRenderCol();
     }
 
@@ -87,6 +85,10 @@ public class EntityHealth : MonoBehaviour
 
     private void SetRenderColor(Renderer rend, Color color)
     {
+        if(rend == null)
+        {
+            return;
+        }
         for (int i = 0; i < rend.materials.Length; i++)
         {
             rend.materials[i].SetColor("_Hit_Flash_1", color);

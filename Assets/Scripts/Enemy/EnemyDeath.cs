@@ -47,6 +47,10 @@ public class EnemyDeath : MonoBehaviour
         gameObject.tag = "Untagged";
         deathSound?.Invoke(deathSounds);
         killPoints?.Invoke(points / 100);
+        if (TryGetComponent<Chase>(out Chase chase))
+        {
+            chase.SetSpeed(0);
+        }
         switch (deathType)
         {
             case DeathType.Disappear:
