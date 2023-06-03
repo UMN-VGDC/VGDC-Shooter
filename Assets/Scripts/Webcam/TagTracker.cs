@@ -24,6 +24,7 @@ public class TagTracker : MonoBehaviour
 
     private Vector2 dampedScreenPos;
 
+    [SerializeField] private bool usingWebCam;
 
 
     private Plane plane;
@@ -32,14 +33,17 @@ public class TagTracker : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
         rawScreenPos = Vector2.one * 0.5f;
         dampedScreenPos = rawScreenPos;
+        if(usingWebCam)
+        {
+            texture = webcam.GetTexture();
 
-        texture = webcam.GetTexture();
-
-        texture.Play();
-        detector = new AprilTag.TagDetector(texture.width, texture.height, decimation);
-        plane = new Plane(Vector3.forward, planeDistance);
+            texture.Play();
+            detector = new AprilTag.TagDetector(texture.width, texture.height, decimation);
+            plane = new Plane(Vector3.forward, planeDistance);
+        }
 
     }
 
@@ -56,9 +60,17 @@ public class TagTracker : MonoBehaviour
 
 
         //Debug.Log(viewPortPoint);
-        UpdateRawScreenPos();
+        if (usingWebCam)
+        {
+            UpdateRawScreenPos();
+            
+        } else
+        {
+            rawScreenPos = Camera.main.ScreenToViewportPoint(Input.mousePosition);
+        }
 
         DampScreenPos();
+
 
 
     }
@@ -66,7 +78,7 @@ public class TagTracker : MonoBehaviour
     private void UpdateRawScreenPos()
     {
         var fovRad = Camera.main.fieldOfView * Mathf.Deg2Rad;
-        detector.ProcessImage(texture.GetPixels32(), fovRad, tagSize);
+        detector.ProcessImage(texture.AsSpan(), fovRad, tagSize);
 
 
         if (detector.DetectedTags.Count() < 1)
@@ -93,7 +105,7 @@ public class TagTracker : MonoBehaviour
         screenPos.y = Mathf.Clamp(screenPos.y, 0, 1);
 
         rawScreenPos = screenPos;
-        
+
     }
 
     private void DampScreenPos()
@@ -121,6 +133,9 @@ public class TagTracker : MonoBehaviour
     }
     public void OnDestroy()
     {
-        detector.Dispose();
+        if(usingWebCam)
+        {
+            detector.Dispose();
+        }
     }
 }

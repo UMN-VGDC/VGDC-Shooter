@@ -1,6 +1,5 @@
 {
   "dependencies": {
-    "com.ptc.vuforia.engine": "file:com.ptc.vuforia.engine-10.14.4.tgz",
     "com.unity.animation.rigging": "1.1.1",
     "com.unity.cinemachine": "2.8.9",
     "com.unity.collab-proxy": "1.17.6",

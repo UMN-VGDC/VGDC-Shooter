@@ -2,35 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
-public class ReadOnlyAttribute : PropertyAttribute
-{
 
-}
 
-[CustomPropertyDrawer(typeof(ReadOnlyAttribute))]
-public class ReadOnlyDrawer : PropertyDrawer
-{
-    public override float GetPropertyHeight(SerializedProperty property,
-                                            GUIContent label)
-    {
-        return EditorGUI.GetPropertyHeight(property, label, true);
-    }
-
-    public override void OnGUI(Rect position,
-                               SerializedProperty property,
-                               GUIContent label)
-    {
-        GUI.enabled = false;
-        EditorGUI.PropertyField(position, property, label, true);
-        GUI.enabled = true;
-    }
-}
-[ExecuteInEditMode]
 public class Webcam : MonoBehaviour
 {
-    [ReadOnly] public List<string> webcams = new List<string>();
+    //[ReadOnly] public List<string> webcams = new List<string>();
     [SerializeField] int webcamId;
     private WebCamTexture texture = null;
+    public int width;
+    public int height;
     private bool textureCached;
     // Start is called before the first frame update
     void Start()
@@ -49,7 +29,7 @@ public class Webcam : MonoBehaviour
         if (texture == null)
         {
             WebCamDevice device = GetDeviceInfo();
-            texture = new WebCamTexture(device.name);
+            texture = new WebCamTexture(device.name, width, height);
         }
 
         return texture;
@@ -73,17 +53,13 @@ public class Webcam : MonoBehaviour
     private void UpdateWebcamList()
     {
         WebCamDevice[] devices = WebCamTexture.devices;
-        webcams = new List<string>();
-        for (int i = 0; i < devices.Length; i++)
-        {
-            webcams.Add(i + ": " + devices[i].name);
-        }
+       
     }
 
     // Update is called once per frame
     void Update()
     {
-        UpdateWebcamList();
-        CheckWebcamId();
+        //UpdateWebcamList();
+        //CheckWebcamId();
     }
 }

@@ -8792,12 +8792,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cc3a8c505e892e428fec0d090abfc29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  webcams:
-  - '0: DroidCam Source 3'
-  - '1: Logi C270 HD WebCam'
-  - '2: DroidCam Source 2'
-  - '3: OBS Virtual Camera'
   webcamId: 1
+  width: 320
+  height: 180
 --- !u!4 &513273945
 Transform:
   m_ObjectHideFlags: 0
@@ -21177,12 +21174,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   webcam: {fileID: 513273944}
-  decimation: 10
-  tagSize: 6
+  decimation: 1
+  tagSize: 2.98
   fov: 60
-  screenSize: {x: 30, y: 10.79}
+  screenSize: {x: 18.6, y: 12.4}
   planeDistance: 0
-  lerpSpeed: 0.114
+  lerpSpeed: 0.11
+  usingWebCam: 0
 --- !u!43 &1848723731
 Mesh:
   m_ObjectHideFlags: 0
@@ -27042,6 +27040,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2032943945}
     m_Modifications:
+    - target: {fileID: 1081539861386936973, guid: ec901adc94ca626498922bfff8283926, type: 3}
+      propertyPath: m_Cameras.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1081539861386936973, guid: ec901adc94ca626498922bfff8283926, type: 3}
+      propertyPath: m_RenderPostProcessing
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1081539862666690728, guid: ec901adc94ca626498922bfff8283926, type: 3}
       propertyPath: m_Name
       value: Player
