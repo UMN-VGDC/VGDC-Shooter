@@ -15,6 +15,7 @@ public class EnemyDeath : MonoBehaviour
     public DeathType deathType;
 
     [SerializeField] private GameObject[] DeathSpawn;
+    [SerializeField] private Transform deathSpawnPos;
     [SerializeField] private float spawnYOffset;
     [SerializeField] private GameObject[] hideObjects;
     [SerializeField] private AudioClip[] deathSounds;
@@ -109,17 +110,11 @@ public class EnemyDeath : MonoBehaviour
         }
 
         if (DeathSpawn.Length == 0) return;
+        Vector3 pos = deathSpawnPos ? deathSpawnPos.position : transform.position;
         for (int i = 0; i < DeathSpawn.Length; i ++) {
             if (DeathSpawn[i] == null) continue;
-            var pos = transform.position;
             Quaternion randomRot = Quaternion.Euler(0, UnityEngine.Random.Range(-180, 180), 0);
             Instantiate(DeathSpawn[i], new Vector3(pos.x, pos.y + spawnYOffset, pos.z), randomRot);
         };
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

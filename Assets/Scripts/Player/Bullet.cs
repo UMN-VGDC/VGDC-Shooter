@@ -53,7 +53,7 @@ public class Bullet : MonoBehaviour
             yield return 0;
             OnTriggerEnterFixed();
             EntityHit(hit2.collider.gameObject);
-            if (hit2.collider.gameObject.tag == "Head")
+            if (hit2.collider.gameObject.tag == "Head" && hit2.transform.root.tag == "Entity")
             {
                 Instantiate(critEffect, hit2.point, Quaternion.identity);
             }

@@ -11,8 +11,9 @@ GameObject:
   - component: {fileID: 9203721454187021158}
   - component: {fileID: 3570279247404931104}
   - component: {fileID: -112801801984101744}
-  - component: {fileID: 8021924688229912891}
   - component: {fileID: 7182288988823329930}
+  - component: {fileID: 5522796799684470588}
+  - component: {fileID: 8021924688229912891}
   m_Layer: 0
   m_Name: Crockie
   m_TagString: Entity
@@ -67,11 +68,76 @@ MonoBehaviour:
   deathType: 0
   DeathSpawn:
   - {fileID: 5119594273226558932, guid: 862dd7fea9f750f48863f208801f34da, type: 3}
+  deathSpawnPos: {fileID: 0}
   spawnYOffset: 0
   hideObjects: []
   deathSounds:
   - {fileID: 8300000, guid: 22c56db894a162c488eb48ef65fbc096, type: 3}
   points: 100
+--- !u!195 &7182288988823329930
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7036910593434335753}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.69
+  m_Speed: 20
+  m_Acceleration: 22
+  avoidancePriority: 50
+  m_AngularSpeed: 600
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 0
+  m_AutoRepath: 1
+  m_Height: 2.48
+  m_BaseOffset: 0
+  m_WalkableMask: 7
+  m_ObstacleAvoidanceType: 4
+--- !u!114 &5522796799684470588
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7036910593434335753}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43c77d8319dae7c4b9ef0d785a4304a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggerEnter:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8021924688229912891}
+        m_TargetAssemblyTypeName: Chase, Assembly-CSharp
+        m_MethodName: SlowSpeed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  triggerExit:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8021924688229912891}
+        m_TargetAssemblyTypeName: Chase, Assembly-CSharp
+        m_MethodName: ResetSpeed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &8021924688229912891
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -84,29 +150,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6fb7b8e8f1e273547b5a1f4ae3be504c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  slowSpeed: 12
   initialSpeed: 0
---- !u!195 &7182288988823329930
-NavMeshAgent:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7036910593434335753}
-  m_Enabled: 1
-  m_AgentTypeID: 0
-  m_Radius: 0.69
-  m_Speed: 20
-  m_Acceleration: 16
-  avoidancePriority: 50
-  m_AngularSpeed: 600
-  m_StoppingDistance: 0
-  m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
-  m_AutoRepath: 1
-  m_Height: 2.48
-  m_BaseOffset: 0
-  m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
 --- !u!1001 &5339798911241771753
 PrefabInstance:
   m_ObjectHideFlags: 0

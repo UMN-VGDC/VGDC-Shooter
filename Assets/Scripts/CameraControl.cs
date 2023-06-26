@@ -32,17 +32,17 @@ public class CameraControl : MonoBehaviour
     {
         DOVirtual.Float(1f, 0f, 1f, e =>
         {
-            m_BasicMultiChannelPerlin.m_AmplitudeGain = Mathf.Lerp(amplitude, 2.5f * intensity, e);
-            m_BasicMultiChannelPerlin.m_FrequencyGain = Mathf.Lerp(frequency, 6f * intensity, e);
+            m_BasicMultiChannelPerlin.m_AmplitudeGain = Mathf.Lerp(amplitude, 4f * intensity, e);
+            m_BasicMultiChannelPerlin.m_FrequencyGain = Mathf.Lerp(frequency, 20f * intensity, e);
         });
     }
 
     private void KillShake(int intensity)
     {
-        DOVirtual.Float(1f, 0f, 0.3f, e =>
+        DOVirtual.Float(1f, 0f, 0.6f, e =>
         {
-            m_BasicMultiChannelPerlin.m_AmplitudeGain = Mathf.Lerp(amplitude, 2.5f * intensity, e);
-            m_BasicMultiChannelPerlin.m_FrequencyGain = Mathf.Lerp(frequency, 6f * intensity, e);
+            m_BasicMultiChannelPerlin.m_AmplitudeGain = Mathf.Lerp(amplitude, 3f * intensity, e);
+            m_BasicMultiChannelPerlin.m_FrequencyGain = Mathf.Lerp(frequency, 10f * intensity, e);
         });
     }
 

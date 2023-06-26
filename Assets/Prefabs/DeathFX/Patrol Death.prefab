@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 1972911560631107848}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2001508794701539664}
@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e18031e92773f17428ef6ff67199011a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  forceStrength: 700
+  forceStrength: 1300
 --- !u!114 &8512793953738908616
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -62,7 +62,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   useSetActive: 1
   playOnAwake: 1
-  delay: 2500
+  delay: 1800
   flickerAmount: 15
   destroyImmediate:
   - {fileID: 7033812951447396804}
@@ -73,6 +73,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8581787746010178546}
     m_Modifications:
+    - target: {fileID: -9218845319944999443, guid: 4c4d4bd7ebfb26b41973dd5a7aaf7e20, type: 3}
+      propertyPath: m_TagString
+      value: Debris
+      objectReference: {fileID: 0}
+    - target: {fileID: -9154176557579341012, guid: 4c4d4bd7ebfb26b41973dd5a7aaf7e20, type: 3}
+      propertyPath: m_TagString
+      value: Debris
+      objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4c4d4bd7ebfb26b41973dd5a7aaf7e20, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -129,9 +137,49 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -6981101168571620574, guid: 4c4d4bd7ebfb26b41973dd5a7aaf7e20, type: 3}
+      propertyPath: m_TagString
+      value: Debris
+      objectReference: {fileID: 0}
+    - target: {fileID: -4839492961912009007, guid: 4c4d4bd7ebfb26b41973dd5a7aaf7e20, type: 3}
+      propertyPath: m_TagString
+      value: Debris
+      objectReference: {fileID: 0}
+    - target: {fileID: -1775625665326305057, guid: 4c4d4bd7ebfb26b41973dd5a7aaf7e20, type: 3}
+      propertyPath: m_TagString
+      value: Debris
+      objectReference: {fileID: 0}
+    - target: {fileID: -973599311039806644, guid: 4c4d4bd7ebfb26b41973dd5a7aaf7e20, type: 3}
+      propertyPath: m_TagString
+      value: Debris
+      objectReference: {fileID: 0}
+    - target: {fileID: -680934836917238140, guid: 4c4d4bd7ebfb26b41973dd5a7aaf7e20, type: 3}
+      propertyPath: m_TagString
+      value: Debris
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4c4d4bd7ebfb26b41973dd5a7aaf7e20, type: 3}
       propertyPath: m_Name
       value: Patrol_Pieces
+      objectReference: {fileID: 0}
+    - target: {fileID: 4079312829681069376, guid: 4c4d4bd7ebfb26b41973dd5a7aaf7e20, type: 3}
+      propertyPath: m_TagString
+      value: Debris
+      objectReference: {fileID: 0}
+    - target: {fileID: 5083900182181325172, guid: 4c4d4bd7ebfb26b41973dd5a7aaf7e20, type: 3}
+      propertyPath: m_TagString
+      value: Debris
+      objectReference: {fileID: 0}
+    - target: {fileID: 5352521646179822906, guid: 4c4d4bd7ebfb26b41973dd5a7aaf7e20, type: 3}
+      propertyPath: m_TagString
+      value: Debris
+      objectReference: {fileID: 0}
+    - target: {fileID: 6119012340187394982, guid: 4c4d4bd7ebfb26b41973dd5a7aaf7e20, type: 3}
+      propertyPath: m_TagString
+      value: Debris
+      objectReference: {fileID: 0}
+    - target: {fileID: 7667520299737704956, guid: 4c4d4bd7ebfb26b41973dd5a7aaf7e20, type: 3}
+      propertyPath: m_TagString
+      value: Debris
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4c4d4bd7ebfb26b41973dd5a7aaf7e20, type: 3}

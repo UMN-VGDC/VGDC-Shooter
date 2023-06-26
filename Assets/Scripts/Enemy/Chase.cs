@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
+[RequireComponent(typeof(TriggerEventsOnClose))]
 public class Chase : MonoBehaviour
 {
     private NavMeshAgent navMeshAgent;
     private GameObject player;
-    public float initialSpeed;
+    [SerializeField] private float slowSpeed = 12f;
+    [HideInInspector] public float initialSpeed;
 
     // Start is called before the first frame update
     void Start()
@@ -22,9 +24,13 @@ public class Chase : MonoBehaviour
         navMeshAgent.speed = initialSpeed;
     }
 
-    public void SetSpeed(float amount)
+    public void SlowSpeed()
     {
-        navMeshAgent.speed = amount;
+        navMeshAgent.speed = slowSpeed;
+    }
+    public void SetSpeed(float speed)
+    {
+        navMeshAgent.speed = speed;
     }
 
     // Update is called once per frame

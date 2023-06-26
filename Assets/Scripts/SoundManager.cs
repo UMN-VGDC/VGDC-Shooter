@@ -4,14 +4,11 @@ using System.Threading.Tasks;
 using UnityEngine;
 public class SoundManager : MonoBehaviour
 {
-    [SerializeField] private AudioClip critSound;
     [SerializeField] private AudioClip[] playerDamageSounds;
-    [SerializeField] private AudioClip bulletImpact;
-    [SerializeField] private AudioClip enemyHit;
-    [SerializeField] private AudioClip shootSound;
+    [SerializeField] private AudioClip critSound, bulletImpact, enemyHit, shootSound, waterSplashSound;
 
     private static AudioSource audioSource;
-    private QueueSound critQueue, shootQueue, enemyHitQueue;
+    private QueueSound critQueue, shootQueue, enemyHitQueue, waterSplashQueue;
 
     // Start is called before the first frame update
     void Start()
@@ -22,10 +19,13 @@ public class SoundManager : MonoBehaviour
         EntityHealth.enemyHit += AddEnemyHitQueue;
         Shoot.shootBullet += AddShootQueue;
         EnemyDeath.deathSound += EnemyDeathSound;
+        WaterSplash.splashSound += AddWaterSplashQueue;
 
         critQueue = new QueueSound(critSound, 100);
         shootQueue = new QueueSound(shootSound, 100);
         enemyHitQueue = new QueueSound(enemyHit, 100);
+        waterSplashQueue = new QueueSound(waterSplashSound, 70);
+
 
     }
 
@@ -40,6 +40,7 @@ public class SoundManager : MonoBehaviour
         audioSource.PlayOneShot(playerDamageSounds[Random.Range(0, playerDamageSounds.Length)]);
     }
     public static void PlaySound(AudioClip clip) => audioSource.PlayOneShot(clip);
+    private void AddWaterSplashQueue() => waterSplashQueue.SoundQueue();
     private void AddCritQueue() => critQueue.SoundQueue();
     private void AddShootQueue() => shootQueue.SoundQueue();
     private void AddEnemyHitQueue() => enemyHitQueue.SoundQueue();
@@ -50,6 +51,7 @@ public class SoundManager : MonoBehaviour
         Bullet.crit -= AddCritQueue;
         EntityHealth.enemyHit -= AddEnemyHitQueue;
         Shoot.shootBullet -= AddShootQueue;
+        WaterSplash.splashSound -= AddWaterSplashQueue;
     }
 }
 

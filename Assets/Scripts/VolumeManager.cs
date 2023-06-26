@@ -13,6 +13,7 @@ public class VolumeManager : MonoBehaviour
     void Start()
     {
         PlayerHealth.damageTaken += DamageVignette;
+        EnemyDeath.killPoints += ContrastPop;
     }
 
     private void DamageVignette()
@@ -20,9 +21,33 @@ public class VolumeManager : MonoBehaviour
         Vignette vignette;
         if (volume.profile.TryGet<Vignette>(out vignette))
         {
-            DOVirtual.Float(0.3f, 0f, 1f, e =>
+            DOVirtual.Float(0.5f, 0f, 1f, e =>
             {
                 vignette.intensity.value = e;
+            });
+        }
+    }
+
+    private void ContrastPop(int i)
+    {
+        ColorAdjustments colorAdjustmnets;
+        if (volume.profile.TryGet<ColorAdjustments>(out colorAdjustmnets))
+        {
+            DOVirtual.Float(0f, 1f, 0.4f, e =>
+            {
+                colorAdjustmnets.postExposure.value = e;
+            });
+            DOVirtual.Float(100f, 14f, 0.4f, e =>
+            {
+                colorAdjustmnets.contrast.value = e;
+            });
+        }
+        Bloom bloom;
+        if (volume.profile.TryGet<Bloom>(out bloom))
+        {
+            DOVirtual.Float(2f, 1f, 0.4f, e =>
+            {
+                bloom.intensity.value = e;
             });
         }
     }
@@ -36,5 +61,6 @@ public class VolumeManager : MonoBehaviour
     private void OnDestroy()
     {
         PlayerHealth.damageTaken -= DamageVignette;
+        EnemyDeath.killPoints -= ContrastPop;
     }
 }

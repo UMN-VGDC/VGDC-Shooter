@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7781121442774139256}
   - component: {fileID: 7635573569540670498}
   - component: {fileID: -2600857351453529268}
+  - component: {fileID: 1210736782004159164}
   - component: {fileID: -1700438676963484809}
   m_Layer: 0
   m_Name: Crooked
@@ -49,7 +50,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd8c7907e1111174d9af4d0a22fd73ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 50
+  health: 30
   entityType: 0
   flashColor: {r: 52, g: 0, b: 0, a: 1}
   playerDamage: 1
@@ -68,9 +69,12 @@ MonoBehaviour:
   deathType: 2
   DeathSpawn:
   - {fileID: 7659967183269577210, guid: bb3e8a2531ed8d34a80ac4cb9fff5b25, type: 3}
+  deathSpawnPos: {fileID: 0}
   spawnYOffset: 1.5
   hideObjects: []
-  deathSounds: []
+  deathSounds:
+  - {fileID: 8300000, guid: a20217188dc6e8a4e9945ec832849b50, type: 3}
+  - {fileID: 8300000, guid: e9a6dd2965e42044f9732c5427b51b25, type: 3}
   points: 100
 --- !u!114 &7635573569540670498
 MonoBehaviour:
@@ -98,19 +102,61 @@ NavMeshAgent:
   m_GameObject: {fileID: 2528561163653043146}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.36
+  m_Radius: 0.76
   m_Speed: 20
   m_Acceleration: 16
   avoidancePriority: 50
   m_AngularSpeed: 600
   m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
+  m_AutoBraking: 0
   m_AutoRepath: 1
-  m_Height: 1.64
+  m_Height: 2.92
   m_BaseOffset: 0
-  m_WalkableMask: 4294967295
+  m_WalkableMask: 7
   m_ObstacleAvoidanceType: 4
+--- !u!114 &1210736782004159164
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2528561163653043146}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43c77d8319dae7c4b9ef0d785a4304a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggerEnter:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: -1700438676963484809}
+        m_TargetAssemblyTypeName: Chase, Assembly-CSharp
+        m_MethodName: SlowSpeed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  triggerExit:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: -1700438676963484809}
+        m_TargetAssemblyTypeName: Chase, Assembly-CSharp
+        m_MethodName: ResetSpeed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &-1700438676963484809
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -123,6 +169,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6fb7b8e8f1e273547b5a1f4ae3be504c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  slowSpeed: 12
   initialSpeed: 0
 --- !u!1001 &2528561163073418544
 PrefabInstance:
@@ -134,6 +181,18 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 390a1f4e9c31b7f42bb9095ec6828a20, type: 3}
       propertyPath: m_RootOrder
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 390a1f4e9c31b7f42bb9095ec6828a20, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.4508
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 390a1f4e9c31b7f42bb9095ec6828a20, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.4508
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 390a1f4e9c31b7f42bb9095ec6828a20, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.4508
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 390a1f4e9c31b7f42bb9095ec6828a20, type: 3}
       propertyPath: m_LocalPosition.x

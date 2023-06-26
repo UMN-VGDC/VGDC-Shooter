@@ -11,6 +11,8 @@ TagManager:
   - Truck
   - SpeedTrigger
   - SlowDownRadius
+  - Bullet
+  - Debris
   layers:
   - Default
   - TransparentFX

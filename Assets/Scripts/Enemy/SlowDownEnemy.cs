@@ -5,31 +5,42 @@ using UnityEngine.AI;
 
 public class SlowDownEnemy : MonoBehaviour
 {
-    [SerializeField] private float slowSpeed = 12f;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
     private void OnTriggerEnter(Collider other)
     {
         var root = other.gameObject.transform.root;
         if (root.tag != "Entity") return;
-        if (root.TryGetComponent<Chase>(out Chase chase))
+        if (root.TryGetComponent<TriggerEventsOnClose>(out TriggerEventsOnClose triggerEventsOnClose))
         {
-            chase.SetSpeed(slowSpeed);
+            triggerEventsOnClose.TriggerEnter();
         }
+        //if (root.TryGetComponent<Chase>(out Chase chase))
+        //{
+        //    chase.SlowSpeed();
+        //}
+
+        //if (root.TryGetComponent<FlyingEnemyTransform>(out FlyingEnemyTransform flyingEnemyTransform))
+        //{
+        //    flyingEnemyTransform.lowerEnemy();
+        //}
     }
 
     private void OnTriggerExit(Collider other)
     {
         var root = other.gameObject.transform.root;
         if (root.tag != "Entity") return;
-        if (root.TryGetComponent<Chase>(out Chase chase))
+        if (root.TryGetComponent<TriggerEventsOnClose>(out TriggerEventsOnClose triggerEventsOnClose))
         {
-            chase.ResetSpeed();
+            triggerEventsOnClose.TriggerExit();
         }
+        //if (root.TryGetComponent<Chase>(out Chase chase))
+        //{
+        //    chase.ResetSpeed();
+        //}
+
+        //if (root.TryGetComponent<FlyingEnemyTransform>(out FlyingEnemyTransform flyingEnemyTransform))
+        //{
+        //    flyingEnemyTransform.raiseEnemy();
+        //}
     }
 
     // Update is called once per frame
