@@ -50,7 +50,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 5
-  entityType: 0
+  deathCallback:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: -112801801984101744}
+        m_TargetAssemblyTypeName: EnemyDeath, Assembly-CSharp
+        m_MethodName: KillEnemy
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   flashColor: {r: 52, g: 0, b: 0, a: 1}
   playerDamage: 1
 --- !u!114 &-112801801984101744

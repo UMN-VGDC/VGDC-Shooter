@@ -29,6 +29,14 @@ public class PlayerHealth : MonoBehaviour
             damageTaken?.Invoke();
             damageTakenAmount?.Invoke(getHealthComponent.GetPlayerDamage());
         }
+
+        if (root.tag == "Enemy Bullet")
+        {
+            int bulletDamage = root.GetComponent<EnemyBullet>().GetPlayerDamage();
+            damageTaken?.Invoke();
+            damageTakenAmount?.Invoke(bulletDamage);
+            Destroy(root.gameObject);
+        }
     }
 
     private void DecreaseHealth(int amount)

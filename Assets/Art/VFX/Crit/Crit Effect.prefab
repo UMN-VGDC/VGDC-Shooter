@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2011133284175457416}
   - component: {fileID: 7820235626452754730}
   - component: {fileID: 3638468257332219697}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Crit Effect
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -19,6 +19,7 @@ public class SoundManager : MonoBehaviour
         EntityHealth.enemyHit += AddEnemyHitQueue;
         Shoot.shootBullet += AddShootQueue;
         EnemyDeath.deathSound += EnemyDeathSound;
+        EntityHealth.deathSound += EnemyDeathSound;
         WaterSplash.splashSound += AddWaterSplashQueue;
 
         critQueue = new QueueSound(critSound, 100);
@@ -51,6 +52,8 @@ public class SoundManager : MonoBehaviour
         Bullet.crit -= AddCritQueue;
         EntityHealth.enemyHit -= AddEnemyHitQueue;
         Shoot.shootBullet -= AddShootQueue;
+        EnemyDeath.deathSound -= EnemyDeathSound;
+        EntityHealth.deathSound -= EnemyDeathSound;
         WaterSplash.splashSound -= AddWaterSplashQueue;
     }
 }

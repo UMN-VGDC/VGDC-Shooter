@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 26005415029898196}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.002, y: 0.037, z: -0.015}
-  m_LocalScale: {x: 1.2123688, y: 1.2123688, z: 1.2123688}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 26005416037560582}
@@ -4897,7 +4897,7 @@ Transform:
   m_GameObject: {fileID: 26005416037560587}
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: -0.395}
-  m_LocalScale: {x: 1.53086, y: 1.5308601, z: 1.5308601}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 26005417086551565}
@@ -9769,7 +9769,7 @@ Transform:
   m_GameObject: {fileID: 26005417086551564}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.002, y: 0.037, z: -0.015}
-  m_LocalScale: {x: 1.55806, y: 1.55806, z: 1.55806}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 26005416037560582}
@@ -14639,7 +14639,7 @@ Transform:
   m_GameObject: {fileID: 3310180537921111447}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.755, y: 2.179, z: -1.418}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 3, y: 3, z: 3}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8149813443049706207}
@@ -14960,6 +14960,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!135 &1562320075734224278
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8814147591548569701}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.08029822
+  m_Center: {x: -0.013253644, y: 0.47794813, z: -0.35588682}
 --- !u!95 &989561828692755517
 Animator:
   serializedVersion: 4
@@ -14980,16 +14993,3 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!135 &1562320075734224278
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8814147591548569701}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.08029822
-  m_Center: {x: -0.013253644, y: 0.47794813, z: -0.35588682}

@@ -1,64 +1,45 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Cysharp.Threading.Tasks;
+using System.Threading.Tasks;
 using System;
+using UnityEngine.Events;
 
 public class EntityHealth : MonoBehaviour
 {
     [SerializeField] private int health = 20;
-    public enum EntityType
-    {
-        Enemy,
-        Civilian,
-        Prop
-    }
-    public EntityType entityType;
-
+    [SerializeField] private UnityEvent deathCallback;
 
     [ColorUsage(true, true)]
     [SerializeField] private Color flashColor = new Color(51, 0, 0, 1);
     [SerializeField] private int playerDamage = 1;
+    [SerializeField] private AudioClip[] deathSounds;
 
     public static Action enemyHit;
+    public static Action<AudioClip[]> deathSound;
 
     private Renderer[] renderers;
     private bool isDead;
+    private int healthDecrement;
 
     // Start is called before the first frame update
     void Start()
     {
         renderers = GetComponentsInChildren<Renderer>();
+        healthDecrement = health;
     }
 
     public void DecreaseHealth(int amount)
     {
-        health -= amount;
-        if (health <= 0) {
+        healthDecrement -= amount;
+        if (healthDecrement <= 0) {
             isDead = true;
-            DeathType();
+            deathCallback?.Invoke();
+            deathSound?.Invoke(deathSounds);
             return;
         }
         enemyHit?.Invoke();
         HitFlash();
-    }
-
-    private void DeathType()
-    {
-        switch (entityType)
-        {
-            case EntityType.Enemy:
-                GetComponent<EnemyDeath>().KillEnemy();
-                break;
-            case EntityType.Civilian:
-                GetComponent<CivilianDeath>().KillCivilian();
-                break;
-            case EntityType.Prop:
-                Debug.Log("prop destroyed!");
-                Destroy(gameObject);
-                break;
-     
-        }
     }
 
     private async void HitFlash()
@@ -72,7 +53,7 @@ public class EntityHealth : MonoBehaviour
             SetRenderColor(renderers[i], flashColor);
         }
 
-        await UniTask.DelayFrame(10);
+        await Task.Delay(10);
         ResetRenderCol();
     }
 
@@ -95,14 +76,27 @@ public class EntityHealth : MonoBehaviour
         }
     }
 
+    public async void MultiHitFlash(int count)
+    {
+        for (int i = 0; i < count; i++)
+        {
+            for (int r = 0; r < renderers.Length; r++)
+            {
+                SetRenderColor(renderers[r], flashColor);
+            }
+            await Task.Delay(40);
+            ResetRenderCol();
+            await Task.Delay(40);
+        }
+    }
+
     public int GetPlayerDamage()
     {
         return playerDamage;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void ResetHealth()
     {
-        
+        healthDecrement = health;
     }
 }

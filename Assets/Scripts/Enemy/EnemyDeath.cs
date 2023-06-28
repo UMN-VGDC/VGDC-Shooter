@@ -52,6 +52,12 @@ public class EnemyDeath : MonoBehaviour
         {
             chase.SetSpeed(0);
         }
+
+        if (TryGetComponent<AudioSource>(out AudioSource audioSource))
+        {
+            audioSource.Stop();
+        }
+
         switch (deathType)
         {
             case DeathType.Disappear:
@@ -74,10 +80,11 @@ public class EnemyDeath : MonoBehaviour
 
     private void DeathRagdoll()
     {
+        animator.enabled = false;
         for (int i = 0; i < deathRB.Length; i++) 
         {
             deathRB[i].isKinematic = false;
-            deathRB[i].AddForce(transform.forward * 1000f);
+            deathRB[i].AddForce(transform.forward * -1000f);
             deathRB[i].gameObject.tag = "Untagged";
         }
         SpawnDeathFX();

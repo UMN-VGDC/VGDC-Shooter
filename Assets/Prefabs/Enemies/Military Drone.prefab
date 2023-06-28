@@ -47,7 +47,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 200
-  entityType: 0
+  deathCallback:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: -5851472350036284173}
+        m_TargetAssemblyTypeName: EnemyDeath, Assembly-CSharp
+        m_MethodName: KillEnemy
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   flashColor: {r: 52, g: 0, b: 0, a: 1}
   playerDamage: 1
 --- !u!114 &-5851472350036284173
@@ -65,6 +79,7 @@ MonoBehaviour:
   deathType: 0
   DeathSpawn:
   - {fileID: 2953992208197644563, guid: b4f43ad6ad14e1b47b583237e1e11593, type: 3}
+  deathSpawnPos: {fileID: 0}
   spawnYOffset: 0
   hideObjects: []
   deathSounds: []

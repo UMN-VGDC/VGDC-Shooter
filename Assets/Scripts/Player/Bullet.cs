@@ -69,17 +69,24 @@ public class Bullet : MonoBehaviour
     void EntityHit(GameObject entity)
     {   
         var root = entity.transform.root;
-        if (root.tag != "Entity") return;
-
-        if (entity.tag == "Head")
+        if (entity.tag == "Head" && root.tag == "Entity")
         {
             root.GetComponent<EntityHealth>().DecreaseHealth(2);
             crit?.Invoke();
+            return;
         }
-        else
+
+        if (root.tag == "Entity")
         {
             root.GetComponent<EntityHealth>().DecreaseHealth(1);
+            return;
         }
+
+        if (entity.tag == "Entity")
+        {
+            entity.GetComponent<EntityHealth>().DecreaseHealth(1);
+        }
+
     }
 
     void OnDestroy()

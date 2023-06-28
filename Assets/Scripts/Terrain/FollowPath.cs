@@ -7,12 +7,15 @@ public class FollowPath : MonoBehaviour
 {
     [SerializeField] private PathCreator pathCreator;
     [SerializeField] private float initialSpeed;
+    [SerializeField] private float initialPosition;
     private float distanceTravelled, speedTarget, speed;
 
     // Start is called before the first frame update
     void Start()
     {
         speed = initialSpeed;
+        speedTarget = initialSpeed;
+        distanceTravelled += initialPosition;
     }
 
     private void OnTriggerEnter(Collider other)
