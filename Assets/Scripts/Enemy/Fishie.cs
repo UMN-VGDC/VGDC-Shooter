@@ -5,30 +5,43 @@ using UnityEngine.Animations.Rigging;
 using System.Threading.Tasks;
 using System;
 using DG.Tweening;
+using Cysharp.Threading.Tasks.CompilerServices;
+using Cysharp.Threading.Tasks;
 
 [RequireComponent(typeof(TriggerEventsOnClose))]
 public class Fishie : MonoBehaviour
 {
-
     private MultiAimConstraint[] multiAimConstraint;
     [SerializeField] private RigBuilder rigBuilder;
-    [SerializeField] private GameObject[] targets;
-    [SerializeField] private int targetCount = 6;
     [SerializeField] private GameObject bullet;
     [SerializeField] private GameObject bulletSpawner;
-    private Animator animator;
+    [SerializeField] private AudioClip shootSound;
+    [SerializeField] private AudioClip timeoutSound;
+
+
     private bool isAttacking = true;
     private bool startAttacking;
     private GameObject player;
+    private Animator animator;
+
+    [SerializeField] private int targetCount = 6;
+    private AimTarget[] aimTargets;
     private int currentTargetCount;
 
     public static Action fishieTargets;
+    public static Action<AudioClip> fishieShoot;
+    public static Action<AudioClip> fishieTargetTimeoutSound;
+    public static Action fishieTargetTimerHurrySound;
+
+    private AudioSource audioSource;
 
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
         animator = GetComponentInChildren<Animator>();
+        audioSource = GetComponent<AudioSource>();
+
         multiAimConstraint = rigBuilder.gameObject.GetComponentsInChildren<MultiAimConstraint>();
         foreach (MultiAimConstraint m in multiAimConstraint)
         {
@@ -36,36 +49,44 @@ public class Fishie : MonoBehaviour
             data.Add(new WeightedTransform(player.transform, 0.8f));
             m.data.sourceObjects = data;
         }
-
-        foreach (GameObject target in targets)
-        {
-            target.GetComponent<AimTarget>().DisableTarget();
-        }
         rigBuilder.Build();
+
+        aimTargets = GetComponentsInChildren<AimTarget>();
+        foreach (AimTarget target in aimTargets)
+        {
+            target.DisableTarget();
+        }
     }
 
     public void StartAttacking()
     {
         if (startAttacking) return;
         startAttacking = true;
-        foreach (GameObject t in targets)
+        foreach (AimTarget target in aimTargets)
         {
-            t.GetComponent<AimTarget>().SetText($"{targetCount}");
+            target.SetText($"{targetCount}");
         }
         AttackLoop();
     }
 
-    private void AttackLoop()
+    private async void AttackLoop()
     {
         int targetCount = UnityEngine.Random.Range(2, 4);
         currentTargetCount = targetCount;
-        int randomIndex = UnityEngine.Random.Range(0, targets.Length - 1);
+        int randomIndex = UnityEngine.Random.Range(0, aimTargets.Length - 1);
         for (int i = randomIndex; i < randomIndex + targetCount; i++)
         {
-            int select = (i + 1) % targets.Length;
-            targets[select].GetComponent<AimTarget>().EnableTarget();
+            int select = (i + 1) % aimTargets.Length;
+            aimTargets[select].EnableTarget();
         }
         fishieTargets?.Invoke();
+
+        // Cancel "hurry up" sound when this.targetCount decreases
+        int targetCountID = this.targetCount;
+        float timerHurry = aimTargets[0].GetParticleLifetime() - 2.65f;
+        await Task.Delay((int)Math.Round(timerHurry * 1000));
+        if (!isAttacking || targetCountID != this.targetCount) return;
+        audioSource.Play();
     }
 
     private bool currentAttack;
@@ -74,6 +95,8 @@ public class Fishie : MonoBehaviour
         if (currentAttack) return;
         currentAttack = true;
         animator.SetTrigger("Attack");
+        fishieShoot?.Invoke(shootSound);
+        fishieTargetTimeoutSound?.Invoke(timeoutSound);
         await Task.Delay(200);
 
         if (!isAttacking) return;
@@ -88,7 +111,7 @@ public class Fishie : MonoBehaviour
 
     public async void DecrementTargetCount()
     {
-        foreach (GameObject t in targets)
+        foreach (AimTarget target in aimTargets)
         {
             currentTargetCount--;
             if (currentTargetCount == 0) break;
@@ -103,11 +126,12 @@ public class Fishie : MonoBehaviour
         if (targetCount == 0) return;
 
         //only decrement when all targets are broken
+        audioSource.Stop();
         GetComponent<EntityHealth>().MultiHitFlash(6);
         targetCount--;
-        foreach (GameObject t in targets)
+        foreach (AimTarget target in aimTargets)
         {
-            t.GetComponent<AimTarget>().SetText($"{targetCount}");
+            target.SetText($"{targetCount}");
         }
 
         animator.SetTrigger("Stun");
@@ -120,23 +144,24 @@ public class Fishie : MonoBehaviour
         {
             gameObject.tag = "Entity";
             isAttacking = false;
-            foreach (GameObject t in targets)
+            foreach (AimTarget target in aimTargets)
             {
-                t.SetActive(false);
+                target.DisableTarget();
             }
         }
 
         await Task.Delay(1000);
         if (!isAttacking) return;
         AttackLoop();
+        audioSource.Stop();
     }
 
     // Update is called once per frame
     void Update()
     {
-        foreach(GameObject t in targets)
+        foreach(AimTarget target in aimTargets)
         {
-           t.transform.LookAt(player.transform);
+           target.gameObject.transform.LookAt(player.transform);
         }
     }
 }
