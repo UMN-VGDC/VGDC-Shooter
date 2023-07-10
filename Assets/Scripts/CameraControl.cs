@@ -14,6 +14,7 @@ public class CameraControl : MonoBehaviour
 
     [SerializeField] private Transform crossHair;
     [SerializeField] private float lookSensitivity = 50f;
+    [SerializeField] private Transform lookObject;
 
     // Start is called before the first frame update
     void Start()
@@ -49,7 +50,7 @@ public class CameraControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector2 cursorPos = Camera.main.ScreenToViewportPoint(Input.mousePosition);
+        Vector2 cursorPos = Camera.main.ScreenToViewportPoint(lookObject.position);
         Vector2 cursorPosOffset = cursorPos - new Vector2(0.5f, 0.5f);
         float rotX = cursorPosOffset.y * -lookSensitivity;
         float rotY = cursorPosOffset.x * lookSensitivity;

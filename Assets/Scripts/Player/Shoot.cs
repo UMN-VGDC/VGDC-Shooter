@@ -4,10 +4,19 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.Burst.CompilerServices;
 using UnityEngine;
+using System.Runtime.InteropServices;
 
 public class Shoot : MonoBehaviour
 {
+    public enum AimType
+    {
+        Mouse,
+        Wiimote
+    }
+    public AimType aimtype;
+    private Vector3 aimTransform;
 
+    [SerializeField] private Transform raycastObject;
     [SerializeField] private GameObject crossHair;
     [SerializeField] private Transform spawner;
     [SerializeField] private GameObject bullet;
@@ -18,6 +27,9 @@ public class Shoot : MonoBehaviour
     [SerializeField] private float recoilStrength = 5f;
 
     [SerializeField] private ParticleSystem muzzleFlash;
+
+    [DllImport("user32.dll")] static extern bool SetCursorPos(int x, int y);
+    [SerializeField] private Transform wiimoteAimTransform;
 
     private float _currentFireCountdown = 1f;
     private bool isShooting;
@@ -33,7 +45,19 @@ public class Shoot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        switch (aimtype)
+        {
+            case AimType.Mouse:
+                aimTransform = Input.mousePosition;
+                break;
+            case AimType.Wiimote:
+                aimTransform = wiimoteAimTransform.position;
+                break;
+
+        }
+
+        raycastObject.position = aimTransform;
+        Ray ray = Camera.main.ScreenPointToRay(raycastObject.position);
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit, 10000, ~bulletLayerMask))
         {
