@@ -7,6 +7,7 @@ public class EnemySoundManager : MonoBehaviour
     private AudioSource audioSource;
     [SerializeField] private AudioClip timerAlert;
     [SerializeField] private AudioClip timerHurrySound;
+    [SerializeField] private AudioClip timerTimeout;
 
     // Start is called before the first frame update
     void Start()
@@ -14,15 +15,13 @@ public class EnemySoundManager : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
         PatrolBot.patrolCharge += PlayTargetAlert;
         PatrolBot.patrolShoot += PlaySound;
-        Fishie.fishieTargets += PlayTargetAlert;
+        MultiTargetEnemy.multiTargetsInit += PlayTargetAlert;
         Fishie.fishieShoot += PlaySound;
-        Fishie.fishieTargetTimeoutSound += PlaySound;
+        MultiTargetEnemy.multiTargetsTimeout += PlayTargetTimeout;
     }
 
-    private void PlayTargetAlert()
-    {
-        audioSource.PlayOneShot(timerAlert);
-    }
+    private void PlayTargetTimeout() => audioSource.PlayOneShot(timerTimeout);
+    private void PlayTargetAlert() => audioSource.PlayOneShot(timerAlert);
 
     private void PlaySound(AudioClip audioClip) => audioSource.PlayOneShot(audioClip);
 
@@ -30,8 +29,8 @@ public class EnemySoundManager : MonoBehaviour
     {
         PatrolBot.patrolCharge -= PlayTargetAlert;
         PatrolBot.patrolShoot -= PlaySound;
-        Fishie.fishieTargets -= PlayTargetAlert;
+        MultiTargetEnemy.multiTargetsInit -= PlayTargetAlert;
         Fishie.fishieShoot -= PlaySound;
-        Fishie.fishieTargetTimeoutSound -= PlaySound;
+        MultiTargetEnemy.multiTargetsTimeout -= PlayTargetTimeout;
     }
 }
