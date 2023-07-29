@@ -310,7 +310,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   flashColor: {r: 52, g: 0, b: 0, a: 1}
-  playerDamage: 1
+  playerDamage: 100
   deathSounds: []
 --- !u!114 &-4681713086281087993
 MonoBehaviour:
@@ -334,7 +334,7 @@ MonoBehaviour:
   - {fileID: 8556571753225220303}
   - {fileID: 3537869035169345309}
   deathSounds: []
-  points: 100
+  points: 2500
 --- !u!114 &8379207289193616858
 MonoBehaviour:
   m_ObjectHideFlags: 0

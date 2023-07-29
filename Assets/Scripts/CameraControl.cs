@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.Animations.Rigging;
 
 public class CameraControl : MonoBehaviour
 {
@@ -30,19 +31,21 @@ public class CameraControl : MonoBehaviour
 
     private void DamageShake(int intensity)
     {
+        int damp = intensity / 100;
         DOVirtual.Float(1f, 0f, 1f, e =>
         {
-            m_BasicMultiChannelPerlin.m_AmplitudeGain = Mathf.Lerp(amplitude, 4f * intensity, e);
-            m_BasicMultiChannelPerlin.m_FrequencyGain = Mathf.Lerp(frequency, 20f * intensity, e);
+            m_BasicMultiChannelPerlin.m_AmplitudeGain = Mathf.Lerp(amplitude, 4f * damp, e);
+            m_BasicMultiChannelPerlin.m_FrequencyGain = Mathf.Lerp(frequency, 20f * damp, e);
         });
     }
 
     private void KillShake(int intensity)
     {
+        int damp = 1 + (intensity / 1000);
         DOVirtual.Float(1f, 0f, 0.6f, e =>
         {
-            m_BasicMultiChannelPerlin.m_AmplitudeGain = Mathf.Lerp(amplitude, 3f * intensity, e);
-            m_BasicMultiChannelPerlin.m_FrequencyGain = Mathf.Lerp(frequency, 10f * intensity, e);
+            m_BasicMultiChannelPerlin.m_AmplitudeGain = Mathf.Lerp(amplitude, 3f * damp, e);
+            m_BasicMultiChannelPerlin.m_FrequencyGain = Mathf.Lerp(frequency, 10f * damp, e);
         });
     }
 

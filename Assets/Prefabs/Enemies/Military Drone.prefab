@@ -68,7 +68,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   flashColor: {r: 52, g: 0, b: 0, a: 1}
-  playerDamage: 1
+  playerDamage: 100
   deathSounds:
   - {fileID: 8300000, guid: a70989a456340c24ba4c73d9a3f72df4, type: 3}
 --- !u!114 &-5851472350036284173
@@ -90,7 +90,7 @@ MonoBehaviour:
   spawnYOffset: 0
   hideObjects: []
   deathSounds: []
-  points: 100
+  points: 1000
 --- !u!195 &6258181935273702660
 NavMeshAgent:
   m_ObjectHideFlags: 0

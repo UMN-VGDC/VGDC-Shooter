@@ -66,7 +66,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   flashColor: {r: 52, g: 0, b: 0, a: 1}
-  playerDamage: 1
+  playerDamage: 100
   deathSounds: []
 --- !u!114 &-112801801984101744
 MonoBehaviour:

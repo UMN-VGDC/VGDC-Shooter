@@ -1,11 +1,18 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
+using System;
 public class SoundManager : MonoBehaviour
 {
     [SerializeField] private AudioClip[] playerDamageSounds;
+    [SerializeField] private AudioSource enemyAudioSource;
     [SerializeField] private AudioClip critSound, bulletImpact, enemyHit, shootSound, waterSplashSound;
+    [Header("Streak")]
+    [SerializeField] private AudioSource streakAudioSource;
+    [SerializeField] private AudioClip scoreStreakSound, carRevSound;
+    [SerializeField] private AudioClip[] familyVoice;
 
     private static AudioSource audioSource;
     private QueueSound critQueue, shootQueue, enemyHitQueue, waterSplashQueue;
@@ -21,6 +28,7 @@ public class SoundManager : MonoBehaviour
         EnemyDeath.deathSound += EnemyDeathSound;
         EntityHealth.deathSound += EnemyDeathSound;
         WaterSplash.splashSound += AddWaterSplashQueue;
+        UIManager.scoreStreak += PlayStreakSound;
 
         critQueue = new QueueSound(critSound, 100);
         shootQueue = new QueueSound(shootSound, 100);
@@ -38,7 +46,21 @@ public class SoundManager : MonoBehaviour
 
     private void PlayerDamage()
     {
-        audioSource.PlayOneShot(playerDamageSounds[Random.Range(0, playerDamageSounds.Length)]);
+        audioSource.PlayOneShot(playerDamageSounds[UnityEngine.Random.Range(0, playerDamageSounds.Length)]);
+    }
+    private async void PlayStreakSound()
+    {
+        streakAudioSource.PlayOneShot(scoreStreakSound);
+        DOVirtual.Float(0.5f, 1f, 1.5f, e =>
+        {
+            audioSource.pitch = e;
+            enemyAudioSource.pitch = e;
+        });
+        await Task.Delay(1000);
+        AudioClip randomSound = familyVoice[UnityEngine.Random.Range(0, familyVoice.Length)];
+        streakAudioSource.PlayOneShot(randomSound);
+        await Task.Delay((int)Math.Round(randomSound.length * 1000) - 300);
+        streakAudioSource.PlayOneShot(carRevSound);
     }
     public static void PlaySound(AudioClip clip) => audioSource.PlayOneShot(clip);
     private void AddWaterSplashQueue() => waterSplashQueue.SoundQueue();
@@ -55,6 +77,7 @@ public class SoundManager : MonoBehaviour
         EnemyDeath.deathSound -= EnemyDeathSound;
         EntityHealth.deathSound -= EnemyDeathSound;
         WaterSplash.splashSound -= AddWaterSplashQueue;
+        UIManager.scoreStreak -= PlayStreakSound;
     }
 }
 
