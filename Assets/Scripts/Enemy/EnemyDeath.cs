@@ -94,6 +94,11 @@ public class EnemyDeath : MonoBehaviour
     private void DeathAnimation()
     {
         animator.SetBool("isDeathAnimation", true);
+        Collider[] colliders = gameObject.GetComponentsInChildren<Collider>();
+        foreach (Collider c in colliders )
+        {
+            c.enabled = false;
+        }
         SpawnDeathFX();
         FadeObj();
     }

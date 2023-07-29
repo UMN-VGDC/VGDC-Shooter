@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6251455603566913555}
   - component: {fileID: 738250456528792974}
   - component: {fileID: -8727863664875657988}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Lurker
   m_TagString: Entity
   m_Icon: {fileID: 0}
@@ -64,6 +64,7 @@ MonoBehaviour:
         m_CallState: 2
   flashColor: {r: 52, g: 0, b: 0, a: 1}
   playerDamage: 1
+  deathSounds: []
 --- !u!114 &-8727863664875657988
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -135,9 +136,93 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -8100786049644406744, guid: 971a0cf962851d44abcd2597b832ad29, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: -6313168105025502934, guid: 971a0cf962851d44abcd2597b832ad29, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: -5685634465176129752, guid: 971a0cf962851d44abcd2597b832ad29, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: -5365652735934948850, guid: 971a0cf962851d44abcd2597b832ad29, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: -4525695009421903394, guid: 971a0cf962851d44abcd2597b832ad29, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: -4453245273181660408, guid: 971a0cf962851d44abcd2597b832ad29, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: -4346178310874155374, guid: 971a0cf962851d44abcd2597b832ad29, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: -3789903540846807441, guid: 971a0cf962851d44abcd2597b832ad29, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: -3150915723035004214, guid: 971a0cf962851d44abcd2597b832ad29, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: -1685151746347727531, guid: 971a0cf962851d44abcd2597b832ad29, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: -345621784284802131, guid: 971a0cf962851d44abcd2597b832ad29, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 99518761859353030, guid: 971a0cf962851d44abcd2597b832ad29, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 971a0cf962851d44abcd2597b832ad29, type: 3}
       propertyPath: m_Name
       value: Lurker
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 971a0cf962851d44abcd2597b832ad29, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1963102915785860571, guid: 971a0cf962851d44abcd2597b832ad29, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2020900682613277210, guid: 971a0cf962851d44abcd2597b832ad29, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2191800169713431311, guid: 971a0cf962851d44abcd2597b832ad29, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2484066608422602866, guid: 971a0cf962851d44abcd2597b832ad29, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3534772405080271602, guid: 971a0cf962851d44abcd2597b832ad29, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4508880083778572318, guid: 971a0cf962851d44abcd2597b832ad29, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5788095664600013776, guid: 971a0cf962851d44abcd2597b832ad29, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6755252369142043060, guid: 971a0cf962851d44abcd2597b832ad29, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 971a0cf962851d44abcd2597b832ad29, type: 3}
