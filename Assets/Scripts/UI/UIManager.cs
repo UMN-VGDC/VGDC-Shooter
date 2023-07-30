@@ -19,6 +19,7 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] private Transform scoreAddPosition;
     [SerializeField] private TextMeshProUGUI scoreAdd;
+    [SerializeField] private CanvasRenderer speedLinesRenderer;
 
     private int currentStreak;
 
@@ -30,11 +31,16 @@ public class UIManager : MonoBehaviour
         PlayerHealth.damageTaken += spawnBloodScratch;
         PlayerHealth.damageTakenAmount += AddPoints;
         EnemyDeath.killPoints += AddPoints;
+        SoundManager.flameThrower += SpeedLinesEffect;
+        Bullet.crit += CritPoints;
+        MultiTargetEnemy.multiTargetsPoints += AddPoints;
         currentStreak = streakCount;
         defaultStreakColor = score.color;
         defaultOutlineColor = score.outlineColor;
 
     }
+
+    private void CritPoints() => AddPoints(10);
 
     private int currentScore;
     private bool scoreCanKill = true;
@@ -76,6 +82,20 @@ public class UIManager : MonoBehaviour
         GameObject add = Instantiate(scoreAdd.gameObject, scoreAddPosition.position, Quaternion.identity, scoreAddPosition);
         add.GetComponent<ScoreAddEffect>().SetText(amount);
     }
+
+    private async void SpeedLinesEffect()
+    {
+        DOVirtual.Float(0, 1, 0.5f, e =>
+        {
+            speedLinesRenderer.GetMaterial().SetFloat("_Opacity", e);
+        });
+        await Task.Delay(3000);
+        DOVirtual.Float(1, 0, 0.5f, e =>
+        {
+            speedLinesRenderer.GetMaterial().SetFloat("_Opacity", e);
+        });
+    }
+
     private void spawnBloodScratch()
     {
         Vector2 ramdomPos = new Vector2(UnityEngine.Random.Range(-200f, 200f), UnityEngine.Random.Range(-150f, 50f));
@@ -101,5 +121,8 @@ public class UIManager : MonoBehaviour
         PlayerHealth.damageTaken -= spawnBloodScratch;
         PlayerHealth.damageTakenAmount -= AddPoints;
         EnemyDeath.killPoints -= AddPoints;
+        SoundManager.flameThrower -= SpeedLinesEffect;
+        Bullet.crit -= CritPoints;
+        MultiTargetEnemy.multiTargetsPoints -= AddPoints;
     }
 }

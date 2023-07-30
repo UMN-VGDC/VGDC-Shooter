@@ -21,6 +21,7 @@ public abstract class MultiTargetEnemy : MonoBehaviour
 
     public static Action multiTargetsInit;
     public static Action multiTargetsTimeout;
+    public static Action<int> multiTargetsPoints;
 
     protected GameObject player;
 
@@ -48,9 +49,11 @@ public abstract class MultiTargetEnemy : MonoBehaviour
     }
 
     private float timerHurryLength = 2.65f;
+    private int points;
     protected async void AttackLoop()
     {
         int targetCount = UnityEngine.Random.Range(minTargets, maxTargets);
+        points = targetCount * 100;
         currentTargetCount = targetCount;
         int randomIndex = UnityEngine.Random.Range(0, aimTargets.Length - 1);
         for (int i = randomIndex; i < randomIndex + targetCount; i++)
@@ -100,6 +103,7 @@ public abstract class MultiTargetEnemy : MonoBehaviour
         DecrementTargetReaction();
         entityHealth.MultiHitFlash(6);
         targetCount--;
+        multiTargetsPoints?.Invoke(points);
         foreach (AimTarget target in aimTargets)
         {
             target.SetText($"{targetCount}");

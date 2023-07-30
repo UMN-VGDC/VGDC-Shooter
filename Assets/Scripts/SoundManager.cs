@@ -17,6 +17,8 @@ public class SoundManager : MonoBehaviour
     private static AudioSource audioSource;
     private QueueSound critQueue, shootQueue, enemyHitQueue, waterSplashQueue;
 
+    public static Action flameThrower;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -61,6 +63,7 @@ public class SoundManager : MonoBehaviour
         streakAudioSource.PlayOneShot(randomSound);
         await Task.Delay((int)Math.Round(randomSound.length * 1000) - 300);
         streakAudioSource.PlayOneShot(carRevSound);
+        flameThrower?.Invoke();
     }
     public static void PlaySound(AudioClip clip) => audioSource.PlayOneShot(clip);
     private void AddWaterSplashQueue() => waterSplashQueue.SoundQueue();
