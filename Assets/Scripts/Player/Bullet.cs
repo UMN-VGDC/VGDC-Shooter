@@ -14,6 +14,7 @@ public class Bullet : MonoBehaviour
     [SerializeField] private GameObject bulletImpactEffect;
 
     public static Action crit;
+    public static Action<int> killPoints;
 
     Rigidbody m_Rigidbody;
     private bool isDestroyed;
@@ -37,6 +38,7 @@ public class Bullet : MonoBehaviour
         Vector3 pos = transform.position;
         m_Rigidbody.MovePosition(pos + (transform.forward * 0.1f * speed));
         StartCoroutine(Predict());
+        transform.localScale = Vector3.MoveTowards(transform.localScale, new Vector3(20, 20, 20), Time.deltaTime * 8);
     }
 
     IEnumerator Predict()
@@ -71,20 +73,20 @@ public class Bullet : MonoBehaviour
         var root = entity.transform.root;
         if (entity.tag == "Head" && root.tag == "Entity")
         {
-            root.GetComponent<EntityHealth>().DecreaseHealth(2);
+            killPoints?.Invoke(root.GetComponent<EntityHealth>().DecreaseHealth(2));
             crit?.Invoke();
             return;
         }
 
         if (root.tag == "Entity")
         {
-            root.GetComponent<EntityHealth>().DecreaseHealth(1);
+            killPoints?.Invoke(root.GetComponent<EntityHealth>().DecreaseHealth(1));
             return;
         }
 
         if (entity.tag == "Entity")
         {
-            entity.GetComponent<EntityHealth>().DecreaseHealth(1);
+            killPoints?.Invoke(entity.GetComponent<EntityHealth>().DecreaseHealth(1));
         }
 
     }

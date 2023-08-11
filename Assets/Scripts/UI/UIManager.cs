@@ -6,6 +6,7 @@ using UnityEngine.UI;
 using DG.Tweening;
 using System;
 using System.Threading.Tasks;
+using UnityEditor;
 
 public class UIManager : MonoBehaviour
 {
@@ -21,16 +22,17 @@ public class UIManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI scoreAdd;
     [SerializeField] private CanvasRenderer speedLinesRenderer;
 
-    private int currentStreak;
+    private int currentStreak, comboCount;
 
     public static Action scoreStreak;
+    public static UIManager Instance { get; private set; }
 
     // Start is called before the first frame update
     void Start()
     {
         PlayerHealth.damageTaken += spawnBloodScratch;
         PlayerHealth.damageTakenAmount += AddPoints;
-        EnemyDeath.killPoints += AddPoints;
+        Bullet.killPoints += AddPoints;
         SoundManager.flameThrower += SpeedLinesEffect;
         Bullet.crit += CritPoints;
         MultiTargetEnemy.multiTargetsPoints += AddPoints;
@@ -38,14 +40,27 @@ public class UIManager : MonoBehaviour
         defaultStreakColor = score.color;
         defaultOutlineColor = score.outlineColor;
 
+        Instance = this;
+
     }
 
-    private void CritPoints() => AddPoints(10);
+    private async void CritPoints()
+    {
+        AddPoints(comboCount);
+        comboCount++;
+        int currentCombo = comboCount;
+        await Task.Delay (500);
+        if (currentCombo == comboCount)
+        {
+            comboCount = 0;
+        }
+    }
 
     private int currentScore;
     private bool scoreCanKill = true;
     private async void AddPoints(int amount)
     {
+        if (amount == 0) return;
         currentScore += amount;
         float scaleAmount = 1.5f;
         if (currentScore >= currentStreak)
@@ -96,6 +111,11 @@ public class UIManager : MonoBehaviour
         });
     }
 
+    public void ResetEffects()
+    {
+        speedLinesRenderer.GetMaterial().SetFloat("_Opacity", 0);
+    }
+
     private void spawnBloodScratch()
     {
         Vector2 ramdomPos = new Vector2(UnityEngine.Random.Range(-200f, 200f), UnityEngine.Random.Range(-150f, 50f));
@@ -120,7 +140,7 @@ public class UIManager : MonoBehaviour
     {
         PlayerHealth.damageTaken -= spawnBloodScratch;
         PlayerHealth.damageTakenAmount -= AddPoints;
-        EnemyDeath.killPoints -= AddPoints;
+        Bullet.killPoints -= AddPoints;
         SoundManager.flameThrower -= SpeedLinesEffect;
         Bullet.crit -= CritPoints;
         MultiTargetEnemy.multiTargetsPoints -= AddPoints;

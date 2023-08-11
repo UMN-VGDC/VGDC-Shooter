@@ -15,7 +15,7 @@ public abstract class MultiTargetEnemy : MonoBehaviour
     protected AimTarget[] aimTargets;
     protected int currentTargetCount;
     protected bool isAttacking = true;
-    private bool startAttacking;
+    protected bool startAttacking;
     private EntityHealth entityHealth;
     protected AudioSource audioSource;
 
@@ -25,12 +25,14 @@ public abstract class MultiTargetEnemy : MonoBehaviour
 
     protected GameObject player;
 
+    private bool isDestroyed;
     protected virtual void Start()
     {
         audioSource = GetComponent<AudioSource>();
         player = GameObject.FindGameObjectWithTag("Player");
         aimTargets = GetComponentsInChildren<AimTarget>();
         entityHealth = GetComponent<EntityHealth>();
+        
         foreach (AimTarget target in aimTargets)
         {
             target.DisableTarget();
@@ -50,8 +52,11 @@ public abstract class MultiTargetEnemy : MonoBehaviour
 
     private float timerHurryLength = 2.65f;
     private int points;
+    private bool enablePrimaryAttack;
     protected async void AttackLoop()
     {
+        if (enablePrimaryAttack) PrimaryAttack();
+        enablePrimaryAttack = true;
         int targetCount = UnityEngine.Random.Range(minTargets, maxTargets);
         points = targetCount * 100;
         currentTargetCount = targetCount;
@@ -68,10 +73,12 @@ public abstract class MultiTargetEnemy : MonoBehaviour
         float timerHurry = aimTargets[0].GetParticleLifetime() - timerHurryLength;
         await Task.Delay((int)Math.Round(timerHurry * 1000));
         if (!isAttacking || targetCountID != this.targetCount) return;
+        if (isDestroyed) return;
         audioSource.Play();
 
         await Task.Delay((int)Math.Round(timerHurryLength * 1000));
         if (!isAttacking || targetCountID != this.targetCount) return;
+        if (isDestroyed) return;
         multiTargetsTimeout?.Invoke();
     }
 
@@ -83,6 +90,7 @@ public abstract class MultiTargetEnemy : MonoBehaviour
         }
     }
 
+    protected abstract void PrimaryAttack();
     protected abstract void TargetDestroyReaction();
     protected abstract void DecrementTargetReaction();
 
@@ -139,6 +147,9 @@ public abstract class MultiTargetEnemy : MonoBehaviour
         AttackLoop();
     }
 
-
+    private void OnDestroy()
+    {
+        isDestroyed = true;
+    }
 
 }

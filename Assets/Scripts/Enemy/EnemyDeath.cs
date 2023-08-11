@@ -4,6 +4,7 @@ using UnityEngine;
 using Cysharp.Threading.Tasks;
 using System;
 
+[RequireComponent(typeof(EntityHealth))]
 public class EnemyDeath : MonoBehaviour
 {
     public enum DeathType
@@ -19,10 +20,8 @@ public class EnemyDeath : MonoBehaviour
     [SerializeField] private float spawnYOffset;
     [SerializeField] private GameObject[] hideObjects;
     [SerializeField] private AudioClip[] deathSounds;
-    [SerializeField] private int points = 100;
 
     public static Action<AudioClip[]> deathSound;
-    public static Action<int> killPoints;
 
     private Animator animator;
     private Rigidbody[] deathRB;
@@ -47,7 +46,6 @@ public class EnemyDeath : MonoBehaviour
     {
         gameObject.tag = "Untagged";
         deathSound?.Invoke(deathSounds);
-        killPoints?.Invoke(points);
         if (TryGetComponent<Chase>(out Chase chase))
         {
             chase.SetSpeed(0);

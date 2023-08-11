@@ -18,6 +18,7 @@ public class EnemySoundManager : MonoBehaviour
         MultiTargetEnemy.multiTargetsInit += PlayTargetAlert;
         Fishie.fishieShoot += PlaySound;
         MultiTargetEnemy.multiTargetsTimeout += PlayTargetTimeout;
+        MilitaryDrone.militaryDroneShootSound += PlaySound;
     }
 
     private void PlayTargetTimeout() => audioSource.PlayOneShot(timerTimeout);
@@ -32,5 +33,6 @@ public class EnemySoundManager : MonoBehaviour
         MultiTargetEnemy.multiTargetsInit -= PlayTargetAlert;
         Fishie.fishieShoot -= PlaySound;
         MultiTargetEnemy.multiTargetsTimeout -= PlayTargetTimeout;
+        MilitaryDrone.militaryDroneShootSound -= PlaySound;
     }
 }

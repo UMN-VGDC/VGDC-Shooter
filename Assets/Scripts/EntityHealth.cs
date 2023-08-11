@@ -14,9 +14,11 @@ public class EntityHealth : MonoBehaviour
     [SerializeField] private Color flashColor = new Color(51, 0, 0, 1);
     [SerializeField] private int playerDamage = 1;
     [SerializeField] private AudioClip[] deathSounds;
+    [SerializeField] private int points = 100;
 
     public static Action enemyHit;
     public static Action<AudioClip[]> deathSound;
+    public static Action<int> enemyDeath;
 
     private Renderer[] renderers;
     private bool isDead;
@@ -29,17 +31,19 @@ public class EntityHealth : MonoBehaviour
         healthDecrement = health;
     }
 
-    public void DecreaseHealth(int amount)
+    public int DecreaseHealth(int amount)
     {
         healthDecrement -= amount;
         if (healthDecrement <= 0) {
             isDead = true;
             deathCallback?.Invoke();
             deathSound?.Invoke(deathSounds);
-            return;
+            enemyDeath?.Invoke(points);
+            return points;
         }
         enemyHit?.Invoke();
         HitFlash();
+        return 0;
     }
 
     private async void HitFlash()

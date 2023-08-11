@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1185612348844716172
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8710547558025840230}
+  m_Layer: 8
+  m_Name: Grenade Spawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8710547558025840230
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1185612348844716172}
+  m_LocalRotation: {x: -0.81703603, y: 0.15016146, z: 0.029587824, w: 0.55590314}
+  m_LocalPosition: {x: 0.00146, y: 0.00412, z: -0.00022}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7143205795953233336}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: -66.53, y: 162.675, z: -147.757}
 --- !u!1 &2345966624611505396
 GameObject:
   m_ObjectHideFlags: 0
@@ -312,6 +343,7 @@ MonoBehaviour:
   flashColor: {r: 52, g: 0, b: 0, a: 1}
   playerDamage: 100
   deathSounds: []
+  points: 4000
 --- !u!114 &-4681713086281087993
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -334,7 +366,6 @@ MonoBehaviour:
   - {fileID: 8556571753225220303}
   - {fileID: 3537869035169345309}
   deathSounds: []
-  points: 2500
 --- !u!114 &8379207289193616858
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -362,7 +393,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 1.53
-  m_Speed: 20
+  m_Speed: 22
   m_Acceleration: 25
   avoidancePriority: 50
   m_AngularSpeed: 600
@@ -451,7 +482,7 @@ AudioSource:
   m_GameObject: {fileID: 3537869035644836155}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 853583408343144285, guid: 81f4030a24d3fe949b837f1135d07323, type: 2}
   m_audioClip: {fileID: 8300000, guid: 4803364a6f026d440aee3a6a4538e37d, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -550,13 +581,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f86fd4d2a877e7c4d97264f82d3e3255, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetCount: 7
+  targetCount: 6
   minTargets: 2
   maxTargets: 4
   rigBuilder: {fileID: 1155660812289995321}
   bullet: {fileID: 6197493068783927235, guid: b81489beedde30544b67686abf201d09, type: 3}
   bulletSpawner: {fileID: 7890167610494177436}
   shootSound: {fileID: 8300000, guid: be3a85cdc3d274f45a9cf1324013ce17, type: 3}
+  grenadeSpawner: {fileID: 8710547558025840230}
+  flashbang: {fileID: 8773678430899752230, guid: 4225250be6c7d504dadbf3f2d486538d, type: 3}
 --- !u!1 &7369285913859118750
 GameObject:
   m_ObjectHideFlags: 0

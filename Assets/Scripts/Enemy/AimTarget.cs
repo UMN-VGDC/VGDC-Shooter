@@ -13,7 +13,7 @@ public class AimTarget : MonoBehaviour
     [SerializeField] private EntityHealth entityHealth;
     [SerializeField] private TextMeshPro textMeshPro;
     [SerializeField] private ParticleSystem timeoutVFX;
-    [SerializeField] private ParticleSystem timerVFX;
+    [SerializeField] private ParticleSystem timerVFX, timerBreakVFX;
 
     private Color textCol, transparentCol;
     private float textFontSize;
@@ -29,6 +29,7 @@ public class AimTarget : MonoBehaviour
         triggerTargetBreak?.Invoke();
         target.SetActive(false);
         textMeshPro.color = transparentCol;
+        timerBreakVFX.Play();
     }
 
     public void TriggerTargetTimeout()
@@ -41,6 +42,7 @@ public class AimTarget : MonoBehaviour
 
     public void EnableTarget()
     {
+        if (gameObject == null) return;
         target.SetActive(true);
         entityHealth.ResetHealth();
         textMeshPro.DOColor(textCol, 1f);

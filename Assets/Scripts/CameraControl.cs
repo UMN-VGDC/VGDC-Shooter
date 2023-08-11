@@ -26,26 +26,36 @@ public class CameraControl : MonoBehaviour
         frequency = m_BasicMultiChannelPerlin.m_FrequencyGain;
 
         PlayerHealth.damageTakenAmount += DamageShake;
-        EnemyDeath.killPoints += KillShake;
+        EntityHealth.enemyDeath += KillShake;
+        Flashbang.flashbangExplode += FlashbangShake;
     }
 
     private void DamageShake(int intensity)
     {
         int damp = intensity / 100;
-        DOVirtual.Float(1f, 0f, 1f, e =>
-        {
-            m_BasicMultiChannelPerlin.m_AmplitudeGain = Mathf.Lerp(amplitude, 4f * damp, e);
-            m_BasicMultiChannelPerlin.m_FrequencyGain = Mathf.Lerp(frequency, 20f * damp, e);
-        });
+
+        Shake(damp * 4f, damp * 20f, 1f);
     }
 
     private void KillShake(int intensity)
     {
-        int damp = 1 + (intensity / 1000);
-        DOVirtual.Float(1f, 0f, 0.6f, e =>
+        if (intensity == 0) return;
+        float damp = 1 + (intensity / 1000);
+        if (intensity >= 2500) damp = 3.5f;
+        Shake(damp * 3f, damp * 10f, 0.6f);
+    }
+
+    private void FlashbangShake()
+    {
+        Shake(6.5f, 10f, 5f);
+    }
+
+    private void Shake(float amp, float freq, float duration)
+    {
+        DOVirtual.Float(1f, 0f, duration, e =>
         {
-            m_BasicMultiChannelPerlin.m_AmplitudeGain = Mathf.Lerp(amplitude, 3f * damp, e);
-            m_BasicMultiChannelPerlin.m_FrequencyGain = Mathf.Lerp(frequency, 10f * damp, e);
+            m_BasicMultiChannelPerlin.m_AmplitudeGain = Mathf.Lerp(amplitude, amp, e);
+            m_BasicMultiChannelPerlin.m_FrequencyGain = Mathf.Lerp(frequency, freq, e);
         });
     }
 
@@ -62,6 +72,7 @@ public class CameraControl : MonoBehaviour
     private void OnDestroy()
     {
         PlayerHealth.damageTakenAmount -= DamageShake;
-        EnemyDeath.killPoints -= KillShake;
+        EntityHealth.enemyDeath -= KillShake;
+        Flashbang.flashbangExplode -= FlashbangShake;
     }
 }

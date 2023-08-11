@@ -14,6 +14,8 @@ public class Fishie : MultiTargetEnemy
     [SerializeField] private GameObject bullet;
     [SerializeField] private GameObject bulletSpawner;
     [SerializeField] private AudioClip shootSound;
+    [SerializeField] private Transform grenadeSpawner;
+    [SerializeField] private GameObject flashbang;
 
     private Animator animator;
     public static Action<AudioClip> fishieShoot;
@@ -39,7 +41,7 @@ public class Fishie : MultiTargetEnemy
         animator.SetTrigger("Stun");
         DOVirtual.Float(0.3f, 0f, 1f, e =>
         {
-            animator.SetLayerWeight(2, e);
+            animator.SetLayerWeight(3, e);
         });
     }
 
@@ -48,7 +50,7 @@ public class Fishie : MultiTargetEnemy
         animator.SetTrigger("Stun");
         DOVirtual.Float(1f, 0f, 1f, e =>
         {
-            animator.SetLayerWeight(2, e);
+            animator.SetLayerWeight(3, e);
         });
     }
 
@@ -60,5 +62,13 @@ public class Fishie : MultiTargetEnemy
         if (!isAttacking) return;
         Instantiate(bullet, bulletSpawner.transform.position, Quaternion.identity);
         bulletSpawner.GetComponent<ParticleSystem>().Play();
+    }
+
+    protected override async void PrimaryAttack()
+    {
+        if (Flashbang.count >= 1) return;
+        animator.SetTrigger("Throw");
+        await Task.Delay(370);
+        Instantiate(flashbang, grenadeSpawner.position, grenadeSpawner.rotation);
     }
 }

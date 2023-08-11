@@ -11,12 +11,16 @@ public class EnemyBullet : MonoBehaviour
     [SerializeField] private int playerDamage = 1;
     private Rigidbody m_Rigidbody;
     private bool isDestroyed;
+    private Transform randomTarget;
 
     void Start()
     {
         m_Rigidbody = GetComponent<Rigidbody>();
-        Vector3 pos = GameObject.FindGameObjectWithTag("Player").transform.position;
-        transform.LookAt(new Vector3(pos.x, pos.y + 2.4f, pos.z));
+        //Vector3 pos = GameObject.FindGameObjectWithTag("Player").transform.position;
+        GameObject[] getTargets = GameObject.FindGameObjectsWithTag("Player Target");
+        randomTarget = getTargets[Random.Range(0, getTargets.Length)].transform;
+        transform.LookAt(randomTarget);
+        //transform.LookAt(new Vector3(pos.x, pos.y + 2.4f, pos.z));
         DestroyTimer();
     }
 

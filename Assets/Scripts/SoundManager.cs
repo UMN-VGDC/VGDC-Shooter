@@ -4,8 +4,11 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
 using System;
+using UnityEngine.Audio;
+
 public class SoundManager : MonoBehaviour
 {
+    [SerializeField] private AudioMixer audioMixer;
     [SerializeField] private AudioClip[] playerDamageSounds;
     [SerializeField] private AudioSource enemyAudioSource;
     [SerializeField] private AudioClip critSound, bulletImpact, enemyHit, shootSound, waterSplashSound;
@@ -24,15 +27,15 @@ public class SoundManager : MonoBehaviour
     {
         audioSource = GetComponent<AudioSource>();
         PlayerHealth.damageTaken += PlayerDamage;
-        Bullet.crit += AddCritQueue;
         EntityHealth.enemyHit += AddEnemyHitQueue;
         Shoot.shootBullet += AddShootQueue;
         EnemyDeath.deathSound += EnemyDeathSound;
         EntityHealth.deathSound += EnemyDeathSound;
         WaterSplash.splashSound += AddWaterSplashQueue;
         UIManager.scoreStreak += PlayStreakSound;
+        Missile.missileLaunchSound += PlaySound;
+        Flashbang.flashbangExplode += FlashbangMuffle;
 
-        critQueue = new QueueSound(critSound, 100);
         shootQueue = new QueueSound(shootSound, 100);
         enemyHitQueue = new QueueSound(enemyHit, 100);
         waterSplashQueue = new QueueSound(waterSplashSound, 70);
@@ -53,10 +56,9 @@ public class SoundManager : MonoBehaviour
     private async void PlayStreakSound()
     {
         streakAudioSource.PlayOneShot(scoreStreakSound);
-        DOVirtual.Float(0.5f, 1f, 1.5f, e =>
+        DOVirtual.Float(.4f, 1f, 4f, e =>
         {
-            audioSource.pitch = e;
-            enemyAudioSource.pitch = e;
+            audioMixer.SetFloat("PlayerEnemyPitch", e);
         });
         await Task.Delay(1000);
         AudioClip randomSound = familyVoice[UnityEngine.Random.Range(0, familyVoice.Length)];
@@ -65,22 +67,31 @@ public class SoundManager : MonoBehaviour
         streakAudioSource.PlayOneShot(carRevSound);
         flameThrower?.Invoke();
     }
+
+    private void FlashbangMuffle()
+    {
+        DOVirtual.Float(2400f, 22000f, 7f, e =>
+        {
+            audioMixer.SetFloat("PlayerEnemyLowpass", e);
+        });
+    }
+
     public static void PlaySound(AudioClip clip) => audioSource.PlayOneShot(clip);
     private void AddWaterSplashQueue() => waterSplashQueue.SoundQueue();
-    private void AddCritQueue() => critQueue.SoundQueue();
     private void AddShootQueue() => shootQueue.SoundQueue();
     private void AddEnemyHitQueue() => enemyHitQueue.SoundQueue();
 
     private void OnDestroy()
     {
         PlayerHealth.damageTaken -= PlayerDamage;
-        Bullet.crit -= AddCritQueue;
         EntityHealth.enemyHit -= AddEnemyHitQueue;
         Shoot.shootBullet -= AddShootQueue;
         EnemyDeath.deathSound -= EnemyDeathSound;
         EntityHealth.deathSound -= EnemyDeathSound;
         WaterSplash.splashSound -= AddWaterSplashQueue;
         UIManager.scoreStreak -= PlayStreakSound;
+        Missile.missileLaunchSound -= PlaySound;
+        Flashbang.flashbangExplode -= FlashbangMuffle;
     }
 }
 

@@ -19570,6 +19570,7 @@ MonoBehaviour:
   flashColor: {r: 52, g: 0, b: 0, a: 1}
   playerDamage: 100
   deathSounds: []
+  points: 100
 --- !u!114 &2407078384795212354
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19591,7 +19592,6 @@ MonoBehaviour:
   deathSounds:
   - {fileID: 8300000, guid: a70989a456340c24ba4c73d9a3f72df4, type: 3}
   - {fileID: 8300000, guid: fa939f2ca1770d84ba85ee7a60758e8d, type: 3}
-  points: 100
 --- !u!195 &3343879862711733367
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -19759,7 +19759,7 @@ AudioSource:
   m_GameObject: {fileID: 4381634384385559601}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 853583408343144285, guid: 81f4030a24d3fe949b837f1135d07323, type: 2}
   m_audioClip: {fileID: 8300000, guid: e72435ad0941ae44ab1764c4079fadde, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
