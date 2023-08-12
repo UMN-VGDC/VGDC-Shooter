@@ -24,6 +24,16 @@ public class EntityHealth : MonoBehaviour
     private bool isDead;
     private int healthDecrement;
 
+    public enum EnemyLoadType
+    {
+        Small,
+        Medium,
+        Boss,
+        Flying
+    }
+    public EnemyLoadType enemyLoadType;
+    public int enemyLoad;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -39,11 +49,17 @@ public class EntityHealth : MonoBehaviour
             deathCallback?.Invoke();
             deathSound?.Invoke(deathSounds);
             enemyDeath?.Invoke(points);
+            AddLoad();
             return points;
         }
         enemyHit?.Invoke();
         HitFlash();
         return 0;
+    }
+
+    public void AddLoad()
+    {
+        EnemyLoadCount.Instance.ModifyLoad(enemyLoad, enemyLoadType.ToString());
     }
 
     private async void HitFlash()

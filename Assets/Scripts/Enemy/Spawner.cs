@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Threading.Tasks;
+using System;
 
 public class Spawner : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class Spawner : MonoBehaviour
     [SerializeField] private bool continuousSpawn;
     [SerializeField] private int amount = 3;
     private int defaultAmount;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -29,7 +31,14 @@ public class Spawner : MonoBehaviour
             amount = defaultAmount;
             return;
         }
-        int random = Random.Range(0, enemy.Length);
+        int random = UnityEngine.Random.Range(0, enemy.Length);
+
+        //Do not instantiate if max load is exceeded
+        EntityHealth getEnemyData = enemy[random].GetComponent<EntityHealth>();
+        int getLoad = getEnemyData.enemyLoad;
+        string getType = getEnemyData.enemyLoadType.ToString();
+        if (!EnemyLoadCount.Instance.ModifyLoad(-getLoad, getType)) return;
+
         Instantiate(enemy[random], transform.position, Quaternion.identity);
         await Task.Delay(spawnRate);
         amount--;
@@ -38,7 +47,7 @@ public class Spawner : MonoBehaviour
     private async void BeginSpawn()
     {
         await Task.Delay(spawnRate);
-        int random = Random.Range(0, enemy.Length);
+        int random = UnityEngine.Random.Range(0, enemy.Length);
         Instantiate(enemy[random], transform.position, Quaternion.identity);
         BeginSpawn();
     }

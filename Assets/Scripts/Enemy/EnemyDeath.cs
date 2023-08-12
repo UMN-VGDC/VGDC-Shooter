@@ -27,6 +27,8 @@ public class EnemyDeath : MonoBehaviour
     private Rigidbody[] deathRB;
     private FlickerDisappear flickerDisappear;
 
+    private Transform playerPos;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -40,6 +42,17 @@ public class EnemyDeath : MonoBehaviour
         }
         animator = GetComponentInChildren<Animator>();
         flickerDisappear = GetComponent<FlickerDisappear>();
+        playerPos = GameObject.FindGameObjectWithTag("Player").transform;
+    }
+
+    private void Update()
+    {
+        float distance = Vector3.Distance(transform.position, playerPos.position);
+        if (distance > 90f)
+        {
+            GetComponent<EntityHealth>().AddLoad();
+            Destroy(gameObject);
+        }
     }
 
     public void KillEnemy()

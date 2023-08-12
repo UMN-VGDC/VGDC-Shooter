@@ -70,6 +70,8 @@ MonoBehaviour:
   playerDamage: 100
   deathSounds: []
   points: 250
+  enemyLoadType: 1
+  enemyLoad: 2
 --- !u!114 &7781121442774139256
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -91,7 +93,6 @@ MonoBehaviour:
   deathSounds:
   - {fileID: 8300000, guid: a20217188dc6e8a4e9945ec832849b50, type: 3}
   - {fileID: 8300000, guid: e9a6dd2965e42044f9732c5427b51b25, type: 3}
-  points: 250
 --- !u!114 &7635573569540670498
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -19415,6 +19415,9 @@ MonoBehaviour:
   flashColor: {r: 51, g: 0, b: 0, a: 1}
   playerDamage: 150
   deathSounds: []
+  points: 100
+  enemyLoadType: 3
+  enemyLoad: 0
 --- !u!114 &7333935884890075113
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19435,7 +19438,6 @@ MonoBehaviour:
   hideObjects: []
   deathSounds:
   - {fileID: 8300000, guid: 3dfef76ffdb6c3b42b0a2bb8d6060278, type: 3}
-  points: 10
 --- !u!114 &7044022167316860114
 MonoBehaviour:
   m_ObjectHideFlags: 0

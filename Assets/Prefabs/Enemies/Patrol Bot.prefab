@@ -19571,6 +19571,8 @@ MonoBehaviour:
   playerDamage: 100
   deathSounds: []
   points: 100
+  enemyLoadType: 3
+  enemyLoad: 1
 --- !u!114 &2407078384795212354
 MonoBehaviour:
   m_ObjectHideFlags: 0

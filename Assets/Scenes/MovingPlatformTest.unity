@@ -134,7 +134,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh55354
+  m_Name: pb_Mesh29912
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -1775,7 +1775,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &63155997
 Transform:
   m_ObjectHideFlags: 0
@@ -1868,6 +1868,7 @@ MonoBehaviour:
   spawnRate: 20
   continuousSpawn: 0
   amount: 6
+  load: 0
 --- !u!4 &74245632 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8880467500185171938, guid: 0e1ff74798a42e242b7196a0a23d78bd, type: 3}
@@ -1927,6 +1928,7 @@ MonoBehaviour:
   spawnRate: 100
   continuousSpawn: 0
   amount: 6
+  load: 0
 --- !u!1001 &84241350
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2711,10 +2713,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy:
-  - {fileID: 3537869035644836155, guid: f9d61d7bec35f634fa8c462a0773efa3, type: 3}
+  - {fileID: 9022708805694699976, guid: d051e55d345732d43a4ea69c572cadde, type: 3}
   spawnRate: 100
   continuousSpawn: 0
-  amount: 1
+  amount: 2
+  load: 2
 --- !u!4 &122843186 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -1044858959946902986, guid: 0e1ff74798a42e242b7196a0a23d78bd, type: 3}
@@ -3649,6 +3652,7 @@ MonoBehaviour:
   spawnRate: 100
   continuousSpawn: 0
   amount: 5
+  load: 0
 --- !u!4 &171881189 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8760512235419483595, guid: 0e1ff74798a42e242b7196a0a23d78bd, type: 3}
@@ -9506,7 +9510,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &222499229
 Transform:
   m_ObjectHideFlags: 0
@@ -11394,6 +11398,7 @@ MonoBehaviour:
   spawnRate: 200
   continuousSpawn: 0
   amount: 9
+  load: 0
 --- !u!1 &283452565
 GameObject:
   m_ObjectHideFlags: 0
@@ -11576,6 +11581,7 @@ MonoBehaviour:
   spawnRate: 100
   continuousSpawn: 0
   amount: 6
+  load: 0
 --- !u!1001 &285068670
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12592,7 +12598,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &328042482
 Transform:
   m_ObjectHideFlags: 0
@@ -12786,7 +12792,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1431153991}
   m_Father: {fileID: 8137978401610362502}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -12898,9 +12905,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b17502fc38fe8eb4fbb41d9fac5d37af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  flashBangAudioSource: {fileID: 1431153992}
   timerAlert: {fileID: 8300000, guid: c5f629881354d3b4291937038c2ca756, type: 3}
   timerHurrySound: {fileID: 8300000, guid: 4803364a6f026d440aee3a6a4538e37d, type: 3}
   timerTimeout: {fileID: 8300000, guid: c3bad27bb0919a6489656d56d96c0b61, type: 3}
+  flashbangExplode: {fileID: 8300000, guid: c189db610a9b74246907956b7308949d, type: 3}
+  flashbangRing: {fileID: 8300000, guid: 5d04bfffa1170364d9e07216424103d2, type: 3}
 --- !u!1001 &359610119
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -23335,6 +23345,7 @@ MonoBehaviour:
   spawnRate: 100
   continuousSpawn: 0
   amount: 5
+  load: 0
 --- !u!1001 &394167425
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -26564,6 +26575,7 @@ MonoBehaviour:
   spawnRate: 20
   continuousSpawn: 0
   amount: 6
+  load: 0
 --- !u!4 &536941854 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6079371972763115236, guid: fa15127b6c3ad3a44a4fffe504336315, type: 3}
@@ -27220,6 +27232,7 @@ MonoBehaviour:
   spawnRate: 100
   continuousSpawn: 0
   amount: 2
+  load: 0
 --- !u!4 &582182317 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2356612994908391538, guid: 0e1ff74798a42e242b7196a0a23d78bd, type: 3}
@@ -27275,6 +27288,7 @@ MonoBehaviour:
   spawnRate: 500
   continuousSpawn: 0
   amount: 5
+  load: 0
 --- !u!4 &587134546 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4852481105439378680, guid: d89c05ba338c16a4fb6696463bb94ae2, type: 3}
@@ -29035,7 +29049,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh56766
+  m_Name: pb_Mesh31322
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -29590,7 +29604,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh56796
+  m_Name: pb_Mesh31352
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -35375,6 +35389,7 @@ MonoBehaviour:
   spawnRate: 100
   continuousSpawn: 0
   amount: 10
+  load: 0
 --- !u!4 &724872469 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5487919339453119596, guid: d9b81fa2218cb1245ba57f9451e79f9c, type: 3}
@@ -35871,7 +35886,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh55692
+  m_Name: pb_Mesh30250
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -36044,7 +36059,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &762813951
 Transform:
   m_ObjectHideFlags: 0
@@ -36427,7 +36442,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh55816
+  m_Name: pb_Mesh30374
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -37350,7 +37365,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh56906
+  m_Name: pb_Mesh31462
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -37514,7 +37529,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh55794
+  m_Name: pb_Mesh30352
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -43059,6 +43074,7 @@ MonoBehaviour:
   spawnRate: 100
   continuousSpawn: 0
   amount: 5
+  load: 0
 --- !u!4 &1022125170 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8491851076732808080, guid: 8084b580a3a521942904150e3f82487b, type: 3}
@@ -48253,6 +48269,7 @@ MonoBehaviour:
   spawnRate: 100
   continuousSpawn: 0
   amount: 5
+  load: 0
 --- !u!1001 &1038255202
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -54463,6 +54480,7 @@ MonoBehaviour:
   spawnRate: 100
   continuousSpawn: 0
   amount: 5
+  load: 0
 --- !u!1001 &1118763566
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -56769,7 +56787,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh55014
+  m_Name: pb_Mesh29570
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -57438,6 +57456,7 @@ MonoBehaviour:
   spawnRate: 20
   continuousSpawn: 0
   amount: 5
+  load: 0
 --- !u!4 &1222540701 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4910140489087544964, guid: 1c1cfe12eb550dc4692195a0dc7d166f, type: 3}
@@ -59573,7 +59592,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1332139291
 Transform:
   m_ObjectHideFlags: 0
@@ -59608,6 +59627,7 @@ MonoBehaviour:
   spawnRate: 500
   continuousSpawn: 0
   amount: 5
+  load: 0
 --- !u!4 &1337766886 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4852481105439378680, guid: d89c05ba338c16a4fb6696463bb94ae2, type: 3}
@@ -59790,7 +59810,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh54862
+  m_Name: pb_Mesh29418
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -60971,6 +60991,7 @@ MonoBehaviour:
   spawnRate: 100
   continuousSpawn: 0
   amount: 5
+  load: 0
 --- !u!1001 &1395335783
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -61617,6 +61638,134 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -3009129177085029640, guid: 0e1ff74798a42e242b7196a0a23d78bd, type: 3}
   m_PrefabInstance: {fileID: 3990849193183489257}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1431153990
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1431153991}
+  - component: {fileID: 1431153992}
+  m_Layer: 0
+  m_Name: Flashbang Source
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1431153991
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1431153990}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 358438731}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &1431153992
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1431153990}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 7791184762426149160, guid: 81f4030a24d3fe949b837f1135d07323, type: 2}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1001 &1433607494
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -61737,6 +61886,7 @@ MonoBehaviour:
   spawnRate: 20
   continuousSpawn: 0
   amount: 10
+  load: 0
 --- !u!1001 &1441591029
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -63270,6 +63420,7 @@ MonoBehaviour:
   spawnRate: 400
   continuousSpawn: 0
   amount: 5
+  load: 0
 --- !u!1 &1492891618
 GameObject:
   m_ObjectHideFlags: 0
@@ -63316,10 +63467,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemy:
   - {fileID: 7036910593434335753, guid: 89745a56db1840342b4ccb546ea3cb6e, type: 3}
-  - {fileID: 4381634384385559601, guid: 44f485c20789c7347ad12eb4f6a1d016, type: 3}
   spawnRate: 500
   continuousSpawn: 0
-  amount: 5
+  amount: 1
+  load: 0
 --- !u!4 &1493091204 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 421290722548184638, guid: 035ffde797a692f42aaf02689302768c, type: 3}
@@ -63374,6 +63525,7 @@ MonoBehaviour:
   spawnRate: 100
   continuousSpawn: 0
   amount: 6
+  load: 0
 --- !u!1001 &1501555202
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -63987,7 +64139,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh57018
+  m_Name: pb_Mesh31574
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -64837,6 +64989,7 @@ MonoBehaviour:
   spawnRate: 20
   continuousSpawn: 0
   amount: 10
+  load: 0
 --- !u!4 &1555366659 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8796169811610449705, guid: 0e1ff74798a42e242b7196a0a23d78bd, type: 3}
@@ -65769,6 +65922,7 @@ MonoBehaviour:
   spawnRate: 70
   continuousSpawn: 0
   amount: 8
+  load: 0
 --- !u!1 &1587882966
 GameObject:
   m_ObjectHideFlags: 0
@@ -66772,7 +66926,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh54254
+  m_Name: pb_Mesh28810
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -67403,6 +67557,7 @@ MonoBehaviour:
   spawnRate: 500
   continuousSpawn: 0
   amount: 1
+  load: 3
 --- !u!1001 &1690461626
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -68497,7 +68652,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh56712
+  m_Name: pb_Mesh31266
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -70539,6 +70694,7 @@ MonoBehaviour:
   spawnRate: 100
   continuousSpawn: 0
   amount: 8
+  load: 0
 --- !u!1001 &1840282309
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -71926,7 +72082,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh56824
+  m_Name: pb_Mesh31380
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -72211,6 +72367,7 @@ MonoBehaviour:
   spawnRate: 100
   continuousSpawn: 0
   amount: 6
+  load: 0
 --- !u!1 &1924619575
 GameObject:
   m_ObjectHideFlags: 0
@@ -72260,6 +72417,7 @@ MonoBehaviour:
   spawnRate: 100
   continuousSpawn: 0
   amount: 5
+  load: 0
 --- !u!4 &1925473622 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 421290722548184638, guid: 035ffde797a692f42aaf02689302768c, type: 3}
@@ -74455,13 +74613,14 @@ MonoBehaviour:
   spawnRate: 100
   continuousSpawn: 0
   amount: 5
+  load: 0
 --- !u!43 &2019819622
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh55430
+  m_Name: pb_Mesh29988
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -76041,6 +76200,7 @@ MonoBehaviour:
   spawnRate: 100
   continuousSpawn: 0
   amount: 10
+  load: 0
 --- !u!1001 &2079874370
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -76932,7 +77092,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2125278044
 Transform:
   m_ObjectHideFlags: 0
@@ -77383,6 +77543,7 @@ MonoBehaviour:
   spawnRate: 100
   continuousSpawn: 0
   amount: 5
+  load: 0
 --- !u!1001 &2139047047
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -109815,6 +109976,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8137978402160218419}
+  - component: {fileID: 8137978402160218420}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -109841,6 +110003,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8137978402160218420
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8137978402160218418}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 442ba0a35b6a3b84b8b594ad37ca4465, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxBossLoad: 4
+  maxMediumLoad: 10
+  maxSmallLoad: 15
 --- !u!23 &8154090832659604077
 MeshRenderer:
   m_ObjectHideFlags: 0
