@@ -23,6 +23,7 @@ public class EnemySoundManager : MonoBehaviour
         MilitaryDrone.militaryDroneShootSound += PlaySound;
         Flashbang.flashbangExplode += PlayFlashBang;
         Crockie.crockieRoar += PlaySound;
+        UIManager.warningSound += PlaySound;
     }
 
     private void PlayTargetTimeout() => audioSource.PlayOneShot(timerTimeout);
@@ -44,5 +45,6 @@ public class EnemySoundManager : MonoBehaviour
         MultiTargetEnemy.multiTargetsTimeout -= PlayTargetTimeout;
         MilitaryDrone.militaryDroneShootSound -= PlaySound;
         Crockie.crockieRoar -= PlaySound;
+        UIManager.warningSound -= PlaySound;
     }
 }

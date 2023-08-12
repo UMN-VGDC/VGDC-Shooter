@@ -13,6 +13,8 @@ public class Spawner : MonoBehaviour
     [SerializeField] private int amount = 3;
     private int defaultAmount;
 
+    public static Action bossSpawned;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -38,6 +40,7 @@ public class Spawner : MonoBehaviour
         int getLoad = getEnemyData.enemyLoad;
         string getType = getEnemyData.enemyLoadType.ToString();
         if (!EnemyLoadCount.Instance.ModifyLoad(-getLoad, getType)) return;
+        if (getType == "Boss") bossSpawned?.Invoke();
 
         Instantiate(enemy[random], transform.position, Quaternion.identity);
         await Task.Delay(spawnRate);

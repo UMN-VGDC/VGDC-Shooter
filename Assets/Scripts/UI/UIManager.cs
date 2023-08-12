@@ -22,9 +22,17 @@ public class UIManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI scoreAdd;
     [SerializeField] private CanvasRenderer speedLinesRenderer;
 
+    [Header("Warning Effect")]
+    [SerializeField] private CanvasGroup warningGroup;
+    [SerializeField] private TextMeshProUGUI warningText;
+    [SerializeField] private AudioClip warningBossSound;
+    private bool warningIsPlaying;
+
+    private bool isDestroyed;
     private int currentStreak, comboCount;
 
     public static Action scoreStreak;
+    public static Action<AudioClip> warningSound;
     public static UIManager Instance { get; private set; }
 
     // Start is called before the first frame update
@@ -36,6 +44,8 @@ public class UIManager : MonoBehaviour
         SoundManager.flameThrower += SpeedLinesEffect;
         Bullet.crit += CritPoints;
         MultiTargetEnemy.multiTargetsPoints += AddPoints;
+        Spawner.bossSpawned += BossWarningEffect;
+
         currentStreak = streakCount;
         defaultStreakColor = score.color;
         defaultOutlineColor = score.outlineColor;
@@ -98,6 +108,34 @@ public class UIManager : MonoBehaviour
         add.GetComponent<ScoreAddEffect>().SetText(amount);
     }
 
+    private async void BossWarningEffect()
+    {
+        if (warningIsPlaying) return;
+        warningIsPlaying = true;
+        warningSound?.Invoke(warningBossSound);
+
+        DOVirtual.Float(0, 1, 0.5f, e =>
+        {
+            warningGroup.alpha = e;
+        });
+
+        DOVirtual.Float(50, 90, 4f, e =>
+        {
+            warningText.characterSpacing = e;
+        });
+
+        await Task.Delay(3000);
+        if (isDestroyed) return;
+        DOVirtual.Float(1, 0, 0.5f, e =>
+        {
+            warningGroup.alpha = e;
+        });
+
+        await Task.Delay(3000);
+        if (isDestroyed) return;
+        warningIsPlaying = false;
+    }
+
     private async void SpeedLinesEffect()
     {
         DOVirtual.Float(0, 1, 0.5f, e =>
@@ -130,12 +168,6 @@ public class UIManager : MonoBehaviour
         instantiatedDecal.transform.localScale = new Vector2(initialScale.x * flip, initialScale.y);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     private void OnDestroy()
     {
         PlayerHealth.damageTaken -= spawnBloodScratch;
@@ -144,5 +176,7 @@ public class UIManager : MonoBehaviour
         SoundManager.flameThrower -= SpeedLinesEffect;
         Bullet.crit -= CritPoints;
         MultiTargetEnemy.multiTargetsPoints -= AddPoints;
+        Spawner.bossSpawned -= BossWarningEffect;
+        isDestroyed = true;
     }
 }
