@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: -2600857351453529268}
   - component: {fileID: 1210736782004159164}
   - component: {fileID: -1700438676963484809}
+  - component: {fileID: 2610089374259724374}
   m_Layer: 8
   m_Name: Crooked
   m_TagString: Entity
@@ -57,6 +58,18 @@ MonoBehaviour:
       - m_Target: {fileID: 7781121442774139256}
         m_TargetAssemblyTypeName: EnemyDeath, Assembly-CSharp
         m_MethodName: KillEnemy
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2610089374259724374}
+        m_TargetAssemblyTypeName: Crooked, Assembly-CSharp
+        m_MethodName: CrookedDisableAnimator
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -174,6 +187,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  triggerAttack:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &-1700438676963484809
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -188,6 +204,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slowSpeed: 12
   initialSpeed: 0
+--- !u!114 &2610089374259724374
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2528561163653043146}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d29d9d0d60d6bad49983d569fddf5a39, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackDistance: 7.5
+  attackQueue: 5000
 --- !u!1001 &2528561163073418544
 PrefabInstance:
   m_ObjectHideFlags: 0

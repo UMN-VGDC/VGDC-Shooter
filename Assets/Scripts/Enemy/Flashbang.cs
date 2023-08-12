@@ -77,6 +77,7 @@ public class Flashbang : MonoBehaviour
 
     private void OnDestroy()
     {
+        DOTween.Kill(grenadeTransform);
         isDestroyed = true;
         count--;
     }

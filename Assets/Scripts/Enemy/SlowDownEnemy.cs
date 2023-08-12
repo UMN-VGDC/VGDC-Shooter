@@ -24,10 +24,4 @@ public class SlowDownEnemy : MonoBehaviour
             triggerEventsOnClose.TriggerExit();
         }
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

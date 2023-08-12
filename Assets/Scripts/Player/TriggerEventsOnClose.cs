@@ -15,5 +15,4 @@ public class TriggerEventsOnClose : MonoBehaviour
     {
         triggerExit.Invoke();
     }
-
 }

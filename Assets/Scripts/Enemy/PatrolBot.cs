@@ -51,4 +51,9 @@ public class PatrolBot : MonoBehaviour
     {
         isExit = false;
     }
+
+    private void OnDestroy()
+    {
+        DOTween.Kill(pivot);
+    }
 }

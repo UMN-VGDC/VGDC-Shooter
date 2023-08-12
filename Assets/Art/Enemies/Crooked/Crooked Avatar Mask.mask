@@ -1,0 +1,99 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!319 &31900000
+AvatarMask:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Crooked Avatar Mask
+  m_Mask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+  m_Elements:
+  - m_Path: 
+    m_Weight: 1
+  - m_Path: Armature_Crooked_deform
+    m_Weight: 1
+  - m_Path: Armature_Crooked_deform/Spine
+    m_Weight: 0
+  - m_Path: Armature_Crooked_deform/Spine/Spine.001
+    m_Weight: 0
+  - m_Path: Armature_Crooked_deform/Spine/Spine.001/Spine.002
+    m_Weight: 0
+  - m_Path: Armature_Crooked_deform/Spine/Spine.001/Spine.002/Spine.003
+    m_Weight: 1
+  - m_Path: Armature_Crooked_deform/Spine/Spine.001/Spine.002/Spine.003/Shoulder.L
+    m_Weight: 1
+  - m_Path: Armature_Crooked_deform/Spine/Spine.001/Spine.002/Spine.003/Shoulder.L/UpperArm.L
+    m_Weight: 1
+  - m_Path: Armature_Crooked_deform/Spine/Spine.001/Spine.002/Spine.003/Shoulder.L/UpperArm.L/UpperArm.L.001
+    m_Weight: 1
+  - m_Path: Armature_Crooked_deform/Spine/Spine.001/Spine.002/Spine.003/Shoulder.L/UpperArm.L/UpperArm.L.001/LowerArm.L
+    m_Weight: 1
+  - m_Path: Armature_Crooked_deform/Spine/Spine.001/Spine.002/Spine.003/Shoulder.L/UpperArm.L/UpperArm.L.001/LowerArm.L/Hand.L
+    m_Weight: 1
+  - m_Path: Armature_Crooked_deform/Spine/Spine.001/Spine.002/Spine.003/Shoulder.L/UpperArm.L/UpperArm.L.001/LowerArm.L/Hand.L/Blade_Base.L
+    m_Weight: 1
+  - m_Path: Armature_Crooked_deform/Spine/Spine.001/Spine.002/Spine.003/Shoulder.L/UpperArm.L/UpperArm.L.001/LowerArm.L/Hand.L/Blade_Mid.L
+    m_Weight: 1
+  - m_Path: Armature_Crooked_deform/Spine/Spine.001/Spine.002/Spine.003/Shoulder.L/UpperArm.L/UpperArm.L.001/LowerArm.L/Hand.L/Blade_Tip.L
+    m_Weight: 1
+  - m_Path: Armature_Crooked_deform/Spine/Spine.001/Spine.002/Spine.003/Shoulder.L/UpperArm.L/UpperArm.L.001/LowerArm.L/Hand.L/FingerIndexUpper.L
+    m_Weight: 1
+  - m_Path: Armature_Crooked_deform/Spine/Spine.001/Spine.002/Spine.003/Shoulder.L/UpperArm.L/UpperArm.L.001/LowerArm.L/Hand.L/FingerIndexUpper.L/FingerIndex.L
+    m_Weight: 1
+  - m_Path: Armature_Crooked_deform/Spine/Spine.001/Spine.002/Spine.003/Shoulder.L/UpperArm.L/UpperArm.L.001/LowerArm.L/Hand.L/FingerPinkieUpper.L
+    m_Weight: 1
+  - m_Path: Armature_Crooked_deform/Spine/Spine.001/Spine.002/Spine.003/Shoulder.L/UpperArm.L/UpperArm.L.001/LowerArm.L/Hand.L/FingerPinkieUpper.L/FingerPinkie.L
+    m_Weight: 1
+  - m_Path: Armature_Crooked_deform/Spine/Spine.001/Spine.002/Spine.003/Shoulder.L/UpperArm.L/UpperArm.L.001/LowerArm.L/Hand.L/Hand_Guard.L
+    m_Weight: 1
+  - m_Path: Armature_Crooked_deform/Spine/Spine.001/Spine.002/Spine.003/Shoulder.L/UpperArm.L/UpperArm.L.001/LowerArm.L/Hand.L/Thumb.L
+    m_Weight: 1
+  - m_Path: Armature_Crooked_deform/Spine/Spine.001/Spine.002/Spine.003/Shoulder.R
+    m_Weight: 1
+  - m_Path: Armature_Crooked_deform/Spine/Spine.001/Spine.002/Spine.003/Shoulder.R/UpperArm.R
+    m_Weight: 1
+  - m_Path: Armature_Crooked_deform/Spine/Spine.001/Spine.002/Spine.003/Shoulder.R/UpperArm.R/UpperArm.R.001
+    m_Weight: 1
+  - m_Path: Armature_Crooked_deform/Spine/Spine.001/Spine.002/Spine.003/Shoulder.R/UpperArm.R/UpperArm.R.001/LowerArm.R
+    m_Weight: 1
+  - m_Path: Armature_Crooked_deform/Spine/Spine.001/Spine.002/Spine.003/Shoulder.R/UpperArm.R/UpperArm.R.001/LowerArm.R/Hand.R
+    m_Weight: 1
+  - m_Path: Armature_Crooked_deform/Spine/Spine.001/Spine.002/Spine.003/Shoulder.R/UpperArm.R/UpperArm.R.001/LowerArm.R/Hand.R/Blade_Base.R
+    m_Weight: 1
+  - m_Path: Armature_Crooked_deform/Spine/Spine.001/Spine.002/Spine.003/Shoulder.R/UpperArm.R/UpperArm.R.001/LowerArm.R/Hand.R/Blade_Mid.R
+    m_Weight: 1
+  - m_Path: Armature_Crooked_deform/Spine/Spine.001/Spine.002/Spine.003/Shoulder.R/UpperArm.R/UpperArm.R.001/LowerArm.R/Hand.R/Blade_Tip.R
+    m_Weight: 1
+  - m_Path: Armature_Crooked_deform/Spine/Spine.001/Spine.002/Spine.003/Shoulder.R/UpperArm.R/UpperArm.R.001/LowerArm.R/Hand.R/FingerIndexUpper.R
+    m_Weight: 1
+  - m_Path: Armature_Crooked_deform/Spine/Spine.001/Spine.002/Spine.003/Shoulder.R/UpperArm.R/UpperArm.R.001/LowerArm.R/Hand.R/FingerIndexUpper.R/FingerIndex.R
+    m_Weight: 1
+  - m_Path: Armature_Crooked_deform/Spine/Spine.001/Spine.002/Spine.003/Shoulder.R/UpperArm.R/UpperArm.R.001/LowerArm.R/Hand.R/FingerPinkieUpper.R
+    m_Weight: 1
+  - m_Path: Armature_Crooked_deform/Spine/Spine.001/Spine.002/Spine.003/Shoulder.R/UpperArm.R/UpperArm.R.001/LowerArm.R/Hand.R/FingerPinkieUpper.R/FingerPinkie.R
+    m_Weight: 1
+  - m_Path: Armature_Crooked_deform/Spine/Spine.001/Spine.002/Spine.003/Shoulder.R/UpperArm.R/UpperArm.R.001/LowerArm.R/Hand.R/Hand_Guard.R
+    m_Weight: 1
+  - m_Path: Armature_Crooked_deform/Spine/Spine.001/Spine.002/Spine.003/Shoulder.R/UpperArm.R/UpperArm.R.001/LowerArm.R/Hand.R/Thumb.R
+    m_Weight: 1
+  - m_Path: Armature_Crooked_deform/Spine/Spine.001/Spine.002/Spine.003/Spine.004
+    m_Weight: 1
+  - m_Path: Armature_Crooked_deform/Spine/UpperLeg.L
+    m_Weight: 0
+  - m_Path: Armature_Crooked_deform/Spine/UpperLeg.L/Knee.L
+    m_Weight: 0
+  - m_Path: Armature_Crooked_deform/Spine/UpperLeg.L/Knee.L/LowerLeg.L
+    m_Weight: 0
+  - m_Path: Armature_Crooked_deform/Spine/UpperLeg.L/Knee.L/LowerLeg.L/Foot.L
+    m_Weight: 0
+  - m_Path: Armature_Crooked_deform/Spine/UpperLeg.R
+    m_Weight: 0
+  - m_Path: Armature_Crooked_deform/Spine/UpperLeg.R/Knee.R
+    m_Weight: 0
+  - m_Path: Armature_Crooked_deform/Spine/UpperLeg.R/Knee.R/LowerLeg.R
+    m_Weight: 0
+  - m_Path: Armature_Crooked_deform/Spine/UpperLeg.R/Knee.R/LowerLeg.R/Foot.R
+    m_Weight: 0
+  - m_Path: Cube.023
+    m_Weight: 1

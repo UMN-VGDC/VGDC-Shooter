@@ -10,6 +10,8 @@ public class FlickerDisappear : MonoBehaviour
     [SerializeField] private int delay = 2500;
     [SerializeField] private int flickerAmount = 15;
     [SerializeField] private GameObject[] destroyImmediate;
+    private bool isDestroyed;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -19,6 +21,7 @@ public class FlickerDisappear : MonoBehaviour
     public async void Disappear()
     {
         await UniTask.DelayFrame(delay);
+        if (isDestroyed) return;
         DestroyImmediate();
         var rend = GetComponentsInChildren<Renderer>();
         for (int r = 0; r < flickerAmount; r++)
@@ -52,9 +55,8 @@ public class FlickerDisappear : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnDestroy()
     {
-        
+        isDestroyed = true;
     }
 }

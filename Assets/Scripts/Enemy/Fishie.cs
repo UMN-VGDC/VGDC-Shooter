@@ -69,6 +69,7 @@ public class Fishie : MultiTargetEnemy
         if (Flashbang.count >= 1) return;
         animator.SetTrigger("Throw");
         await Task.Delay(370);
+        if (isDestroyed) return;
         Instantiate(flashbang, grenadeSpawner.position, grenadeSpawner.rotation);
     }
 }

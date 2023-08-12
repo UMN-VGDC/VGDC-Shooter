@@ -25,7 +25,7 @@ public abstract class MultiTargetEnemy : MonoBehaviour
 
     protected GameObject player;
 
-    private bool isDestroyed;
+    protected bool isDestroyed;
     protected virtual void Start()
     {
         audioSource = GetComponent<AudioSource>();

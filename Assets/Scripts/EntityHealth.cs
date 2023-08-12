@@ -49,7 +49,7 @@ public class EntityHealth : MonoBehaviour
             deathCallback?.Invoke();
             deathSound?.Invoke(deathSounds);
             enemyDeath?.Invoke(points);
-            AddLoad();
+            EnemyLoadCount.Instance.ModifyLoad(enemyLoad, enemyLoadType.ToString());
             return points;
         }
         enemyHit?.Invoke();
@@ -59,6 +59,7 @@ public class EntityHealth : MonoBehaviour
 
     public void AddLoad()
     {
+        if (isDead) return;
         EnemyLoadCount.Instance.ModifyLoad(enemyLoad, enemyLoadType.ToString());
     }
 

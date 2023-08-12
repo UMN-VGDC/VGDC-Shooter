@@ -35,16 +35,27 @@ public class EnemyLoadCount : MonoBehaviour
 
         if (load + amount < 0)
         {
+            //Debug.Log($"{type} load exceeded");
             return false;
         }
 
         switch (type)
         {
-            case "Boss": bossLoad += amount; break;
-            case "Medium": mediumLoad += amount; break;
-            case "Small": smallLoad += amount; break;
+            case "Boss": 
+                bossLoad += amount;
+                //Debug.Log($"{bossLoad}/{maxBossLoad}");
+                break;
+            case "Medium": 
+                mediumLoad += amount;
+                //Debug.Log($"{mediumLoad}/{maxMediumLoad}");
+                break;
+            case "Small": 
+                smallLoad += amount;
+                //Debug.Log($"{smallLoad}/{maxSmallLoad}");
+                break;
             case "Flying": flyingLoad += amount; break;
         }
+        
         return true;
 
     }
