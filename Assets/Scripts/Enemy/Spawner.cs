@@ -12,6 +12,7 @@ public class Spawner : MonoBehaviour
     [SerializeField] private bool continuousSpawn;
     [SerializeField] private int amount = 3;
     private int defaultAmount;
+    private bool isDestroyed;
 
     public static Action bossSpawned;
 
@@ -34,6 +35,11 @@ public class Spawner : MonoBehaviour
             return;
         }
         int random = UnityEngine.Random.Range(0, enemy.Length);
+        if (enemy[random].tag == "Untagged")
+        {
+            Instantiate(enemy[random], transform.position, transform.rotation);
+            return;
+        }
 
         //Do not instantiate if max load is exceeded
         EntityHealth getEnemyData = enemy[random].GetComponent<EntityHealth>();
@@ -42,8 +48,9 @@ public class Spawner : MonoBehaviour
         if (!EnemyLoadCount.Instance.ModifyLoad(-getLoad, getType)) return;
         if (getType == "Boss") bossSpawned?.Invoke();
 
-        Instantiate(enemy[random], transform.position, Quaternion.identity);
+        Instantiate(enemy[random], transform.position, transform.rotation);
         await Task.Delay(spawnRate);
+        if (isDestroyed) return;
         amount--;
         SpawnFromTrigger();
     }
@@ -51,7 +58,12 @@ public class Spawner : MonoBehaviour
     {
         await Task.Delay(spawnRate);
         int random = UnityEngine.Random.Range(0, enemy.Length);
-        Instantiate(enemy[random], transform.position, Quaternion.identity);
+        Instantiate(enemy[random], transform.position, transform.rotation);
         BeginSpawn();
+    }
+
+    private void OnDestroy()
+    {
+        isDestroyed = true;
     }
 }

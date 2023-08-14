@@ -9,13 +9,14 @@ public class Flashbang : MonoBehaviour
 {
     [SerializeField] private Transform lookAtTransform;
     [SerializeField] private float turnspeed = 100f;
-    [SerializeField] private float speed = 1f;
+    [SerializeField] private float speed = 1f, slowSpeed = 1f;
     [SerializeField] private Transform grenadeTransform;
     [SerializeField] private GameObject flash;
     [SerializeField] private int flashCount = 15;
     [SerializeField] private AudioClip beepSound;
+    [SerializeField] private float slowDistance = 3f;
     private Transform playerPos;
-    private bool isMoving = true;
+    private bool isParented;
 
     private AudioSource audioSource;
     public static int count;
@@ -36,17 +37,17 @@ public class Flashbang : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!isMoving) return;
         lookAtTransform.LookAt(playerPos);
         transform.rotation = Quaternion.RotateTowards(transform.rotation, lookAtTransform.rotation, Time.deltaTime * turnspeed);
         transform.position += transform.forward * speed * Time.deltaTime;
-    }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.tag != "Attack Radius") return;
-        isMoving = false;
-        transform.SetParent(other.transform);
+        float distance = Vector3.Distance(transform.position, playerPos.position);
+        if (distance > slowDistance && !isParented)
+        {
+            transform.SetParent(playerPos);
+            speed = slowSpeed;
+            isParented = true;
+        }
     }
 
     private float timer = 500;

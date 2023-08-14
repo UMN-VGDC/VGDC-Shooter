@@ -84,8 +84,8 @@ MonoBehaviour:
   deathType: 1
   DeathSpawn:
   - {fileID: 4118392343417555835, guid: 119046c477f1b8a4da31a7fb53dcb641, type: 3}
-  deathSpawnPos: {fileID: 0}
-  spawnYOffset: 1.5
+  deathSpawnPos: {fileID: 368411220364596494}
+  deathSpawnScale: 1.5
   hideObjects: []
   deathSounds: []
 --- !u!114 &8515594301794697854
@@ -518,6 +518,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c025fa763f3390e45b1722bd7eab2729, type: 3}
+--- !u!4 &368411220364596494 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7457455221297269546, guid: c025fa763f3390e45b1722bd7eab2729, type: 3}
+  m_PrefabInstance: {fileID: 7089483912960269860}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &688927134115684281 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7776986045643489693, guid: c025fa763f3390e45b1722bd7eab2729, type: 3}

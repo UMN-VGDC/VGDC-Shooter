@@ -19589,7 +19589,7 @@ MonoBehaviour:
   DeathSpawn:
   - {fileID: 1972911560631107848, guid: 284667cb9efafdc4dbf923261c9c9078, type: 3}
   deathSpawnPos: {fileID: 6381424988510973397}
-  spawnYOffset: 0
+  deathSpawnScale: 1.5
   hideObjects: []
   deathSounds:
   - {fileID: 8300000, guid: a70989a456340c24ba4c73d9a3f72df4, type: 3}

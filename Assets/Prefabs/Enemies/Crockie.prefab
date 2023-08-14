@@ -87,8 +87,8 @@ MonoBehaviour:
   deathType: 0
   DeathSpawn:
   - {fileID: 5119594273226558932, guid: 862dd7fea9f750f48863f208801f34da, type: 3}
-  deathSpawnPos: {fileID: 0}
-  spawnYOffset: 0
+  deathSpawnPos: {fileID: 4506028569843707179}
+  deathSpawnScale: 0.7
   hideObjects: []
   deathSounds:
   - {fileID: 8300000, guid: 22c56db894a162c488eb48ef65fbc096, type: 3}
@@ -156,9 +156,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  triggerAttack:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!114 &8021924688229912891
 MonoBehaviour:
   m_ObjectHideFlags: 0

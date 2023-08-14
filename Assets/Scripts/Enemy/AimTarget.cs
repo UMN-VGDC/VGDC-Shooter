@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using TMPro;
 using DG.Tweening;
+using System;
 
 public class AimTarget : MonoBehaviour
 {
@@ -14,6 +15,9 @@ public class AimTarget : MonoBehaviour
     [SerializeField] private TextMeshPro textMeshPro;
     [SerializeField] private ParticleSystem timeoutVFX;
     [SerializeField] private ParticleSystem timerVFX, timerBreakVFX;
+    [SerializeField] private AudioClip targetBreakSound;
+
+    public static Action<AudioClip> playTargetBreakSound;
 
     private Color textCol, transparentCol;
     private float textFontSize;
@@ -30,6 +34,7 @@ public class AimTarget : MonoBehaviour
         target.SetActive(false);
         textMeshPro.color = transparentCol;
         timerBreakVFX.Play();
+        playTargetBreakSound?.Invoke(targetBreakSound);
     }
 
     public void TriggerTargetTimeout()

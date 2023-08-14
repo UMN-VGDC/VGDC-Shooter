@@ -22,6 +22,7 @@ public abstract class MultiTargetEnemy : MonoBehaviour
     public static Action multiTargetsInit;
     public static Action multiTargetsTimeout;
     public static Action<int> multiTargetsPoints;
+    public static Action multiTargetsShieldDownSound;
 
     protected GameObject player;
 
@@ -100,7 +101,7 @@ public abstract class MultiTargetEnemy : MonoBehaviour
         {
             currentTargetCount--;
             if (currentTargetCount == 0) break;
-            entityHealth.MultiHitFlash(2);
+            entityHealth.MultiHitFlash(2, 0.3f, true);
             TargetDestroyReaction();
             return;
         }
@@ -125,6 +126,12 @@ public abstract class MultiTargetEnemy : MonoBehaviour
             {
                 target.DisableTarget();
             }
+            entityHealth.BossWeakenEffect(2f);
+            multiTargetsShieldDownSound?.Invoke();
+        }
+        else
+        {
+            entityHealth.BossWeakenEffect(0.5f);
         }
 
         await Task.Delay(1000);

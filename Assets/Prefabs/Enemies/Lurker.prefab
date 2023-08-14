@@ -83,8 +83,8 @@ MonoBehaviour:
   deathType: 0
   DeathSpawn:
   - {fileID: 4264950233603357065, guid: a605f1373786a48459df5b7d6aa32e6d, type: 3}
-  deathSpawnPos: {fileID: 0}
-  spawnYOffset: 0
+  deathSpawnPos: {fileID: 4116122046347505325}
+  deathSpawnScale: 1
   hideObjects: []
   deathSounds: []
 --- !u!1001 &6251455602872271814
@@ -282,6 +282,11 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.0010416239, y: 0.0029575152, z: 0.0051038405}
   m_Center: {x: -0.00027842412, y: 0.0006216016, z: -0.0013757058}
+--- !u!4 &4116122046347505325 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -1162273337894654613, guid: 971a0cf962851d44abcd2597b832ad29, type: 3}
+  m_PrefabInstance: {fileID: 6251455602872271814}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &4493610383642412691 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -1685151746347727531, guid: 971a0cf962851d44abcd2597b832ad29, type: 3}

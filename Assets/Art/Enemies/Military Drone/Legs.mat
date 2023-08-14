@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Legs
-  m_Shader: {fileID: -6465566751694194690, guid: 4b546d4b6fa1bad40a0dc705068e252d, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: 9d94dcd26e08a9740949e12122e018f4, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
   m_LightmapFlags: 4
@@ -100,6 +100,7 @@ Material:
     m_Floats:
     - _AlphaClip: 0
     - _Blend: 0
+    - _Buff_Factor: 0
     - _BumpScale: 1
     - _ClearCoatMask: 0
     - _ClearCoatSmoothness: 0
@@ -110,18 +111,21 @@ Material:
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
     - _EnvironmentReflections: 1
+    - _Fresnel_Power: 1.8
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
     - _Metallic: 0
     - _Metalness_Strength: 1
     - _Mode: 0
+    - _Noise_Scale: 8
     - _Normal_Strength: 1
     - _OcclusionStrength: 1
     - _Parallax: 0.02
     - _QueueControl: 0
     - _QueueOffset: 0
     - _ReceiveShadows: 1
+    - _Scroll_Speed: 8
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
     - _Smoothness_Override: 0
@@ -133,6 +137,7 @@ Material:
     - _ZWrite: 1
     m_Colors:
     - _BaseColor: {r: 0.9063317, g: 0.9063317, b: 0.9063317, a: 1}
+    - _Buff_Glow_Color: {r: 1, g: 0.89299846, b: 0, a: 0}
     - _Color: {r: 0.9063317, g: 0.9063317, b: 0.9063317, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _Emission_Multiply: {r: 0, g: 0, b: 0, a: 0}

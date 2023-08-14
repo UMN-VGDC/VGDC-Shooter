@@ -17,7 +17,7 @@ public class EnemyDeath : MonoBehaviour
 
     [SerializeField] private GameObject[] DeathSpawn;
     [SerializeField] private Transform deathSpawnPos;
-    [SerializeField] private float spawnYOffset;
+    [SerializeField] private float deathSpawnScale = 1f;
     [SerializeField] private GameObject[] hideObjects;
     [SerializeField] private AudioClip[] deathSounds;
 
@@ -51,7 +51,7 @@ public class EnemyDeath : MonoBehaviour
         if (distance > 90f)
         {
             GetComponent<EntityHealth>().AddLoad();
-            Destroy(gameObject);
+            Destroy(gameObject.transform.root.gameObject);
         }
     }
 
@@ -137,7 +137,8 @@ public class EnemyDeath : MonoBehaviour
         for (int i = 0; i < DeathSpawn.Length; i ++) {
             if (DeathSpawn[i] == null) continue;
             Quaternion randomRot = Quaternion.Euler(0, UnityEngine.Random.Range(-180, 180), 0);
-            Instantiate(DeathSpawn[i], new Vector3(pos.x, pos.y + spawnYOffset, pos.z), randomRot);
+            GameObject deathFX = Instantiate(DeathSpawn[i], pos, randomRot);
+            deathFX.transform.localScale = new Vector3(deathSpawnScale, deathSpawnScale, deathSpawnScale);
         };
     }
 }

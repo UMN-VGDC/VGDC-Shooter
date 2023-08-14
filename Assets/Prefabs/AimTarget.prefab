@@ -24707,9 +24707,9 @@ MonoBehaviour:
         m_CallState: 2
   flashColor: {r: 51, g: 0, b: 0, a: 1}
   playerDamage: 1
-  deathSounds:
-  - {fileID: 8300000, guid: 4803f1e847aefd340993820af1a7e52a, type: 3}
   points: 0
+  enemyLoadType: 0
+  enemyLoad: 0
 --- !u!1 &6093785684397926433
 GameObject:
   m_ObjectHideFlags: 0
@@ -24769,6 +24769,7 @@ MonoBehaviour:
   timeoutVFX: {fileID: 7713817673530640430}
   timerVFX: {fileID: 8378660174500421013}
   timerBreakVFX: {fileID: 618651079738476000}
+  targetBreakSound: {fileID: 8300000, guid: 4803f1e847aefd340993820af1a7e52a, type: 3}
 --- !u!1 &7481324993619976070
 GameObject:
   m_ObjectHideFlags: 0

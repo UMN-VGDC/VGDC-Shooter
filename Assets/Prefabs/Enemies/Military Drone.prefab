@@ -50624,7 +50624,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd8c7907e1111174d9af4d0a22fd73ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
+  health: 80
   deathCallback:
     m_PersistentCalls:
       m_Calls:
@@ -50642,8 +50642,7 @@ MonoBehaviour:
         m_CallState: 2
   flashColor: {r: 52, g: 0, b: 0, a: 1}
   playerDamage: 100
-  deathSounds:
-  - {fileID: 8300000, guid: a70989a456340c24ba4c73d9a3f72df4, type: 3}
+  deathSounds: []
   points: 2000
   enemyLoadType: 2
   enemyLoad: 2
@@ -50662,10 +50661,11 @@ MonoBehaviour:
   deathType: 0
   DeathSpawn:
   - {fileID: 2953992208197644563, guid: b4f43ad6ad14e1b47b583237e1e11593, type: 3}
-  deathSpawnPos: {fileID: 0}
-  spawnYOffset: 0
+  deathSpawnPos: {fileID: 3248672798019711998}
+  deathSpawnScale: 1.5
   hideObjects: []
-  deathSounds: []
+  deathSounds:
+  - {fileID: 8300000, guid: a70989a456340c24ba4c73d9a3f72df4, type: 3}
 --- !u!195 &6258181935273702660
 NavMeshAgent:
   m_ObjectHideFlags: 0

@@ -4,6 +4,8 @@ using UnityEngine;
 using System.Threading.Tasks;
 using System;
 using UnityEngine.Events;
+using DG.Tweening;
+using System.Numerics;
 
 public class EntityHealth : MonoBehaviour
 {
@@ -13,11 +15,9 @@ public class EntityHealth : MonoBehaviour
     [ColorUsage(true, true)]
     [SerializeField] private Color flashColor = new Color(51, 0, 0, 1);
     [SerializeField] private int playerDamage = 1;
-    [SerializeField] private AudioClip[] deathSounds;
     [SerializeField] private int points = 100;
 
     public static Action enemyHit;
-    public static Action<AudioClip[]> deathSound;
     public static Action<int> enemyDeath;
 
     private Renderer[] renderers;
@@ -47,7 +47,6 @@ public class EntityHealth : MonoBehaviour
         if (healthDecrement <= 0) {
             isDead = true;
             deathCallback?.Invoke();
-            deathSound?.Invoke(deathSounds);
             enemyDeath?.Invoke(points);
             EnemyLoadCount.Instance.ModifyLoad(enemyLoad, enemyLoadType.ToString());
             return points;
@@ -97,7 +96,7 @@ public class EntityHealth : MonoBehaviour
         }
     }
 
-    public async void MultiHitFlash(int count)
+    public async void MultiHitFlash(int count, float fresnelAmount = 1f, bool isFresnel = false)
     {
         for (int i = 0; i < count; i++)
         {
@@ -105,10 +104,43 @@ public class EntityHealth : MonoBehaviour
             {
                 SetRenderColor(renderers[r], flashColor);
             }
+            if (isFresnel) SetFresnel(fresnelAmount);
             await Task.Delay(40);
             ResetRenderCol();
+            if (isFresnel) SetFresnel(0);
             await Task.Delay(40);
         }
+
+        void SetFresnel(float factor)
+        {
+            for (int r = 0; r < renderers.Length; r++)
+            {
+                SetFresnelFactor(renderers[r], factor);
+            }
+        }
+    }
+
+    private void SetFresnelFactor(Renderer rend, float factor)
+    {
+        if (rend == null)
+        {
+            return;
+        }
+        for (int i = 0; i < rend.materials.Length; i++)
+        {
+            rend.materials[i].SetFloat("_Buff_Factor", factor);
+        }
+    }
+
+    public void BossWeakenEffect(float duration)
+    {
+        DOVirtual.Float(1f, 0f, duration, e =>
+        {
+            for (int r = 0; r < renderers.Length; r++)
+            {
+                SetFresnelFactor(renderers[r], e);
+            }
+        });
     }
 
     public int GetPlayerDamage()

@@ -362,7 +362,7 @@ MonoBehaviour:
   DeathSpawn:
   - {fileID: 3310180537921111447, guid: b6516e19f4310af47a976a1c2347a64d, type: 3}
   deathSpawnPos: {fileID: 3537869035169345310}
-  spawnYOffset: 2.17
+  deathSpawnScale: 3
   hideObjects:
   - {fileID: 4733893665289324052}
   - {fileID: 8556571753225220303}
@@ -11061,6 +11061,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 92499127317972611, guid: 930e250cef88efa429ae504531f8bca2, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 2173f92883809174e8b78c428ec2fab0, type: 2}
     - target: {fileID: 919132149155446097, guid: 930e250cef88efa429ae504531f8bca2, type: 3}
       propertyPath: m_Name
       value: Fishie
@@ -11097,6 +11101,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 4285128077695161519, guid: 930e250cef88efa429ae504531f8bca2, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 2173f92883809174e8b78c428ec2fab0, type: 2}
     - target: {fileID: 4335218964466632648, guid: 930e250cef88efa429ae504531f8bca2, type: 3}
       propertyPath: m_Layer
       value: 8
@@ -11105,6 +11113,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 5332514591722009959, guid: 930e250cef88efa429ae504531f8bca2, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 90d3b825d0f6b6f4492a19888407bbac, type: 2}
     - target: {fileID: 5475417249653958381, guid: 930e250cef88efa429ae504531f8bca2, type: 3}
       propertyPath: m_Layer
       value: 8

@@ -36,6 +36,7 @@ public class FlickerDisappear : MonoBehaviour
 
     private void Flicker(Renderer[] rend, bool state)
     {
+        if (isDestroyed) return; 
         if (useSetActive) {
             gameObject.SetActive(state);
             return;

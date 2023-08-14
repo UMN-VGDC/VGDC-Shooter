@@ -8,7 +8,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Fishie_Gun
-    second: {fileID: 2100000, guid: ec08bd3c95500d74394069c30a497e14, type: 2}
+    second: {fileID: 2100000, guid: 90d3b825d0f6b6f4492a19888407bbac, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
@@ -18,7 +18,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Material
-    second: {fileID: 2100000, guid: 8907d23759808ee4f9e4200318cb7bce, type: 2}
+    second: {fileID: 2100000, guid: 2173f92883809174e8b78c428ec2fab0, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

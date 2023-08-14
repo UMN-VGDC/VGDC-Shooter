@@ -30,7 +30,6 @@ public class SoundManager : MonoBehaviour
         EntityHealth.enemyHit += AddEnemyHitQueue;
         Shoot.shootBullet += AddShootQueue;
         EnemyDeath.deathSound += EnemyDeathSound;
-        EntityHealth.deathSound += EnemyDeathSound;
         WaterSplash.splashSound += AddWaterSplashQueue;
         UIManager.scoreStreak += PlayStreakSound;
         Missile.missileLaunchSound += PlaySound;
@@ -87,7 +86,6 @@ public class SoundManager : MonoBehaviour
         EntityHealth.enemyHit -= AddEnemyHitQueue;
         Shoot.shootBullet -= AddShootQueue;
         EnemyDeath.deathSound -= EnemyDeathSound;
-        EntityHealth.deathSound -= EnemyDeathSound;
         WaterSplash.splashSound -= AddWaterSplashQueue;
         UIManager.scoreStreak -= PlayStreakSound;
         Missile.missileLaunchSound -= PlaySound;
