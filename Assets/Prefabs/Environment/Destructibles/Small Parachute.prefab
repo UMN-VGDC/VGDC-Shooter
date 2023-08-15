@@ -47,6 +47,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   renderer: {fileID: 5678124103659373452}
+  swayAmount: 10
+  swaySpeed: 1.5
+  descendSpeed: 0.5
 --- !u!1001 &436103801569138530
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -179,30 +182,30 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7394178703749850155, guid: 658225877a8ff2d4caa66d403f51dc5d, type: 3}
       propertyPath: deathCallback.m_PersistentCalls.m_Calls.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7394178703749850155, guid: 658225877a8ff2d4caa66d403f51dc5d, type: 3}
-      propertyPath: deathCallback.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      propertyPath: deathCallback.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7394178703749850155, guid: 658225877a8ff2d4caa66d403f51dc5d, type: 3}
-      propertyPath: deathCallback.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      propertyPath: deathCallback.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
       objectReference: {fileID: 2816067858442380482}
     - target: {fileID: 7394178703749850155, guid: 658225877a8ff2d4caa66d403f51dc5d, type: 3}
-      propertyPath: deathCallback.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      propertyPath: deathCallback.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7394178703749850155, guid: 658225877a8ff2d4caa66d403f51dc5d, type: 3}
-      propertyPath: deathCallback.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      propertyPath: deathCallback.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
       value: FadeParachute
       objectReference: {fileID: 0}
     - target: {fileID: 7394178703749850155, guid: 658225877a8ff2d4caa66d403f51dc5d, type: 3}
-      propertyPath: deathCallback.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      propertyPath: deathCallback.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
       value: ParachuteFade, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 7394178703749850155, guid: 658225877a8ff2d4caa66d403f51dc5d, type: 3}
-      propertyPath: deathCallback.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      propertyPath: deathCallback.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 9163650664258604356, guid: 658225877a8ff2d4caa66d403f51dc5d, type: 3}

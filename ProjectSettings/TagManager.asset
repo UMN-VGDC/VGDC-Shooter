@@ -17,6 +17,8 @@ TagManager:
   - Boss Enemy
   - Player Target
   - Attack Radius
+  - Item Drops
+  - Money Target
   layers:
   - Default
   - TransparentFX

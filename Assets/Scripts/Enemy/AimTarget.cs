@@ -16,6 +16,7 @@ public class AimTarget : MonoBehaviour
     [SerializeField] private ParticleSystem timeoutVFX;
     [SerializeField] private ParticleSystem timerVFX, timerBreakVFX;
     [SerializeField] private AudioClip targetBreakSound;
+    private bool isDestroyed;
 
     public static Action<AudioClip> playTargetBreakSound;
 
@@ -47,7 +48,7 @@ public class AimTarget : MonoBehaviour
 
     public void EnableTarget()
     {
-        if (gameObject == null) return;
+        if (isDestroyed) return;
         target.SetActive(true);
         entityHealth.ResetHealth();
         textMeshPro.DOColor(textCol, 1f);
@@ -71,5 +72,10 @@ public class AimTarget : MonoBehaviour
     {
         ParticleSystem.MainModule main = timerVFX.main;
         return main.startLifetime.constant;
+    }
+
+    private void OnDestroy()
+    {
+        isDestroyed = true;
     }
 }

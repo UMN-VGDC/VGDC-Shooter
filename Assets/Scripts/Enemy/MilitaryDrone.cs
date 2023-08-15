@@ -101,6 +101,7 @@ public class MilitaryDrone : MultiTargetEnemy
     private int currentIndex;
     private async void FireMissiles(int randomIndex)
     {
+        if (isDestroyed) return;
         randomIndex += currentIndex;
         int index = randomIndex % missileSpawners.Length;
         Instantiate(missile, missileSpawners[index].position, missileSpawners[index].rotation);

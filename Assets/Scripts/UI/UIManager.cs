@@ -41,6 +41,7 @@ public class UIManager : MonoBehaviour
         PlayerHealth.damageTaken += spawnBloodScratch;
         PlayerHealth.damageTakenAmount += AddPoints;
         Bullet.killPoints += AddPoints;
+        FlamethrowerHurtbox.killPoints += AddPoints;
         SoundManager.flameThrower += SpeedLinesEffect;
         Bullet.crit += CritPoints;
         MultiTargetEnemy.multiTargetsPoints += AddPoints;
@@ -173,6 +174,7 @@ public class UIManager : MonoBehaviour
         PlayerHealth.damageTaken -= spawnBloodScratch;
         PlayerHealth.damageTakenAmount -= AddPoints;
         Bullet.killPoints -= AddPoints;
+        FlamethrowerHurtbox.killPoints -= AddPoints;
         SoundManager.flameThrower -= SpeedLinesEffect;
         Bullet.crit -= CritPoints;
         MultiTargetEnemy.multiTargetsPoints -= AddPoints;

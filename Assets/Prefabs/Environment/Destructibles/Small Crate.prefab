@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 9002426028100527436}
   - component: {fileID: 7394178703749850155}
   - component: {fileID: 1332050848405688603}
+  - component: {fileID: -6387435601606001546}
   m_Layer: 0
   m_Name: Small Crate
   m_TagString: Entity
@@ -64,6 +65,18 @@ MonoBehaviour:
   deathCallback:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: -6387435601606001546}
+        m_TargetAssemblyTypeName: DropMoney, Assembly-CSharp
+        m_MethodName: DropCoins
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 1332050848405688603}
         m_TargetAssemblyTypeName: EnemyDeath, Assembly-CSharp
         m_MethodName: KillEnemy
@@ -101,6 +114,22 @@ MonoBehaviour:
   hideObjects: []
   deathSounds:
   - {fileID: 8300000, guid: 4b6389d32d1888943b1d2170c9c201d1, type: 3}
+--- !u!114 &-6387435601606001546
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9163650664258604356}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83079da1e7e93f54a8e783c15dd6ed37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  coins:
+  - {fileID: 8342039837284437488, guid: 558cc8adcffced748af7a2768697212e, type: 3}
+  - {fileID: 3093141382673008429, guid: 54608af816c116d4cb5c1e601f161211, type: 3}
+  amount: 5
 --- !u!1001 &4779657450252587017
 PrefabInstance:
   m_ObjectHideFlags: 0
