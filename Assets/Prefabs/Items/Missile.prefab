@@ -19414,7 +19414,7 @@ MonoBehaviour:
         m_CallState: 2
   flashColor: {r: 51, g: 0, b: 0, a: 1}
   playerDamage: 150
-  points: 100
+  points: 0
   enemyLoadType: 3
   enemyLoad: 0
 --- !u!114 &7333935884890075113

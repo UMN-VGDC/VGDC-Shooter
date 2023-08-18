@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,14 +11,18 @@ public class MoneyUIAnimation : MonoBehaviour
     [SerializeField] private float speed = 1f;
     [SerializeField] private float rotationSpeed = 80f;
     [SerializeField] private GameObject particles;
+    [SerializeField] private AudioClip moneySound;
+    [SerializeField] private int moneyValue = 1;
     private float rotationSpeedup, slowSpeed, distance;
+    public static Action<AudioClip> playMoneySound;
+    public static Action<int> moneyAdd;
 
     // Start is called before the first frame update
     void Start()
     {
         moneyTarget = GameObject.FindGameObjectWithTag("Money Target").transform;
-        rotationSpeedup = rotationSpeed * 2f;
-        slowSpeed = speed * 0.3f;
+        rotationSpeedup = rotationSpeed * 4f;
+        slowSpeed = speed * 0.6f;
         distance = Vector3.Distance(transform.position, moneyTarget.position);
     }
 
@@ -34,6 +39,8 @@ public class MoneyUIAnimation : MonoBehaviour
         {
             GameObject instantiatedParticles = Instantiate(particles, transform.position, Quaternion.identity);
             instantiatedParticles.transform.parent = moneyTarget;
+            playMoneySound?.Invoke(moneySound);
+            moneyAdd?.Invoke(moneyValue);
             Destroy(gameObject);
         }
     }

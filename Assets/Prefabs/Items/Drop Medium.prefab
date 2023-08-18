@@ -81,6 +81,8 @@ MonoBehaviour:
   speed: 1
   rotationSpeed: 300
   particles: {fileID: 3163296601722359262, guid: 321db69e51098ab439423c0918395b4b, type: 3}
+  moneySound: {fileID: 8300000, guid: 5093f7f3ba7f6ee4da7597e9750a9c26, type: 3}
+  moneyValue: 2
 --- !u!1001 &6207293412440531841
 PrefabInstance:
   m_ObjectHideFlags: 0

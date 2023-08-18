@@ -266,8 +266,7 @@ MonoBehaviour:
         m_CallState: 2
   flashColor: {r: 51, g: 0, b: 0, a: 1}
   playerDamage: 1
-  deathSounds: []
-  points: 100
+  points: 0
   enemyLoadType: 3
   enemyLoad: 0
 --- !u!114 &8345015183336139791
@@ -286,7 +285,7 @@ MonoBehaviour:
   DeathSpawn:
   - {fileID: 7659967183269577210, guid: bb3e8a2531ed8d34a80ac4cb9fff5b25, type: 3}
   deathSpawnPos: {fileID: 0}
-  spawnYOffset: 0
+  deathSpawnScale: 1
   hideObjects: []
   deathSounds:
   - {fileID: 8300000, guid: a20217188dc6e8a4e9945ec832849b50, type: 3}

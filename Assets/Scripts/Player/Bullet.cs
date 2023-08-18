@@ -54,6 +54,7 @@ public class Bullet : MonoBehaviour
             m_Rigidbody.isKinematic = true;
             yield return 0;
             OnTriggerEnterFixed();
+            if (hit2.collider.gameObject == null) yield break;
             EntityHit(hit2.collider.gameObject);
             if (hit2.collider.gameObject.tag == "Head" && hit2.transform.root.tag == "Entity")
             {

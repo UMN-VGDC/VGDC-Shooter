@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 6401830544405717668}
   - component: {fileID: -640839621485466500}
   m_Layer: 0
-  m_Name: Enemy Bullet
+  m_Name: Fishie Bullet
   m_TagString: Enemy Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -128,4 +128,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 6
-  playerDamage: 120
+  playerDamage: 400

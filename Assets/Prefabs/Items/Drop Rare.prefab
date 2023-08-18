@@ -50,6 +50,8 @@ MonoBehaviour:
   speed: 1
   rotationSpeed: 300
   particles: {fileID: 3163296601722359262, guid: 1aa53914a896c244b890b342d1db7650, type: 3}
+  moneySound: {fileID: 8300000, guid: c171d3e2d8d9e7f40997eea1fff55f60, type: 3}
+  moneyValue: 4
 --- !u!1 &8770187146410489167
 GameObject:
   m_ObjectHideFlags: 0

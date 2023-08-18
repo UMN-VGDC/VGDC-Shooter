@@ -10,7 +10,7 @@ public class SoundManager : MonoBehaviour
 {
     [SerializeField] private AudioMixer audioMixer;
     [SerializeField] private AudioClip[] playerDamageSounds;
-    [SerializeField] private AudioSource enemyAudioSource;
+    [SerializeField] private AudioSource enemyAudioSource, moneyAudioSource;
     [SerializeField] private AudioClip critSound, bulletImpact, enemyHit, shootSound, waterSplashSound;
     [Header("Streak")]
     [SerializeField] private AudioSource streakAudioSource;
@@ -18,7 +18,7 @@ public class SoundManager : MonoBehaviour
     [SerializeField] private AudioClip[] familyVoice;
 
     private static AudioSource audioSource;
-    private QueueSound critQueue, shootQueue, enemyHitQueue, waterSplashQueue;
+    private QueueSound shootQueue, enemyHitQueue, waterSplashQueue;
 
     public static Action flameThrower;
 
@@ -31,9 +31,11 @@ public class SoundManager : MonoBehaviour
         Shoot.shootBullet += AddShootQueue;
         EnemyDeath.deathSound += EnemyDeathSound;
         WaterSplash.splashSound += AddWaterSplashQueue;
-        UIManager.scoreStreak += PlayStreakSound;
+        ScoreStreakManager.scoreStreak += PlayStreakSound;
+        MoneyManager.playSwitchBarFullSound += SwitchBarFull;
         Missile.missileLaunchSound += PlaySound;
         Flashbang.flashbangExplode += FlashbangMuffle;
+        MoneyUIAnimation.playMoneySound += PlayMoneySound;
 
         shootQueue = new QueueSound(shootSound, 100);
         enemyHitQueue = new QueueSound(enemyHit, 100);
@@ -75,7 +77,18 @@ public class SoundManager : MonoBehaviour
         });
     }
 
+    private void SwitchBarFull(AudioClip clip)
+    {
+        PlayMoneySound(clip);
+        //lower volume of Player & Enemy Sounds
+        DOVirtual.Float(-9.4f, 0f, 2f, e =>
+        {
+            audioMixer.SetFloat("PlayerEnemyVolume", e);
+        });
+    }
+
     public static void PlaySound(AudioClip clip) => audioSource.PlayOneShot(clip);
+    private void PlayMoneySound(AudioClip clip) => moneyAudioSource.PlayOneShot(clip);
     private void AddWaterSplashQueue() => waterSplashQueue.SoundQueue();
     private void AddShootQueue() => shootQueue.SoundQueue();
     private void AddEnemyHitQueue() => enemyHitQueue.SoundQueue();
@@ -87,9 +100,11 @@ public class SoundManager : MonoBehaviour
         Shoot.shootBullet -= AddShootQueue;
         EnemyDeath.deathSound -= EnemyDeathSound;
         WaterSplash.splashSound -= AddWaterSplashQueue;
-        UIManager.scoreStreak -= PlayStreakSound;
+        ScoreStreakManager.scoreStreak -= PlayStreakSound;
+        MoneyManager.playSwitchBarFullSound -= SwitchBarFull;
         Missile.missileLaunchSound -= PlaySound;
         Flashbang.flashbangExplode -= FlashbangMuffle;
+        MoneyUIAnimation.playMoneySound -= PlayMoneySound;
     }
 }
 

@@ -13,6 +13,6 @@ public static class PlayModeStateChangedExample
     private static void LogPlayModeState(PlayModeStateChange state)
     {
         Missile.missileCount = 0;
-        UIManager.Instance.ResetEffects();
+        ScoreStreakManager.Instance.ResetEffects();
     }
 }

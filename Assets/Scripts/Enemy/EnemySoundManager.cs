@@ -6,7 +6,7 @@ public class EnemySoundManager : MonoBehaviour
 {
     private AudioSource audioSource;
     [SerializeField] private AudioSource flashBangAudioSource;
-    [SerializeField] private AudioClip timerAlert, timerHurrySound, timerTimeout, targetBreak;
+    [SerializeField] private AudioClip timerAlert, timerHurrySound, timerTimeout;
     [SerializeField] private AudioClip bossShieldDown;
     [SerializeField] private AudioClip flashbangExplode, flashbangRing;
 

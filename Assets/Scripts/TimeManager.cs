@@ -8,12 +8,15 @@ public class TimeManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        UIManager.scoreStreak += StreakTimeWarp;
+        ScoreStreakManager.scoreStreak += StreakTimeWarp;
+        MoneyManager.activateSwitch += MoneyFull;
     }
 
-    private void StreakTimeWarp()
+    private void StreakTimeWarp() => TimeWarp(1f);
+    private void MoneyFull() => TimeWarp(0.6f);
+    private void TimeWarp(float duration)
     {
-        DOVirtual.Float(0.1f, 1f, 1f, e =>
+        DOVirtual.Float(0.1f, 1f, duration, e =>
         {
             Time.timeScale = e;
         });
@@ -21,6 +24,7 @@ public class TimeManager : MonoBehaviour
 
     private void OnDestroy()
     {
-        UIManager.scoreStreak -= StreakTimeWarp;
+        ScoreStreakManager.scoreStreak -= StreakTimeWarp;
+        MoneyManager.activateSwitch -= MoneyFull;
     }
 }
