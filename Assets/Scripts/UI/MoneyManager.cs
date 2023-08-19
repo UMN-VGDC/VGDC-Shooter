@@ -2,6 +2,7 @@ using DG.Tweening;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,6 +13,7 @@ public class MoneyManager : MonoBehaviour
     [SerializeField] private RectTransform SwitchBarContainer, switchIcon;
     [SerializeField] private AudioClip switchBarFullSound;
     [SerializeField] private int moneyRequirement = 40;
+    [SerializeField] private Animator hatchAnimator;
     private float currentFill, currentMoney;
     private bool isFilled;
 
@@ -49,7 +51,7 @@ public class MoneyManager : MonoBehaviour
             currentFill = 1;
             float scale = 3f;
             SwitchBarContainer.localScale = new Vector3(scale, scale, scale);
-            SwitchBarContainer.DOScale(new Vector3(1, 1, 1), 2f);
+            SwitchBarContainer.DOScale(new Vector3(1, 1, 1), 2f).OnComplete(() => SwitchWeaponSequence());
             switchIcon.DORotate(new Vector3(0, 0, 360), 1.5f, RotateMode.FastBeyond360).SetLoops(-1, LoopType.Restart).SetEase(Ease.Linear);
             activateSwitch?.Invoke();
             playSwitchBarFullSound?.Invoke(switchBarFullSound);
@@ -61,6 +63,19 @@ public class MoneyManager : MonoBehaviour
             SwitchBarContainer.localScale = new Vector3(scale, scale, scale);
             SwitchBarContainer.DOScale(new Vector3(1, 1, 1), 2f);
         }
+    }
+
+    private async void SwitchWeaponSequence()
+    {
+        hatchAnimator.SetTrigger("Open");
+        await Task.Delay(4000);
+        hatchAnimator.SetTrigger("Close");
+        isFilled = false;
+        currentFill = 0f;
+        currentMoney = 0f;
+        DOVirtual.Float(1f, 0f, 0.5f, e => UISwitchBar.fillAmount = e).SetEase(Ease.OutQuad);
+        DOTween.Kill(switchIcon);
+        switchIcon.DORotate(Vector3.zero, 1f);
     }
 
     private void InstantiateMoney(Transform pos, int amount)

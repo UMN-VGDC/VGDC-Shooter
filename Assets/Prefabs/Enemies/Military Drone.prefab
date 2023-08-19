@@ -50625,7 +50625,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd8c7907e1111174d9af4d0a22fd73ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 80
+  health: 65
   deathCallback:
     m_PersistentCalls:
       m_Calls:

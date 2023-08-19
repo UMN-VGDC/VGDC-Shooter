@@ -67,12 +67,7 @@ public class ScoreStreakManager : MonoBehaviour
             score.color = streakColor;
             score.fontMaterial.SetColor(ShaderUtilities.ID_OutlineColor, streakOutlineColor);
             scaleAmount = 3f;
-            scoreStreakBar.fillAmount = 1;
-            DOVirtual.Color(streakColor, Color.white, 1f, e =>
-            {
-                scoreStreakBar.color = e;
-            });
-            barFillSpeed = 2;
+            ResetBar();
         }
 
         score.text = currentScore.ToString();
@@ -103,13 +98,28 @@ public class ScoreStreakManager : MonoBehaviour
         add.GetComponent<ScoreAddEffect>().SetText(amount);
     }
 
+    private bool isBarReset;
+    private async void ResetBar()
+    {
+        isBarReset = true;
+        scoreStreakBar.fillAmount = 1;
+        DOVirtual.Color(streakColor, Color.white, 1f, e =>
+        {
+            scoreStreakBar.color = e;
+        });
+        barFillSpeed = 2;
+        await Task.Delay(700);
+        scoreStreakBarGreen.fillAmount = (currentScore - (currentStreak - streakCount)) / (float)streakCount;
+        isBarReset = false;
+    }
+
     private void Update()
     {
-        if (scoreCanKill)
+        if (!isBarReset)
         {
             scoreStreakBar.fillAmount = Mathf.MoveTowards(scoreStreakBar.fillAmount, scoreStreakBarGreen.fillAmount, Time.deltaTime * barFillSpeed);
             barFillSpeed = Mathf.MoveTowards(barFillSpeed, 0.13f, Time.deltaTime);
-        }
+        }       
     }
 
     private async void SpeedLinesEffect()

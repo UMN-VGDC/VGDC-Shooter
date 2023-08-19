@@ -19,6 +19,9 @@ TagManager:
   - Attack Radius
   - Item Drops
   - Money Target
+  - Gun Aim Target
+  - Left Hand IK
+  - Right Hand IK
   layers:
   - Default
   - TransparentFX
@@ -34,7 +37,7 @@ TagManager:
   - 
   - Tracking
   - FX
-  - 
+  - Aim Ignore
   - 
   - 
   - 

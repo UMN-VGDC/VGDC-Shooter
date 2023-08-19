@@ -11,7 +11,7 @@ public class SoundManager : MonoBehaviour
     [SerializeField] private AudioMixer audioMixer;
     [SerializeField] private AudioClip[] playerDamageSounds;
     [SerializeField] private AudioSource enemyAudioSource, moneyAudioSource;
-    [SerializeField] private AudioClip critSound, bulletImpact, enemyHit, shootSound, waterSplashSound;
+    [SerializeField] private AudioClip critSound, defaultShootSound, enemyHit, waterSplashSound;
     [Header("Streak")]
     [SerializeField] private AudioSource streakAudioSource;
     [SerializeField] private AudioClip scoreStreakSound, carRevSound;
@@ -29,6 +29,7 @@ public class SoundManager : MonoBehaviour
         PlayerHealth.damageTaken += PlayerDamage;
         EntityHealth.enemyHit += AddEnemyHitQueue;
         Shoot.shootBullet += AddShootQueue;
+        Shoot.setShootSound += ReplaceShootSound;
         EnemyDeath.deathSound += EnemyDeathSound;
         WaterSplash.splashSound += AddWaterSplashQueue;
         ScoreStreakManager.scoreStreak += PlayStreakSound;
@@ -37,11 +38,14 @@ public class SoundManager : MonoBehaviour
         Flashbang.flashbangExplode += FlashbangMuffle;
         MoneyUIAnimation.playMoneySound += PlayMoneySound;
 
-        shootQueue = new QueueSound(shootSound, 100);
         enemyHitQueue = new QueueSound(enemyHit, 100);
         waterSplashQueue = new QueueSound(waterSplashSound, 70);
+        shootQueue = new QueueSound(defaultShootSound, 100);
+    }
 
-
+    private void ReplaceShootSound(AudioClip clip)
+    {
+        shootQueue.delayedAudioClip = clip;
     }
 
     private void EnemyDeathSound(AudioClip[] clip)
@@ -98,6 +102,7 @@ public class SoundManager : MonoBehaviour
         PlayerHealth.damageTaken -= PlayerDamage;
         EntityHealth.enemyHit -= AddEnemyHitQueue;
         Shoot.shootBullet -= AddShootQueue;
+        Shoot.setShootSound -= ReplaceShootSound;
         EnemyDeath.deathSound -= EnemyDeathSound;
         WaterSplash.splashSound -= AddWaterSplashQueue;
         ScoreStreakManager.scoreStreak -= PlayStreakSound;
@@ -110,12 +115,12 @@ public class SoundManager : MonoBehaviour
 
 public class QueueSound
 {
-    private AudioClip audioClip;
+    public AudioClip delayedAudioClip;
     private int audioDelay;
     private bool isPlaying;
     public QueueSound(AudioClip clip, int delay)
     {
-        audioClip = clip;
+        delayedAudioClip = clip;
         audioDelay = delay;
     }
 
@@ -124,7 +129,7 @@ public class QueueSound
         if (isPlaying) return;
         isPlaying = true;
         await Task.Delay(audioDelay);
-        SoundManager.PlaySound(audioClip);
+        SoundManager.PlaySound(delayedAudioClip);
         isPlaying = false;
     }
 }

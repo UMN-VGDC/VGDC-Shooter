@@ -5,62 +5,49 @@ using System.Collections.Generic;
 using Unity.Burst.CompilerServices;
 using UnityEngine;
 
-public class Shoot : MonoBehaviour
+public abstract class Shoot : MonoBehaviour
 {
 
-    [SerializeField] private GameObject crossHair;
-    [SerializeField] private Transform spawner;
-    [SerializeField] private GameObject bullet;
     [SerializeField] private int fireRate = 30;
-    [SerializeField] private LayerMask bulletLayerMask;
-
-    [SerializeField] private GameObject recoilObject;
-    [SerializeField] private float recoilStrength = 5f;
-
-    [SerializeField] private ParticleSystem muzzleFlash;
-
+    [SerializeField] private AudioClip shootSound;
+    [SerializeField] private Transform leftHandTransform, rightHandTransform;
     private float _currentFireCountdown = 1f;
-    private bool isShooting;
+    private Transform leftIK, rightIK;
+    protected Transform lookAt;
+    protected bool isContinuousShoot;
 
-    public static event Action shootBullet;
+    public static Action shootBullet;
+    public static Action<AudioClip> setShootSound;
 
-    // Start is called before the first frame update
-    void Start()
+    protected virtual void Start()
     {
-        isShooting = true;
+        lookAt = GameObject.FindGameObjectWithTag("Gun Aim Target").transform;
+        leftIK = GameObject.FindGameObjectWithTag("Left Hand IK").transform;
+        rightIK = GameObject.FindGameObjectWithTag("Right Hand IK").transform;
+    }
+
+    private void OnEnable()
+    {
+        setShootSound?.Invoke(shootSound);
     }
 
     // Update is called once per frame
-    void Update()
+    protected virtual void Update()
     {
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        RaycastHit hit;
-        if (Physics.Raycast(ray, out hit, 10000, ~bulletLayerMask))
-        {
-            crossHair.transform.position = hit.point;
-            transform.LookAt(hit.point);
-        }
-
-        if (isShooting) ShootBullet();
-
-    }
-
-    private void ShootBullet()
-    {
+        transform.LookAt(lookAt);
         _currentFireCountdown = Mathf.MoveTowards(_currentFireCountdown, 0f, Time.deltaTime * fireRate);
         if (_currentFireCountdown <= 0f)
         {
-            Instantiate(bullet, spawner.position, transform.rotation);
-            Recoil();
-            muzzleFlash.Play();
-            shootBullet?.Invoke();
+            ShootBullet();
+            if (!isContinuousShoot) shootBullet?.Invoke();
             _currentFireCountdown = 1f;
         }
+
+        leftIK.position = leftHandTransform.position;
+        leftIK.rotation = leftHandTransform.rotation;
+        rightIK.position = rightHandTransform.position;
+        rightIK.rotation = rightHandTransform.rotation;
     }
 
-    private void Recoil()
-    {
-        recoilObject.transform.localPosition = new Vector3(0, 0, 0);
-        recoilObject.transform.DOLocalMoveZ(0f - (0.1f * recoilStrength), 0.01f);
-    }
+    protected abstract void ShootBullet();
 }

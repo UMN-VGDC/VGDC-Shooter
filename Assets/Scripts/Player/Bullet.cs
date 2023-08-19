@@ -4,7 +4,7 @@ using UnityEngine;
 using Cysharp.Threading.Tasks;
 using System;
 
-public class Bullet : MonoBehaviour
+public class Bullet : DamageEnemy
 {
 
     [SerializeField] private float speed = 2f;
@@ -12,9 +12,6 @@ public class Bullet : MonoBehaviour
     [SerializeField] private Color flashColor;
     [SerializeField] private GameObject critEffect;
     [SerializeField] private GameObject bulletImpactEffect;
-
-    public static Action crit;
-    public static Action<int> killPoints;
 
     Rigidbody m_Rigidbody;
     private bool isDestroyed;
@@ -46,7 +43,6 @@ public class Bullet : MonoBehaviour
         Vector3 prediction = transform.position + m_Rigidbody.velocity * Time.fixedDeltaTime;
         RaycastHit hit2;
         int layerMask =~ LayerMask.GetMask("Bullet");
-        //Debug.DrawLine(transform.position, prediction);
         if(Physics.Linecast(transform.position, prediction, out hit2, layerMask))
         {
             transform.position = hit2.point;
@@ -67,29 +63,6 @@ public class Bullet : MonoBehaviour
     void OnTriggerEnterFixed()
     {
        Destroy(gameObject); 
-    }
-
-    void EntityHit(GameObject entity)
-    {   
-        var root = entity.transform.root;
-        if (entity.tag == "Head" && root.tag == "Entity")
-        {
-            killPoints?.Invoke(root.GetComponent<EntityHealth>().DecreaseHealth(2));
-            crit?.Invoke();
-            return;
-        }
-
-        if (root.tag == "Entity")
-        {
-            killPoints?.Invoke(root.GetComponent<EntityHealth>().DecreaseHealth(1));
-            return;
-        }
-
-        if (entity.tag == "Entity")
-        {
-            killPoints?.Invoke(entity.GetComponent<EntityHealth>().DecreaseHealth(1));
-        }
-
     }
 
     void OnDestroy()
