@@ -9,6 +9,7 @@ public class Laser : Shoot
     [SerializeField] private ParticleSystem trailParticles;
     [SerializeField] private CrossHair crossHair;
     private float trailEmissionDefault;
+    private AudioSource audioSource;
 
     protected override void ShootBullet()
     {
@@ -22,6 +23,13 @@ public class Laser : Shoot
         isContinuousShoot = true;
         CrossHair.raycastObject += LaserTrail;
         trailEmissionDefault = trailParticles.emission.rateOverTime.constantMax;
+    }
+
+    private void OnEnable()
+    {
+        audioSource = GetComponent<AudioSource>();
+        audioSource.clip = shootSound;
+        audioSource.Play();
     }
 
     private void LaserTrail(Transform hitPos)

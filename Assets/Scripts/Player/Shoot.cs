@@ -9,12 +9,13 @@ public abstract class Shoot : MonoBehaviour
 {
 
     [SerializeField] private int fireRate = 30;
-    [SerializeField] private AudioClip shootSound;
+    [SerializeField] protected AudioClip shootSound;
     [SerializeField] private Transform leftHandTransform, rightHandTransform;
     private float _currentFireCountdown = 1f;
     private Transform leftIK, rightIK;
     protected Transform lookAt;
     protected bool isContinuousShoot;
+    protected bool isLookAt = true;
 
     public static Action shootBullet;
     public static Action<AudioClip> setShootSound;
@@ -24,6 +25,7 @@ public abstract class Shoot : MonoBehaviour
         lookAt = GameObject.FindGameObjectWithTag("Gun Aim Target").transform;
         leftIK = GameObject.FindGameObjectWithTag("Left Hand IK").transform;
         rightIK = GameObject.FindGameObjectWithTag("Right Hand IK").transform;
+        setShootSound?.Invoke(shootSound);
     }
 
     private void OnEnable()
@@ -34,7 +36,7 @@ public abstract class Shoot : MonoBehaviour
     // Update is called once per frame
     protected virtual void Update()
     {
-        transform.LookAt(lookAt);
+        if (isLookAt) transform.LookAt(lookAt);
         _currentFireCountdown = Mathf.MoveTowards(_currentFireCountdown, 0f, Time.deltaTime * fireRate);
         if (_currentFireCountdown <= 0f)
         {

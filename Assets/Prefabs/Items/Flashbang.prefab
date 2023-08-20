@@ -428,14 +428,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lookAtTransform: {fileID: 3521615899726274418}
-  turnspeed: 80
-  speed: 15
-  slowSpeed: 1
+  turnspeed: 120
+  speed: 17
+  slowSpeed: 0.5
   grenadeTransform: {fileID: 801773775833413542}
   flash: {fileID: 5576341305937005707}
   flashCount: 20
   beepSound: {fileID: 8300000, guid: a176ae41488f1f6498c7d7ca24ea69bb, type: 3}
-  slowDistance: 5
+  slowDistance: 6
 --- !u!1001 &912753518479888461
 PrefabInstance:
   m_ObjectHideFlags: 0

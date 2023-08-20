@@ -23,7 +23,7 @@ public class SoundManager : MonoBehaviour
     public static Action flameThrower;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         audioSource = GetComponent<AudioSource>();
         PlayerHealth.damageTaken += PlayerDamage;
@@ -34,9 +34,11 @@ public class SoundManager : MonoBehaviour
         WaterSplash.splashSound += AddWaterSplashQueue;
         ScoreStreakManager.scoreStreak += PlayStreakSound;
         MoneyManager.playSwitchBarFullSound += SwitchBarFull;
+        MoneyManager.activateSwitchSound += PlaySound;
         Missile.missileLaunchSound += PlaySound;
         Flashbang.flashbangExplode += FlashbangMuffle;
         MoneyUIAnimation.playMoneySound += PlayMoneySound;
+        RandomizeGun.playSelectSound += PlaySound;
 
         enemyHitQueue = new QueueSound(enemyHit, 100);
         waterSplashQueue = new QueueSound(waterSplashSound, 70);
@@ -107,9 +109,11 @@ public class SoundManager : MonoBehaviour
         WaterSplash.splashSound -= AddWaterSplashQueue;
         ScoreStreakManager.scoreStreak -= PlayStreakSound;
         MoneyManager.playSwitchBarFullSound -= SwitchBarFull;
+        MoneyManager.activateSwitchSound -= PlaySound;
         Missile.missileLaunchSound -= PlaySound;
         Flashbang.flashbangExplode -= FlashbangMuffle;
         MoneyUIAnimation.playMoneySound -= PlayMoneySound;
+        RandomizeGun.playSelectSound -= PlaySound;
     }
 }
 

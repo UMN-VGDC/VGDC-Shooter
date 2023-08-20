@@ -42,7 +42,7 @@ public class Flashbang : MonoBehaviour
         transform.position += transform.forward * speed * Time.deltaTime;
 
         float distance = Vector3.Distance(transform.position, playerPos.position);
-        if (distance > slowDistance && !isParented)
+        if (distance < slowDistance && !isParented)
         {
             transform.SetParent(playerPos);
             speed = slowSpeed;

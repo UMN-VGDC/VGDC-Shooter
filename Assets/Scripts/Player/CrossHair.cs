@@ -8,6 +8,7 @@ public class CrossHair : DamageEnemy
 {
     [SerializeField] private LayerMask bulletLayerMask;
     [SerializeField] private Transform aimTarget;
+    [SerializeField] private GameObject critEffect;
     private Camera mainCamera;
 
     public static Action<Transform> raycastObject;
@@ -37,6 +38,11 @@ public class CrossHair : DamageEnemy
 
     public void DecreaseEnemyHealth(int amount, int critAmount)
     {
+        if (hitTransform == null) return;
+        if (hitTransform.gameObject.tag == "Head" && hitTransform.root.tag == "Entity")
+        {
+            Instantiate(critEffect, aimTarget.position, Quaternion.identity);
+        }
         EntityHit(hitTransform.gameObject, amount, critAmount);
     }
 }

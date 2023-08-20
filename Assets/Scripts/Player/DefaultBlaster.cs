@@ -11,11 +11,6 @@ public class DefaultBlaster : Shoot
     [SerializeField] private float recoilStrength = 5f;
     [SerializeField] private ParticleSystem muzzleFlash;
 
-    protected override void Start()
-    {
-        base.Start();
-    }
-
     protected override void ShootBullet()
     {
         Instantiate(bullet, spawner.position, transform.rotation);
