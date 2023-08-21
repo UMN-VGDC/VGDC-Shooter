@@ -10,7 +10,7 @@ public class SoundManager : MonoBehaviour
 {
     [SerializeField] private AudioMixer audioMixer;
     [SerializeField] private AudioClip[] playerDamageSounds;
-    [SerializeField] private AudioSource enemyAudioSource, moneyAudioSource;
+    [SerializeField] private AudioSource enemyAudioSource, moneyAudioSource, newWeaponAudioSource;
     [SerializeField] private AudioClip critSound, defaultShootSound, enemyHit, waterSplashSound;
     [Header("Streak")]
     [SerializeField] private AudioSource streakAudioSource;
@@ -39,6 +39,7 @@ public class SoundManager : MonoBehaviour
         Flashbang.flashbangExplode += FlashbangMuffle;
         MoneyUIAnimation.playMoneySound += PlayMoneySound;
         RandomizeGun.playSelectSound += PlaySound;
+        RandomizeGun.gunSelectGraphic += GunSelectGraphicQuiet;
 
         enemyHitQueue = new QueueSound(enemyHit, 100);
         waterSplashQueue = new QueueSound(waterSplashSound, 70);
@@ -73,6 +74,14 @@ public class SoundManager : MonoBehaviour
         await Task.Delay((int)Math.Round(randomSound.length * 1000) - 300);
         streakAudioSource.PlayOneShot(carRevSound);
         flameThrower?.Invoke();
+    }
+
+    private void GunSelectGraphicQuiet()
+    {
+        newWeaponAudioSource.Play();
+        Sequence s = DOTween.Sequence();
+        s.Append(DOVirtual.Float(0, -11, 0.6f, e => audioMixer.SetFloat("CombatVolume", e))).SetUpdate(true);
+        s.Append(DOVirtual.Float(-11, 0, 0.6f, e => audioMixer.SetFloat("CombatVolume", e)).SetDelay(1f)).SetUpdate(true);
     }
 
     private void FlashbangMuffle()
@@ -114,6 +123,7 @@ public class SoundManager : MonoBehaviour
         Flashbang.flashbangExplode -= FlashbangMuffle;
         MoneyUIAnimation.playMoneySound -= PlayMoneySound;
         RandomizeGun.playSelectSound -= PlaySound;
+        RandomizeGun.gunSelectGraphic -= GunSelectGraphicQuiet;
     }
 }
 

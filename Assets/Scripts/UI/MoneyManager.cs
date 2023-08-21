@@ -79,7 +79,7 @@ public class MoneyManager : MonoBehaviour
         activateSwitchSound?.Invoke(hatchSound);
         DOVirtual.Float(0f, 1f, 2f, e => glowGroup.alpha = e);
         hatchAnimator.SetTrigger("Open");
-        await Task.Delay(4000);
+        await Task.Delay(4500);
         hatchAnimator.SetTrigger("Close");
         isFilled = false;
         currentFill = 0f;

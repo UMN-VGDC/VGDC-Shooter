@@ -11,13 +11,20 @@ public class FadeBloodScratchDecal : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        RandomizeGun.gunSelectGraphic += FadeDecal;
         image = GetComponent<Image>();
         image.DOColor(new Color(0, 0, 0, 0), fadeDuration).SetDelay(0.5f).onComplete = () => Destroy(gameObject);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void FadeDecal()
     {
-      
+        DOTween.Kill(image);
+        image.DOColor(new Color(0, 0, 0, 0), 0.3f).onComplete = () => Destroy(gameObject);
+    }
+
+    private void OnDestroy()
+    {
+        RandomizeGun.gunSelectGraphic -= FadeDecal;
+        DOTween.Kill(image);
     }
 }

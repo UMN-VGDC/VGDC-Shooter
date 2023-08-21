@@ -5,6 +5,7 @@ using UnityEngine;
 using DG.Tweening;
 using System;
 using System.Threading.Tasks;
+using Unity.VisualScripting;
 
 public class UIManager : MonoBehaviour
 {
@@ -19,6 +20,7 @@ public class UIManager : MonoBehaviour
     private bool warningIsPlaying;
 
     private bool isDestroyed;
+    private bool canBloodSpawn = true;
     public static Action<AudioClip> warningSound;
 
     // Start is called before the first frame update
@@ -26,6 +28,14 @@ public class UIManager : MonoBehaviour
     {
         PlayerHealth.damageTaken += spawnBloodScratch;
         Spawner.bossSpawned += BossWarningEffect;
+        RandomizeGun.gunSelectGraphic += PreventBloodSpawn;
+    }
+
+    private async void PreventBloodSpawn()
+    {
+        canBloodSpawn = false;
+        await Task.Delay(2000);
+        canBloodSpawn = true;
     }
 
     private async void BossWarningEffect()
@@ -58,6 +68,7 @@ public class UIManager : MonoBehaviour
 
     private void spawnBloodScratch()
     {
+        if (!canBloodSpawn) return;
         Vector2 ramdomPos = new Vector2(UnityEngine.Random.Range(-200f, 200f), UnityEngine.Random.Range(-150f, 50f));
         GameObject decal = bloodScratch[UnityEngine.Random.Range(0, bloodScratch.Length)];
         GameObject instantiatedDecal = Instantiate(decal, Vector2.zero, Quaternion.identity, canvas.transform);
@@ -74,6 +85,7 @@ public class UIManager : MonoBehaviour
     {
         PlayerHealth.damageTaken -= spawnBloodScratch;
         Spawner.bossSpawned -= BossWarningEffect;
+        RandomizeGun.gunSelectGraphic -= PreventBloodSpawn;
         isDestroyed = true;
     }
 }

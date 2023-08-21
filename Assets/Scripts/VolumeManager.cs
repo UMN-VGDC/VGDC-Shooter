@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 public class VolumeManager : MonoBehaviour
 {
     [SerializeField] private Volume volume;
-    private bool isFlashbang;
+    private bool isFlashbang, isEffectsCancel;
 
     // Start is called before the first frame update
     void Start()
@@ -17,6 +17,29 @@ public class VolumeManager : MonoBehaviour
         PlayerHealth.damageTaken += DamageVignette;
         EntityHealth.enemyDeath += ContrastPop;
         Flashbang.flashbangExplode += FlashBangEffect;
+        RandomizeGun.gunSelectGraphic += GunSelectGraphic;
+    }
+
+    private async void GunSelectGraphic()
+    {
+        Bloom bloom;
+        if (volume.profile.TryGet<Bloom>(out bloom))
+        {
+            Sequence s = DOTween.Sequence();
+            s.Append(DOVirtual.Float(1f, 0f, 0.6f, e =>
+            {
+                bloom.intensity.min = e;
+            })).SetUpdate(true);
+
+            s.Append(DOVirtual.Float(0f, 1f, 0.6f, e =>
+            {
+                bloom.intensity.min = e;
+            }).SetDelay(1f)).SetUpdate(true);
+        }
+
+        isEffectsCancel = true;
+        await Task.Delay(2000);
+        isEffectsCancel = false;
     }
 
     private void DamageVignette()
@@ -33,7 +56,7 @@ public class VolumeManager : MonoBehaviour
 
     private void ContrastPop(int i)
     {
-        if (i == 0) return;
+        if (i == 0 || isEffectsCancel) return;
         Bloom bloom;
         if (volume.profile.TryGet<Bloom>(out bloom))
         {
@@ -62,6 +85,7 @@ public class VolumeManager : MonoBehaviour
 
     private async void FlashBangEffect()
     {
+        if (isEffectsCancel) return;
         float duration = 4f;
         isFlashbang = true;
 
@@ -84,9 +108,13 @@ public class VolumeManager : MonoBehaviour
         DepthOfField depthOfField;
         if (volume.profile.TryGet<DepthOfField>(out depthOfField))
         {
-            DOVirtual.Float(0.52f, 3.5f, duration, e =>
+            DOVirtual.Float(0.3f, 3.5f, duration, e =>
             {
                 depthOfField.focusDistance.value = e;
+            });
+            DOVirtual.Float(32, 18, duration, e =>
+            {
+                depthOfField.focalLength.value = e;
             });
         }
 
@@ -99,5 +127,6 @@ public class VolumeManager : MonoBehaviour
         PlayerHealth.damageTaken -= DamageVignette;
         EntityHealth.enemyDeath -= ContrastPop;
         Flashbang.flashbangExplode -= FlashBangEffect;
+        RandomizeGun.gunSelectGraphic -= GunSelectGraphic;
     }
 }

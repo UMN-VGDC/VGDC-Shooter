@@ -7,8 +7,6 @@ using UnityEngine;
 
 public class RandomizeGun : MonoBehaviour
 {
-    [SerializeField] private Transform mysteryObjectsTransform;
-    [SerializeField] private GameObject[] mysteryObjects;
     [SerializeField] private GameObject[] guns;
     [SerializeField] private int cycleCount = 16;
     [SerializeField] private AnimationCurve timerCurve;
@@ -18,7 +16,8 @@ public class RandomizeGun : MonoBehaviour
     private float timerAdd;
 
     public static Action<AudioClip> playSelectSound;
-    public static Action gunSelected;
+    public static Action gunSelected, gunSelectGraphic;
+    public static Action<int> gunIndex;
 
     // Start is called before the first frame update
     void Start()
@@ -31,10 +30,8 @@ public class RandomizeGun : MonoBehaviour
     {
         await Task.Delay(1700);
         audioSource.Play();
-        mysteryIndex = UnityEngine.Random.Range(0, mysteryObjects.Length);
+        mysteryIndex = UnityEngine.Random.Range(0, guns.Length);
         CycleMysteryObjects();
-        mysteryObjectsTransform.localPosition = Vector3.zero;
-        mysteryObjectsTransform.DOLocalMoveY(-80, 3).SetEase(Ease.OutQuad);
         DOVirtual.Float(0, 200, 2.5f, e => { timerAdd = e; }).SetEase(timerCurve);
     }
 
@@ -45,8 +42,8 @@ public class RandomizeGun : MonoBehaviour
         {
             if (currentIndex == mysteryIndex)
             {
-                mysteryIndex = (mysteryIndex + 1) % mysteryObjects.Length;
-                SelectMysteryObject();
+                mysteryIndex = (mysteryIndex + 1) % guns.Length;
+                gunIndex?.Invoke(mysteryIndex);
             }
             audioSource.Stop();
             playSelectSound?.Invoke(selectSound);
@@ -56,24 +53,17 @@ public class RandomizeGun : MonoBehaviour
             return;
         }
 
-        mysteryIndex = (mysteryIndex + 1) % mysteryObjects.Length;
-        SelectMysteryObject();
+        mysteryIndex = (mysteryIndex + 1) % guns.Length;
+        gunIndex?.Invoke(mysteryIndex);
         await Task.Delay(Mathf.RoundToInt(timer));
         currentCount++;
         timer += timerAdd;
         CycleMysteryObjects();
     }
 
-    private void SelectMysteryObject()
-    {
-        for (int i = 0; i < mysteryObjects.Length; i++)
-        {
-            mysteryObjects[i].SetActive(i == mysteryIndex);
-        }
-    }
-
     private async void SelectGun(int index)
     {
+        gunSelectGraphic?.Invoke();
         await Task.Delay(500);
         gunSelected?.Invoke();
         currentIndex = index;
@@ -82,7 +72,7 @@ public class RandomizeGun : MonoBehaviour
            guns[i].SetActive(i == index);
         }
 
-        foreach (GameObject g in mysteryObjects) g.SetActive(false);
+        gunIndex?.Invoke(-1);
 
     }
 
