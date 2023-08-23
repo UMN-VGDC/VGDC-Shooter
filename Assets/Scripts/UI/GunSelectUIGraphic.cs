@@ -25,8 +25,8 @@ public class GunSelectUIGraphic : MonoBehaviour
         RandomizeGun.gunIndex += SelectMysteryObject;
         MoneyManager.activateSwitch += LowerMysteryObjects;
         newGunTransform.DOLocalRotate(new Vector3(0, 360, 0), 3f, RotateMode.FastBeyond360).SetLoops(-1, LoopType.Restart).SetEase(Ease.Linear).SetUpdate(true);
-        glowImageLarge.DOLocalRotate(new Vector3(0, 0, 360), 5f, RotateMode.FastBeyond360).SetLoops(-1, LoopType.Restart).SetEase(Ease.Linear);
-        glowImageSmall.DOLocalRotate(new Vector3(0, 0, -360), 8f, RotateMode.FastBeyond360).SetLoops(-1, LoopType.Restart).SetEase(Ease.Linear);
+        glowImageLarge.DOLocalRotate(new Vector3(0, 0, 360), 6f, RotateMode.FastBeyond360).SetLoops(-1, LoopType.Restart).SetEase(Ease.Linear).SetUpdate(true);
+        glowImageSmall.DOLocalRotate(new Vector3(0, 0, -360), 9f, RotateMode.FastBeyond360).SetLoops(-1, LoopType.Restart).SetEase(Ease.Linear).SetUpdate(true);
     }
 
     private async void LowerMysteryObjects()
@@ -75,8 +75,8 @@ public class GunSelectUIGraphic : MonoBehaviour
 
         //light sequence
         Sequence l = DOTween.Sequence();
-        l.Append(DOVirtual.Float(0, 0.035f, 0.6f, e => light.intensity = e)).SetUpdate(true);
-        l.Append(DOVirtual.Float(0.035f, 0, 0.6f, e => light.intensity = e).SetDelay(1f)).SetUpdate(true);
+        l.Append(DOVirtual.Float(0, 0.04f, 0.6f, e => light.intensity = e)).SetUpdate(true);
+        l.Append(DOVirtual.Float(0.04f, 0, 0.6f, e => light.intensity = e).SetDelay(1f)).SetUpdate(true);
 
         //blur effect
         Sequence b = DOTween.Sequence();

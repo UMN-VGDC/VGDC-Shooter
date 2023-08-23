@@ -8,7 +8,7 @@ using UnityEngine;
 public abstract class Shoot : MonoBehaviour
 {
 
-    [SerializeField] private int fireRate = 30;
+    [SerializeField] protected int fireRate = 30;
     [SerializeField] protected AudioClip shootSound;
     [SerializeField] private Transform leftHandTransform, rightHandTransform;
     private float _currentFireCountdown = 1f;
@@ -19,6 +19,7 @@ public abstract class Shoot : MonoBehaviour
 
     public static Action shootBullet;
     public static Action<AudioClip> setShootSound;
+    protected static bool isShooting;
 
     protected virtual void Start()
     {
@@ -26,7 +27,13 @@ public abstract class Shoot : MonoBehaviour
         leftIK = GameObject.FindGameObjectWithTag("Left Hand IK").transform;
         rightIK = GameObject.FindGameObjectWithTag("Right Hand IK").transform;
         setShootSound?.Invoke(shootSound);
+        GameManager.shootingStart += EnableShoot;
+        GameManager.hasDied += DisableShoot;
     }
+
+    private void EnableShoot() => isShooting = true;
+    private void DisableShoot() => isShooting = false;
+    
 
     private void OnEnable()
     {
@@ -36,6 +43,7 @@ public abstract class Shoot : MonoBehaviour
     // Update is called once per frame
     protected virtual void Update()
     {
+        if (!isShooting) return;
         if (isLookAt) transform.LookAt(lookAt);
         _currentFireCountdown = Mathf.MoveTowards(_currentFireCountdown, 0f, Time.deltaTime * fireRate);
         if (_currentFireCountdown <= 0f)
@@ -52,4 +60,9 @@ public abstract class Shoot : MonoBehaviour
     }
 
     protected abstract void ShootBullet();
+    protected virtual void OnDestroy()
+    {
+        GameManager.shootingStart -= EnableShoot;
+        GameManager.hasDied -= DisableShoot;
+    }
 }

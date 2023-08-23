@@ -41,13 +41,15 @@ public class Laser : Shoot
     protected override void Update()
     {
         base.Update();
+        if (!isShooting) return;
         lineRenderer.SetPosition(0, transform.position);
         lineRenderer.SetPosition(1, lookAt.position);
         impactParticles.position = lookAt.position;
     }
 
-    private void OnDestroy()
+    protected override void OnDestroy()
     {
+        base.OnDestroy();
         CrossHair.raycastObject -= LaserTrail;
     }
 

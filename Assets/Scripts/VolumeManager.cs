@@ -18,6 +18,27 @@ public class VolumeManager : MonoBehaviour
         EntityHealth.enemyDeath += ContrastPop;
         Flashbang.flashbangExplode += FlashBangEffect;
         RandomizeGun.gunSelectGraphic += GunSelectGraphic;
+        GameManager.hasDied += DeathSequence;
+    }
+
+    private void DeathSequence()
+    {
+        isEffectsCancel = true;
+        Vignette vignette;
+        if (volume.profile.TryGet<Vignette>(out vignette))
+        {
+            vignette.intensity.value = 0.8f;
+        }
+
+        ColorAdjustments colorAdjustmnets;
+        if (volume.profile.TryGet<ColorAdjustments>(out colorAdjustmnets))
+        {
+            colorAdjustmnets.saturation.value = -100f;
+            DOVirtual.Float(5.5f, 0.2f, 4.5f, e =>
+            {
+                colorAdjustmnets.postExposure.value = e;
+            }).SetUpdate(true);
+        }
     }
 
     private async void GunSelectGraphic()
@@ -26,12 +47,12 @@ public class VolumeManager : MonoBehaviour
         if (volume.profile.TryGet<Bloom>(out bloom))
         {
             Sequence s = DOTween.Sequence();
-            s.Append(DOVirtual.Float(1f, 0f, 0.6f, e =>
+            s.Append(DOVirtual.Float(0.8f, 0f, 0.6f, e =>
             {
                 bloom.intensity.min = e;
             })).SetUpdate(true);
 
-            s.Append(DOVirtual.Float(0f, 1f, 0.6f, e =>
+            s.Append(DOVirtual.Float(0f, 0.8f, 0.6f, e =>
             {
                 bloom.intensity.min = e;
             }).SetDelay(1f)).SetUpdate(true);
@@ -60,7 +81,7 @@ public class VolumeManager : MonoBehaviour
         Bloom bloom;
         if (volume.profile.TryGet<Bloom>(out bloom))
         {
-            DOVirtual.Float(2f, 1f, 0.4f, e =>
+            DOVirtual.Float(1.5f, 0.8f, 0.4f, e =>
             {
                 bloom.intensity.value = e;
             });
@@ -74,7 +95,7 @@ public class VolumeManager : MonoBehaviour
             });
 
             if (isFlashbang) return;
-            DOVirtual.Float(0f, 1f, 0.4f, e =>
+            DOVirtual.Float(-0.5f, 0.2f, 0.4f, e =>
             {
                 colorAdjustmnets.postExposure.value = e;
             });
@@ -92,7 +113,7 @@ public class VolumeManager : MonoBehaviour
         ColorAdjustments colorAdjustmnets;
         if (volume.profile.TryGet<ColorAdjustments>(out colorAdjustmnets))
         {
-            DOVirtual.Float(5.2f, 1f, duration, e =>
+            DOVirtual.Float(5.2f, 0.2f, duration, e =>
             {
                 colorAdjustmnets.postExposure.value = e;
             });
@@ -128,5 +149,6 @@ public class VolumeManager : MonoBehaviour
         EntityHealth.enemyDeath -= ContrastPop;
         Flashbang.flashbangExplode -= FlashBangEffect;
         RandomizeGun.gunSelectGraphic -= GunSelectGraphic;
+        GameManager.hasDied -= DeathSequence;
     }
 }

@@ -10,6 +10,7 @@ public class DefaultBlaster : Shoot
     [SerializeField] private Transform recoilObject;
     [SerializeField] private float recoilStrength = 5f;
     [SerializeField] private ParticleSystem muzzleFlash;
+    private bool isNerfed;
 
     protected override void ShootBullet()
     {
@@ -18,6 +19,13 @@ public class DefaultBlaster : Shoot
         recoilObject.localPosition = new Vector3(0, 0, 0);
         DOTween.Kill(recoilObject);
         recoilObject.DOLocalMoveZ(0f - (0.1f * recoilStrength), 0.01f);
+    }
+
+    private void OnDisable()
+    {
+        if (isNerfed) return;
+        isNerfed = true;
+        fireRate -= 7;
     }
 
 }

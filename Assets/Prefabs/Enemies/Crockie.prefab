@@ -50,7 +50,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd8c7907e1111174d9af4d0a22fd73ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 5
+  health: 6
   deathCallback:
     m_PersistentCalls:
       m_Calls:
@@ -67,7 +67,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   flashColor: {r: 52, g: 0, b: 0, a: 1}
-  playerDamage: 200
+  playerDamage: 250
   points: 100
   enemyLoadType: 0
   enemyLoad: 1
@@ -288,7 +288,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 320099504948188128}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b2d8418b0b9634b1892b0268dd9c2743, type: 3}
   m_Name: 

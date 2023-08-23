@@ -10,12 +10,13 @@ public class RandomizeGun : MonoBehaviour
     [SerializeField] private GameObject[] guns;
     [SerializeField] private int cycleCount = 16;
     [SerializeField] private AnimationCurve timerCurve;
-    [SerializeField] private AudioClip selectSound;
+    [SerializeField] private AudioClip itemBoxEndSound;
+    [SerializeField] private AudioClip[] selectSound;
     private AudioSource audioSource;
     private int mysteryIndex, currentCount, currentIndex;
     private float timerAdd;
 
-    public static Action<AudioClip> playSelectSound;
+    public static Action<AudioClip> playSelectSound, playGunSelectSound;
     public static Action gunSelected, gunSelectGraphic;
     public static Action<int> gunIndex;
 
@@ -46,13 +47,12 @@ public class RandomizeGun : MonoBehaviour
                 gunIndex?.Invoke(mysteryIndex);
             }
             audioSource.Stop();
-            playSelectSound?.Invoke(selectSound);
+            playSelectSound?.Invoke(itemBoxEndSound);
             SelectGun(mysteryIndex);
             currentCount = 0;
             timer = 100;
             return;
         }
-
         mysteryIndex = (mysteryIndex + 1) % guns.Length;
         gunIndex?.Invoke(mysteryIndex);
         await Task.Delay(Mathf.RoundToInt(timer));
@@ -61,9 +61,21 @@ public class RandomizeGun : MonoBehaviour
         CycleMysteryObjects();
     }
 
+    private void PlaySelectSound(int index)
+    {
+        Debug.Log(index);
+        if (index == 0)
+        {
+            playGunSelectSound?.Invoke(selectSound[1]);
+            return;
+        }
+        playGunSelectSound?.Invoke(selectSound[0]);
+    }
+
     private async void SelectGun(int index)
     {
         gunSelectGraphic?.Invoke();
+        PlaySelectSound(mysteryIndex);
         await Task.Delay(500);
         gunSelected?.Invoke();
         currentIndex = index;

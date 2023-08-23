@@ -5,13 +5,23 @@ using DG.Tweening;
 
 public class TimeManager : MonoBehaviour
 {
-    private bool isGunSelect;
+    private bool isGunSelect, isDead;
     // Start is called before the first frame update
     void Start()
     {
         ScoreStreakManager.scoreStreak += StreakTimeWarp;
         MoneyManager.activateSwitch += MoneyFull;
         RandomizeGun.gunSelectGraphic += GunSelectGrpahic;
+        GameManager.hasDied += DeathTimeWarp;
+    }
+
+    private void DeathTimeWarp()
+    {
+        isDead = true;
+        DOVirtual.Float(0.7f, 0.02f, 8f, e =>
+        {
+            Time.timeScale = e;
+        }).SetUpdate(true);
     }
 
     private void StreakTimeWarp() => TimeWarp(1f);
@@ -19,6 +29,7 @@ public class TimeManager : MonoBehaviour
 
     private void GunSelectGrpahic()
     {
+        if (isDead) return;
         isGunSelect = true;
         Sequence s = DOTween.Sequence();
         s.Append(DOVirtual.Float(1, 0.05f, 0.6f, e => Time.timeScale = e)).SetUpdate(true);
@@ -29,7 +40,7 @@ public class TimeManager : MonoBehaviour
     {
         DOVirtual.Float(0.1f, 1f, duration, e =>
         {
-            if (isGunSelect) return;
+            if (isGunSelect || isDead) return;
             Time.timeScale = e;
         });
     }
@@ -39,5 +50,6 @@ public class TimeManager : MonoBehaviour
         ScoreStreakManager.scoreStreak -= StreakTimeWarp;
         MoneyManager.activateSwitch -= MoneyFull;
         RandomizeGun.gunSelectGraphic += GunSelectGrpahic;
+        GameManager.hasDied += DeathTimeWarp;
     }
 }

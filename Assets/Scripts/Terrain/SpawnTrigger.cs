@@ -17,7 +17,7 @@ public class SpawnTrigger : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag != "Truck") return;
+        if (other.gameObject.tag != "Truck" || GameManager.Instance.getGameState() == GameState.Dead) return;
         triggerSpawn?.Invoke(id);
         foreach (Spawner spawner in spawners)
         {

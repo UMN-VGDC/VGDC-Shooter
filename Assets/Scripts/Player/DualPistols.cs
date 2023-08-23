@@ -35,6 +35,7 @@ public class DualPistols : Shoot
     protected override void Update()
     {
         base.Update();
+        if (!isShooting) return;
         for (int i = 0; i < gunTransforms.Length; i++)
         {
             gunTransforms[i].LookAt(lookAt);

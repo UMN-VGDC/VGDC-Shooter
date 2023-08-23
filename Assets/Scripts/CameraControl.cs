@@ -12,6 +12,7 @@ public class CameraControl : MonoBehaviour
     private CinemachinePOV pov;
     private CinemachineBasicMultiChannelPerlin m_BasicMultiChannelPerlin;
     private float amplitude, frequency;
+    private bool isDead;
 
     [SerializeField] private Transform crossHair;
     [SerializeField] private float lookSensitivity = 50f;
@@ -28,7 +29,10 @@ public class CameraControl : MonoBehaviour
         PlayerHealth.damageTakenAmount += DamageShake;
         EntityHealth.enemyDeath += KillShake;
         Flashbang.flashbangExplode += FlashbangShake;
+        GameManager.hasDied += HasDied;
     }
+
+    private void HasDied() => isDead = true;
 
     private void DamageShake(int intensity)
     {
@@ -52,6 +56,7 @@ public class CameraControl : MonoBehaviour
 
     private void Shake(float amp, float freq, float duration)
     {
+        if (isDead) return;
         DOVirtual.Float(1f, 0f, duration, e =>
         {
             m_BasicMultiChannelPerlin.m_AmplitudeGain = Mathf.Lerp(amplitude, amp, e);
@@ -62,6 +67,7 @@ public class CameraControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (isDead) return;
         Vector2 cursorPos = Camera.main.ScreenToViewportPoint(Input.mousePosition);
         Vector2 cursorPosOffset = cursorPos - new Vector2(0.5f, 0.5f);
         float rotX = cursorPosOffset.y * -lookSensitivity;
@@ -74,5 +80,6 @@ public class CameraControl : MonoBehaviour
         PlayerHealth.damageTakenAmount -= DamageShake;
         EntityHealth.enemyDeath -= KillShake;
         Flashbang.flashbangExplode -= FlashbangShake;
+        GameManager.hasDied -= HasDied;
     }
 }

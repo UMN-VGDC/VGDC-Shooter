@@ -110,7 +110,7 @@ Material:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _Color_Inner: {r: 1.319508, g: 0.22331023, b: 0, a: 1}
-    - _Color_Outer: {r: 944.2831, g: 296.63342, b: 0, a: 1}
+    - _Color_Outer: {r: 622.9943, g: 195.70502, b: 0, a: 1}
     - _EmissionColor: {r: 0, g: 73.03973, b: 581.2745, a: 1}
     - _Ramp: {r: 1.02, g: 0.02, b: 0, a: 0}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}

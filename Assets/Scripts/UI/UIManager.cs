@@ -68,7 +68,7 @@ public class UIManager : MonoBehaviour
 
     private void spawnBloodScratch()
     {
-        if (!canBloodSpawn) return;
+        if (!canBloodSpawn || GameManager.Instance.getGameState() == GameState.Dead) return;
         Vector2 ramdomPos = new Vector2(UnityEngine.Random.Range(-200f, 200f), UnityEngine.Random.Range(-150f, 50f));
         GameObject decal = bloodScratch[UnityEngine.Random.Range(0, bloodScratch.Length)];
         GameObject instantiatedDecal = Instantiate(decal, Vector2.zero, Quaternion.identity, canvas.transform);

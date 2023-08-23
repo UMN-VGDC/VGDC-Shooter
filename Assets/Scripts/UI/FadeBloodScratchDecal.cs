@@ -12,6 +12,7 @@ public class FadeBloodScratchDecal : MonoBehaviour
     void Start()
     {
         RandomizeGun.gunSelectGraphic += FadeDecal;
+        GameManager.hasDied += FadeDecal;
         image = GetComponent<Image>();
         image.DOColor(new Color(0, 0, 0, 0), fadeDuration).SetDelay(0.5f).onComplete = () => Destroy(gameObject);
     }
@@ -25,6 +26,7 @@ public class FadeBloodScratchDecal : MonoBehaviour
     private void OnDestroy()
     {
         RandomizeGun.gunSelectGraphic -= FadeDecal;
+        GameManager.hasDied -= FadeDecal;
         DOTween.Kill(image);
     }
 }

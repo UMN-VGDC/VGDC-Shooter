@@ -10,7 +10,7 @@ public class SoundManager : MonoBehaviour
 {
     [SerializeField] private AudioMixer audioMixer;
     [SerializeField] private AudioClip[] playerDamageSounds;
-    [SerializeField] private AudioSource enemyAudioSource, moneyAudioSource, newWeaponAudioSource;
+    [SerializeField] private AudioSource enemyAudioSource, moneyAudioSource, newWeaponAudioSource, deathAudioSource, deathMusicAudioSource;
     [SerializeField] private AudioClip critSound, defaultShootSound, enemyHit, waterSplashSound;
     [Header("Streak")]
     [SerializeField] private AudioSource streakAudioSource;
@@ -39,7 +39,8 @@ public class SoundManager : MonoBehaviour
         Flashbang.flashbangExplode += FlashbangMuffle;
         MoneyUIAnimation.playMoneySound += PlayMoneySound;
         RandomizeGun.playSelectSound += PlaySound;
-        RandomizeGun.gunSelectGraphic += GunSelectGraphicQuiet;
+        RandomizeGun.playGunSelectSound += GunSelectGraphicQuiet;
+        GameManager.hasDied += PlayDeathSound;
 
         enemyHitQueue = new QueueSound(enemyHit, 100);
         waterSplashQueue = new QueueSound(waterSplashSound, 70);
@@ -54,7 +55,7 @@ public class SoundManager : MonoBehaviour
     private void EnemyDeathSound(AudioClip[] clip)
     {
         if (clip.Length == 0) return;
-        foreach(AudioClip c in clip) audioSource.PlayOneShot(c);
+        foreach (AudioClip c in clip) audioSource.PlayOneShot(c);
     }
 
     private void PlayerDamage()
@@ -76,9 +77,9 @@ public class SoundManager : MonoBehaviour
         flameThrower?.Invoke();
     }
 
-    private void GunSelectGraphicQuiet()
+    private void GunSelectGraphicQuiet(AudioClip clip)
     {
-        newWeaponAudioSource.Play();
+        newWeaponAudioSource.PlayOneShot(clip);
         Sequence s = DOTween.Sequence();
         s.Append(DOVirtual.Float(0, -11, 0.6f, e => audioMixer.SetFloat("CombatVolume", e))).SetUpdate(true);
         s.Append(DOVirtual.Float(-11, 0, 0.6f, e => audioMixer.SetFloat("CombatVolume", e)).SetDelay(1f)).SetUpdate(true);
@@ -102,6 +103,14 @@ public class SoundManager : MonoBehaviour
         });
     }
 
+    private void PlayDeathSound()
+    {
+        deathAudioSource.Play();
+        deathMusicAudioSource.Play();
+        audioMixer.SetFloat("CombatVolume", -13f);
+        audioMixer.SetFloat("CombatLowpass", 2400);
+        audioMixer.SetFloat("NewWeaponVolume", -13f);
+    }
     public static void PlaySound(AudioClip clip) => audioSource.PlayOneShot(clip);
     private void PlayMoneySound(AudioClip clip) => moneyAudioSource.PlayOneShot(clip);
     private void AddWaterSplashQueue() => waterSplashQueue.SoundQueue();
@@ -123,7 +132,8 @@ public class SoundManager : MonoBehaviour
         Flashbang.flashbangExplode -= FlashbangMuffle;
         MoneyUIAnimation.playMoneySound -= PlayMoneySound;
         RandomizeGun.playSelectSound -= PlaySound;
-        RandomizeGun.gunSelectGraphic -= GunSelectGraphicQuiet;
+        RandomizeGun.playGunSelectSound -= GunSelectGraphicQuiet;
+        GameManager.hasDied -= PlayDeathSound;
     }
 }
 
