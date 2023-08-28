@@ -7,6 +7,11 @@ public class StartMenu : MonoBehaviour
 
     [SerializeField] private GameObject[] menuObjects;
     [SerializeField] private GameObject startMenu;
+
+    private void Start()
+    {
+        startMenu.SetActive(true);
+    }
     public void StartGame()
     {
         GameManager.Instance.UpdateGameState(GameState.Shooting);

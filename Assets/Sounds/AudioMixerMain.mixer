@@ -65,6 +65,7 @@ AudioMixerGroupController:
   m_Send: 00000000000000000000000000000000
   m_Effects:
   - {fileID: 1232681116855927975}
+  - {fileID: 6854274659314662589}
   m_UserColorIndex: 0
   m_Mute: 0
   m_Solo: 0
@@ -117,6 +118,8 @@ AudioMixerController:
   m_ExposedParameters:
   - guid: b616e8197cac01647b7534ac4e93017f
     name: CombatVolume
+  - guid: 3283966a771725548a6f61356f0a22f5
+    name: CombatLowpass
   - guid: 181bed25354a98e4b99c04a1bd883339
     name: PlayerEnemyPitch
   - guid: 59b0b0429c2f1f6449bb3d972449966a
@@ -189,6 +192,7 @@ AudioMixerSnapshotController:
     eff0e8d2eeb29614185064d5c7e0b9bc: 2.7
     8b1549d28a5a0d44e8c397d335338ffd: 1
     181bed25354a98e4b99c04a1bd883339: 1
+    3283966a771725548a6f61356f0a22f5: 22000
     d753411f2793c7a4d91626c59af2bbba: 22000
   m_TransitionOverrides: {}
 --- !u!243 &613536996760584253
@@ -324,6 +328,24 @@ AudioMixerGroupController:
   m_Mute: 0
   m_Solo: 0
   m_BypassEffects: 0
+--- !u!244 &6854274659314662589
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_EffectID: 4f1db20248824bd4797c6e1534a957b2
+  m_EffectName: Lowpass
+  m_MixLevel: 4eed722499597074380b388c734fb7f1
+  m_Parameters:
+  - m_ParameterName: Cutoff freq
+    m_GUID: 3283966a771725548a6f61356f0a22f5
+  - m_ParameterName: Resonance
+    m_GUID: 3c227af626ad3014484d98624a1a5907
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
 --- !u!243 &7791184762426149160
 AudioMixerGroupController:
   m_ObjectHideFlags: 0

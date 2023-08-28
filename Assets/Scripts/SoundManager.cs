@@ -45,6 +45,10 @@ public class SoundManager : MonoBehaviour
         enemyHitQueue = new QueueSound(enemyHit, 100);
         waterSplashQueue = new QueueSound(waterSplashSound, 70);
         shootQueue = new QueueSound(defaultShootSound, 100);
+
+        audioMixer.SetFloat("CombatVolume", 0);
+        audioMixer.SetFloat("CombatLowpass", 22000);
+        audioMixer.SetFloat("NewWeaponVolume", 0);
     }
 
     private void ReplaceShootSound(AudioClip clip)

@@ -13,6 +13,7 @@ public class TimeManager : MonoBehaviour
         MoneyManager.activateSwitch += MoneyFull;
         RandomizeGun.gunSelectGraphic += GunSelectGrpahic;
         GameManager.hasDied += DeathTimeWarp;
+        Time.timeScale = 1f;
     }
 
     private void DeathTimeWarp()

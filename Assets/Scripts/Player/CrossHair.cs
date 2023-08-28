@@ -13,15 +13,20 @@ public class CrossHair : DamageEnemy
 
     public static Action<Transform> raycastObject;
     private Transform hitTransform;
+    private bool isDead;
 
     private void Start()
     {
         mainCamera = Camera.main;
+        GameManager.hasDied += DisableCrossHair;
     }
+
+    private void DisableCrossHair() => isDead = true;
 
     // Update is called once per frame
     void Update()
     {
+        if (isDead) return;
         Vector2 mousePos = Input.mousePosition;
         Ray ray = mainCamera.ScreenPointToRay(mousePos);
         RaycastHit hit;

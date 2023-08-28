@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 71c1514a6bd24e1e882cebbe1904ce04, type: 3}
-  m_Name: ApexMk2-Regular SDF
+  m_Name: ApexMk2-Regular SDF - Copy
   m_EditorClassIdentifier: 
   hashCode: -542853538
   material: {fileID: 2659889614661913451}

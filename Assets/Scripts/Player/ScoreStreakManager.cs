@@ -57,6 +57,7 @@ public class ScoreStreakManager : MonoBehaviour
     private bool scoreCanKill = true;
     private async void AddPoints(int amount)
     {
+        if (GameManager.Instance.getGameState() == GameState.Dead) return;
         if (amount == 0) return;
         currentScore += amount;
         scoreStreakBarGreen.fillAmount = (currentScore - (currentStreak - streakCount)) / (float)streakCount;
@@ -133,6 +134,11 @@ public class ScoreStreakManager : MonoBehaviour
         {
             speedLinesRenderer.GetMaterial().SetFloat("_Opacity", e);
         });
+    }
+
+    public int GetScore()
+    {
+        return currentScore;
     }
 
     public void ResetEffects()
