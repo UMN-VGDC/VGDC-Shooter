@@ -19,16 +19,19 @@ public class CrossHair : DamageEnemy
     {
         mainCamera = Camera.main;
         GameManager.hasDied += DisableCrossHair;
+        GameManager.restartGame += EnableCrossHair;
     }
 
     private void DisableCrossHair() => isDead = true;
+
+    private void EnableCrossHair() => isDead = false;
 
     // Update is called once per frame
     void Update()
     {
         if (isDead) return;
-        Vector2 mousePos = Input.mousePosition;
-        Ray ray = mainCamera.ScreenPointToRay(mousePos);
+        Vector3 screenPos = CameraReciever.instance.GetDampedScreenPos();
+        Ray ray = mainCamera.ViewportPointToRay(screenPos);
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit, 10000, ~bulletLayerMask))
         {
@@ -37,7 +40,7 @@ public class CrossHair : DamageEnemy
             raycastObject?.Invoke(hit.transform);
         }
 
-        transform.position = mainCamera.ScreenToWorldPoint(new Vector3(mousePos.x, mousePos.y, 1));
+        transform.position = mainCamera.ViewportToWorldPoint(new Vector3(screenPos.x, screenPos.y, 1));
 
     }
 

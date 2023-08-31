@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour
     public GameState State;
 
 
-    public static Action shootingStart, hasDied;
+    public static Action shootingStart, hasDied, restartGame;
 
     // Start is called before the first frame update
     void Start()
@@ -31,7 +31,9 @@ public class GameManager : MonoBehaviour
         State = newState;
         switch (newState)
         {
-            case GameState.StartMenu: break;
+            case GameState.StartMenu:
+                restartGame?.Invoke();
+                break;
             case GameState.Shooting:
                 shootingStart?.Invoke();
                 break;
