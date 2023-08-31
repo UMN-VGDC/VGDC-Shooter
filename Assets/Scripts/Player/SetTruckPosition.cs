@@ -6,8 +6,22 @@ using UnityEngine;
 [ExecuteInEditMode]
 public class SetTruckPosition : MonoBehaviour
 {
-    public int setPosition;
+    [SerializeField] private float setPosition;
     [SerializeField] private PathCreator pathCreator;
+
+    [Header("Exit Path")]
+    [SerializeField] private SetTruckPosition enterPos;
+    [SerializeField] private PathCreator newPath;
+
+    public float GetPosition()
+    {
+        return setPosition;
+    }
+
+    public void GetLength()
+    {
+
+    }
 
     // Update is called once per frame
     void Update()

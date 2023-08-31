@@ -10,7 +10,8 @@ public class SoundManager : MonoBehaviour
 {
     [SerializeField] private AudioMixer audioMixer;
     [SerializeField] private AudioClip[] playerDamageSounds;
-    [SerializeField] private AudioSource enemyAudioSource, moneyAudioSource, newWeaponAudioSource, deathAudioSource, deathMusicAudioSource;
+    [SerializeField]
+    private AudioSource enemyAudioSource, moneyAudioSource, newWeaponAudioSource, deathAudioSource, deathMusicAudioSource, dummytargetAudioSource;
     [SerializeField] private AudioClip critSound, defaultShootSound, enemyHit, waterSplashSound;
     [Header("Streak")]
     [SerializeField] private AudioSource streakAudioSource;
@@ -21,6 +22,8 @@ public class SoundManager : MonoBehaviour
     private QueueSound shootQueue, enemyHitQueue, waterSplashQueue;
 
     public static Action flameThrower;
+
+    public static SoundManager Instance { get; private set; }
 
     // Start is called before the first frame update
     void Awake()
@@ -49,6 +52,8 @@ public class SoundManager : MonoBehaviour
         audioMixer.SetFloat("CombatVolume", 0);
         audioMixer.SetFloat("CombatLowpass", 22000);
         audioMixer.SetFloat("NewWeaponVolume", 0);
+
+        Instance = this;
     }
 
     private void ReplaceShootSound(AudioClip clip)
@@ -120,6 +125,12 @@ public class SoundManager : MonoBehaviour
     private void AddWaterSplashQueue() => waterSplashQueue.SoundQueue();
     private void AddShootQueue() => shootQueue.SoundQueue();
     private void AddEnemyHitQueue() => enemyHitQueue.SoundQueue();
+
+    public void DummyTargetSound()
+    {
+        dummytargetAudioSource.Play();
+        dummytargetAudioSource.pitch += 0.2f;
+    }
 
     private void OnDestroy()
     {

@@ -1,6 +1,7 @@
 using PathCreation;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 
 public class FollowPath : MonoBehaviour
@@ -11,17 +12,24 @@ public class FollowPath : MonoBehaviour
     [SerializeField] private SetTruckPosition setPosition;
     private float distanceTravelled, speedTarget, speed;
     private bool isMoving;
+    private Vector3 endPoint;
 
     // Start is called before the first frame update
     void Start()
     {
         speed = initialSpeed;
         speedTarget = initialSpeed;
-        distanceTravelled += setPosition.setPosition;
-        GameManager.shootingStart += StartMoving;
+        distanceTravelled += setPosition.GetPosition();
+        DummyTarget.dummyTargetsDestroyed += StartMoving;
+        endPoint = pathCreator.path.GetPointAtTime(0.999f);
+        Debug.Log(endPoint);
     }
 
-    private void StartMoving() => isMoving = true;
+    private async void StartMoving()
+    {
+        await Task.Delay(1000);
+        isMoving = true;
+    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -43,10 +51,13 @@ public class FollowPath : MonoBehaviour
         distanceTravelled += speed * Time.deltaTime;
         transform.position = pathCreator.path.GetPointAtDistance(distanceTravelled);
         transform.rotation = pathCreator.path.GetRotationAtDistance(distanceTravelled);
+
+        float distance = Vector3.Distance(transform.position, endPoint);
+        Debug.Log(distance);
     }
 
     private void OnDestroy()
     {
-        GameManager.shootingStart -= StartMoving;
+        DummyTarget.dummyTargetsDestroyed -= StartMoving;
     }
 }
