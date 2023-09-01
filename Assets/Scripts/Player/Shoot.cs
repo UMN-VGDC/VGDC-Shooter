@@ -27,10 +27,9 @@ public abstract class Shoot : MonoBehaviour
         leftIK = GameObject.FindGameObjectWithTag("Left Hand IK").transform;
         rightIK = GameObject.FindGameObjectWithTag("Right Hand IK").transform;
         setShootSound?.Invoke(shootSound);
-        //GameManager.shootingStart += EnableShoot;
+        GameManager.shootingStart += EnableShoot;
         AimTargetHold.targetHoldSuccess += SingleShot;
         GameManager.hasDied += DisableShoot;
-        isShooting = false;
     }
 
     private void EnableShoot() => isShooting = true;
@@ -42,6 +41,7 @@ public abstract class Shoot : MonoBehaviour
 
     private void SingleShot()
     {
+        if (GameManager.Instance.getGameState() == GameState.StartMenu) return;
         ShootBullet();
         shootBullet?.Invoke();
     }
@@ -73,7 +73,7 @@ public abstract class Shoot : MonoBehaviour
     protected abstract void ShootBullet();
     protected virtual void OnDestroy()
     {
-        //GameManager.shootingStart -= EnableShoot;
+        GameManager.shootingStart -= EnableShoot;
         AimTargetHold.targetHoldSuccess -= SingleShot;
         GameManager.hasDied -= DisableShoot;
     }

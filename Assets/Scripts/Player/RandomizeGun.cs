@@ -63,7 +63,6 @@ public class RandomizeGun : MonoBehaviour
 
     private void PlaySelectSound(int index)
     {
-        Debug.Log(index);
         if (index == 0)
         {
             playGunSelectSound?.Invoke(selectSound[1]);

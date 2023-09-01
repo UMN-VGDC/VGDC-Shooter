@@ -74,7 +74,7 @@ public class CameraControl : MonoBehaviour
         
         if (isDead) return;
         Vector2 cursorPos = CameraReciever.instance.GetDampedScreenPos();
-        Debug.Log("Cursor Pos: " + cursorPos);
+        //Debug.Log("Cursor Pos: " + cursorPos);
         Vector2 cursorPosOffset = cursorPos - new Vector2(0.5f, 0.5f);
         float rotX = cursorPosOffset.y * -lookSensitivity;
         float rotY = cursorPosOffset.x * lookSensitivity;

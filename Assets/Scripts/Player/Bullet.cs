@@ -53,7 +53,7 @@ public class Bullet : DamageEnemy
             m_Rigidbody.isKinematic = true;
             yield return 0;
             OnTriggerEnterFixed();
-            if (hit2.collider.gameObject == null) yield break;
+            if (hit2.collider == null) yield break;
             EntityHit(hit2.collider.gameObject, Damage, Crit);
             if (hit2.collider.gameObject.tag == "Head" && hit2.transform.root.tag == "Entity")
             {

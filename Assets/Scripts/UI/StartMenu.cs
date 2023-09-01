@@ -14,7 +14,7 @@ public class StartMenu : MonoBehaviour
     }
     public void StartGame()
     {
-        GameManager.Instance.UpdateGameState(GameState.Shooting);
+        GameManager.Instance.UpdateGameState(GameState.TutorialStage);
         startMenu.SetActive(false);
     }
 

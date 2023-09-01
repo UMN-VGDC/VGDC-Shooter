@@ -22,6 +22,7 @@ TagManager:
   - Gun Aim Target
   - Left Hand IK
   - Right Hand IK
+  - Main Path
   layers:
   - Default
   - TransparentFX

@@ -106,10 +106,10 @@ public class DeathUI : MonoBehaviour
         scoreboardTransform.position = new Vector3(pos.x, pos.y + Time.deltaTime * scrollSpeed, pos.z);
     }
 
-    public void ResetScene()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-    }
+    //public void ResetScene()
+    //{
+    //    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    //}
 
     private void OnDestroy()
     {

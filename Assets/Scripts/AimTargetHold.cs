@@ -19,6 +19,7 @@ public class AimTargetHold : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (GameManager.Instance.getGameState() == GameState.StartMenu) return;
         if (other.CompareTag("Gun Aim Target"))
         {
             target.gameObject.SetActive(true);
@@ -27,6 +28,7 @@ public class AimTargetHold : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
+        if (GameManager.Instance.getGameState() == GameState.StartMenu) return;
         if (other.CompareTag("Gun Aim Target") && !isSuccess)
         {
             target.gameObject.SetActive(false);

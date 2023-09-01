@@ -13,6 +13,7 @@ public class FollowPath : MonoBehaviour
     private float distanceTravelled, speedTarget, speed;
     private bool isMoving;
     private Vector3 endPoint;
+    private PathCreator mainPath;
 
     // Start is called before the first frame update
     void Start()
@@ -23,12 +24,15 @@ public class FollowPath : MonoBehaviour
         DummyTarget.dummyTargetsDestroyed += StartMoving;
         endPoint = pathCreator.path.GetPointAtTime(0.999f);
         Debug.Log(endPoint);
+        mainPath = GameObject.FindGameObjectWithTag("Main Path").GetComponent<PathCreator>();
     }
 
     private async void StartMoving()
     {
         await Task.Delay(1000);
         isMoving = true;
+        await Task.Delay(3000);
+        GameManager.Instance.UpdateGameState(GameState.Shooting);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -53,7 +57,11 @@ public class FollowPath : MonoBehaviour
         transform.rotation = pathCreator.path.GetRotationAtDistance(distanceTravelled);
 
         float distance = Vector3.Distance(transform.position, endPoint);
-        Debug.Log(distance);
+        if (distance <= 0.1f)
+        {
+            distanceTravelled = mainPath.path.GetClosestDistanceAlongPath(endPoint);
+            pathCreator = mainPath;
+        }
     }
 
     private void OnDestroy()

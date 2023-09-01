@@ -6,6 +6,7 @@ using UnityEngine;
 public enum GameState
 {
     StartMenu,
+    TutorialStage,
     Shooting,
     Paused,
     Dead
