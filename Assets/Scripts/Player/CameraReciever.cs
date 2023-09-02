@@ -33,7 +33,7 @@ public class CameraReciever : MonoBehaviour
     private Vector3 dampedScreenPos;
     // Start is called before the first frame update
     private void Awake()
-    { 
+    {
         if (instance == null)
         {
             data_queue = new ConcurrentQueue<string>();
@@ -51,35 +51,36 @@ public class CameraReciever : MonoBehaviour
             translation = Vector3.zero;
 
         }
-        else if(instance != this)
+        else if (instance != this)
         {
             Destroy(this.gameObject);
         }
-        
-        
-        
+
+
+
     }
     void Start()
     {
-        
+
     }
 
     private void RecieveData()
     {
         client = new UdpClient(port);
-        while(usingCamera)
+        while (usingCamera)
         {
             try
             {
                 IPEndPoint endPoint = new IPEndPoint(IPAddress.Any, 0);
 
                 string new_data = Encoding.UTF8.GetString(client.Receive(ref endPoint));
-                if(new_data != data)
+                if (new_data != data)
                 {
                     data_queue.Enqueue(new_data);
                     data = new_data;
                 }
-            }catch(Exception err)
+            }
+            catch (Exception err)
             {
                 Debug.LogError(err.ToString());
             }
@@ -94,7 +95,7 @@ public class CameraReciever : MonoBehaviour
             ParseData();
             UpdateRawScreenPos();
         }
-        else if(!usingCamera)
+        else if (!usingCamera)
         {
             rawScreenPos = Camera.main.ScreenToViewportPoint(Input.mousePosition);
         }
@@ -119,13 +120,14 @@ public class CameraReciever : MonoBehaviour
         Vector3 up = ParseVector(vectors[1]);
         rot = Quaternion.LookRotation(new Vector3(forward.x, -forward.y, forward.z), new Vector3(up.x, -up.y, up.z));
         translation = ParseVector(vectors[2]);
+        translation.y *= -1;
     }
 
     Vector3 ParseVector(string vectorString)
     {
         string timmed_vector = vectorString.TrimStart('[').TrimEnd(']');
         string[] vector_elems = timmed_vector.Split(", ");
-        if(vector_elems.Length != 3)
+        if (vector_elems.Length != 3)
         {
             Debug.LogError("Malformed vector recieved. Expected 3 vector elements. Got: " + vector_elems.Length);
             return Vector3.zero;
@@ -143,7 +145,7 @@ public class CameraReciever : MonoBehaviour
         bool isValid;
 
         (intersection, isValid) = GetIntersectionPoint(translation, rot * Vector3.forward);
-        
+
         Debug.Log("Rvec: " + rot.eulerAngles + " tvec: " + translation + " insersection: " + intersection + " is valid: " + isValid);
         if (!isValid)
         {
@@ -184,15 +186,15 @@ public class CameraReciever : MonoBehaviour
     }
     public void OnDestroy()
     {
-        if(udpClientThread != null)
+        if (udpClientThread != null)
         {
             udpClientThread.Abort();
         }
-        if(client != null)
+        if (client != null)
         {
             client.Close();
             client = null;
         }
-        
+
     }
 }
