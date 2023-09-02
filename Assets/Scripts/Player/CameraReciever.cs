@@ -146,7 +146,6 @@ public class CameraReciever : MonoBehaviour
 
         (intersection, isValid) = GetIntersectionPoint(translation, rot * Vector3.forward);
 
-        Debug.Log("Rvec: " + rot.eulerAngles + " tvec: " + translation + " insersection: " + intersection + " is valid: " + isValid);
         if (!isValid)
         {
             return;
