@@ -19,7 +19,7 @@ public abstract class Shoot : MonoBehaviour
 
     public static Action shootBullet;
     public static Action<AudioClip> setShootSound;
-    protected static bool isShooting;
+    public static bool isShooting;
 
     protected virtual void Start()
     {

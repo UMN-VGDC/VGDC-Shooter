@@ -12,6 +12,7 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] private Canvas canvas;
     [SerializeField] private GameObject[] bloodScratch;
+    [SerializeField] private Transform bloodScratchParent;
 
     [Header("Warning Effect")]
     [SerializeField] private CanvasGroup warningGroup;
@@ -72,6 +73,7 @@ public class UIManager : MonoBehaviour
         Vector2 ramdomPos = new Vector2(UnityEngine.Random.Range(-200f, 200f), UnityEngine.Random.Range(-150f, 50f));
         GameObject decal = bloodScratch[UnityEngine.Random.Range(0, bloodScratch.Length)];
         GameObject instantiatedDecal = Instantiate(decal, Vector2.zero, Quaternion.identity, canvas.transform);
+        instantiatedDecal.transform.SetParent(bloodScratchParent);
         RectTransform rt = instantiatedDecal.GetComponent<RectTransform>();
         rt.anchoredPosition = rt.transform.position;
         rt.localPosition = ramdomPos;
