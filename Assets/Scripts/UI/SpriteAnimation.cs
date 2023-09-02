@@ -11,11 +11,15 @@ public class SpriteAnimation : MonoBehaviour
     [SerializeField] private bool playOnAwake, restartScene;
     [SerializeField] private Sprite[] m_SpriteArray;
     [SerializeField] private int m_Speed = 20;
+    [SerializeField] private int delaySound = 830;
 
+    private AudioSource audioSource;
     private int m_IndexSprite;
+    private bool isPlaying;
 
     private void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         if (playOnAwake)
         {
             m_Image.color = Color.white;
@@ -25,6 +29,8 @@ public class SpriteAnimation : MonoBehaviour
 
     public async void PlayAnimation()
     {
+        if (!isPlaying) AnimationSound();
+        isPlaying = true;
         await Task.Delay(m_Speed);
         if (m_IndexSprite >= m_SpriteArray.Length)
         {
@@ -40,5 +46,13 @@ public class SpriteAnimation : MonoBehaviour
         m_IndexSprite++;
 
         PlayAnimation();
+    }
+
+    private async void AnimationSound()
+    {
+        if (audioSource == null) return;
+        await Task.Delay(delaySound);
+        audioSource.ignoreListenerPause = true;
+        audioSource.Play();
     }
 }

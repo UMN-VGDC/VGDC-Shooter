@@ -11,7 +11,7 @@ public class SoundManager : MonoBehaviour
     [SerializeField] private AudioMixer audioMixer;
     [SerializeField] private AudioClip[] playerDamageSounds;
     [SerializeField]
-    private AudioSource enemyAudioSource, moneyAudioSource, newWeaponAudioSource, deathAudioSource, deathMusicAudioSource, dummytargetAudioSource;
+    private AudioSource enemyAudioSource, moneyAudioSource, newWeaponAudioSource, deathAudioSource, deathMusicAudioSource, dummytargetAudioSource, musicAudioSource;
     [SerializeField] private AudioClip critSound, defaultShootSound, enemyHit, waterSplashSound;
     [Header("Streak")]
     [SerializeField] private AudioSource streakAudioSource;
@@ -44,6 +44,8 @@ public class SoundManager : MonoBehaviour
         RandomizeGun.playSelectSound += PlaySound;
         RandomizeGun.playGunSelectSound += GunSelectGraphicQuiet;
         GameManager.hasDied += PlayDeathSound;
+        GameManager.tutorialStage += PlayMusic;
+        GameManager.hasDied += StopMusic;
 
         enemyHitQueue = new QueueSound(enemyHit, 100);
         waterSplashQueue = new QueueSound(waterSplashSound, 70);
@@ -66,6 +68,9 @@ public class SoundManager : MonoBehaviour
         if (clip.Length == 0) return;
         foreach (AudioClip c in clip) audioSource.PlayOneShot(c);
     }
+
+    private void PlayMusic() => musicAudioSource.Play();
+    private void StopMusic() => musicAudioSource.Stop();
 
     private void PlayerDamage()
     {
@@ -149,6 +154,8 @@ public class SoundManager : MonoBehaviour
         RandomizeGun.playSelectSound -= PlaySound;
         RandomizeGun.playGunSelectSound -= GunSelectGraphicQuiet;
         GameManager.hasDied -= PlayDeathSound;
+        GameManager.tutorialStage -= PlayMusic;
+        GameManager.hasDied -= StopMusic;
     }
 }
 

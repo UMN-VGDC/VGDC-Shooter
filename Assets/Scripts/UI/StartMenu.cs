@@ -1,19 +1,31 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
+using UnityEngine.UI;
 
 public class StartMenu : MonoBehaviour
 {
 
     [SerializeField] private GameObject[] menuObjects;
     [SerializeField] private GameObject startMenu;
-
+    [SerializeField] private RectTransform scoreboardItemPos, panel;
+    [SerializeField] private CanvasGroup group;
     private void Start()
     {
         startMenu.SetActive(true);
+        GetComponent<HTTPManager>().GetData("", 0);
     }
     public void StartGame()
     {
+        DOVirtual.Float(1, 0, 0.7f, e =>
+        {
+            group.alpha = e;
+        });
+        panel.DOAnchorPosX(-369, 0.7f).SetEase(Ease.InBack);
+        scoreboardItemPos.DOAnchorPosX(-52, 0.7f).SetEase(Ease.InBack);
+
         GameManager.Instance.UpdateGameState(GameState.TutorialStage);
         startMenu.SetActive(false);
     }

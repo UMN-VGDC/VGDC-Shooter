@@ -49,7 +49,14 @@ public class HTTPManager : MonoBehaviour
             else
             {
                 var message = JsonConvert.DeserializeObject<ParseScoreboard>(request.downloadHandler.text);
-                SetScoreboardItems(message.values);
+                if (GameManager.Instance.getGameState() == GameState.StartMenu)
+                {
+                    SetScoreboardItemsStart(message.values);
+                }
+                else
+                {
+                    SetScoreboardItems(message.values);
+                }
 
             }
 
@@ -58,17 +65,17 @@ public class HTTPManager : MonoBehaviour
 
     private string currentName;
     private int currentScore;
-    private bool isSelected, isRetry;
-    private int retryCount;
+    private bool isSelected;
     public void GetData(string currentName, int currentScore) 
     {
         this.currentName = currentName;
         this.currentScore = currentScore;
+        yPos = 0;
         StartCoroutine(GetScoreboard());
     } 
 
     [SerializeField] private GameObject scoreboardItem;
-    [SerializeField] private RectTransform scoreboardItemPos;
+    [SerializeField] private RectTransform scoreboardItemPos, scoreboardItemPosStartMenu;
     private float yPos;
     private bool isFade;
     private void SetScoreboardItems(string[][] values)
@@ -98,6 +105,28 @@ public class HTTPManager : MonoBehaviour
             itemComponent.backgroundimage.alpha = isFade ? 1 : 0.6f;
             
             item.transform.position = scoreboardItemPos.position;
+            Vector3 itemPosition = item.GetComponent<RectTransform>().anchoredPosition;
+            item.GetComponent<RectTransform>().anchoredPosition = new Vector3(itemPosition.x, yPos, itemPosition.z);
+            isFade = !isFade;
+            yPos -= 50f;
+        }
+    }
+
+    private void SetScoreboardItemsStart(string[][] values)
+    {
+        int length = values.Length;
+        for (int i = 1; i < length; i++)
+        {
+            GameObject item = Instantiate(scoreboardItem, scoreboardItemPosStartMenu.position, Quaternion.identity);
+            item.transform.SetParent(scoreboardItemPosStartMenu.transform, false);
+            ScoreboardItem itemComponent = item.GetComponent<ScoreboardItem>();
+            itemComponent.score.text = values[i][1];
+            itemComponent.playerName.text = values[i][0];
+            
+            itemComponent.rank.text = i.ToString();
+            itemComponent.backgroundimage.alpha = isFade ? 1 : 0.6f;
+
+            item.transform.position = scoreboardItemPosStartMenu.position;
             Vector3 itemPosition = item.GetComponent<RectTransform>().anchoredPosition;
             item.GetComponent<RectTransform>().anchoredPosition = new Vector3(itemPosition.x, yPos, itemPosition.z);
             isFade = !isFade;

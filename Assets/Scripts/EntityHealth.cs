@@ -148,6 +148,11 @@ public class EntityHealth : MonoBehaviour
         return playerDamage;
     }
 
+    public int GetCurrentHealth()
+    {
+        return healthDecrement;
+    }
+
     public void ResetHealth()
     {
         healthDecrement = health;

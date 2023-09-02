@@ -21,6 +21,31 @@ public class EnemyLoadCount : MonoBehaviour
         flyingLoad = maxFlyingLoad;
     }
 
+    public void IncrementBossLoad(int amount)
+    {
+        maxBossLoad += amount;
+        bossLoad += amount;
+        Debug.Log($"{bossLoad}/{maxBossLoad}");
+    }
+
+    public void IncrementMediumLoad(int amount)
+    {
+        maxMediumLoad += amount;
+        mediumLoad += amount;
+    }
+
+    public void IncrementSmalLoad(int amount)
+    {
+        maxSmallLoad += amount;
+        smallLoad += amount;
+    }
+
+    public void IncrementFlyingLoad(int amount)
+    {
+        maxFlyingLoad += amount;
+        flyingLoad += amount;
+    }
+
     public bool ModifyLoad(int amount, string type)
     {
         if (amount == 0) return true;
@@ -35,7 +60,7 @@ public class EnemyLoadCount : MonoBehaviour
 
         if (load + amount < 0)
         {
-            //Debug.Log($"{type} load exceeded");
+            Debug.Log($"{type} load exceeded");
             return false;
         }
 
@@ -43,7 +68,7 @@ public class EnemyLoadCount : MonoBehaviour
         {
             case "Boss": 
                 bossLoad += amount;
-                //Debug.Log($"{bossLoad}/{maxBossLoad}");
+                Debug.Log($"{bossLoad}/{maxBossLoad}");
                 break;
             case "Medium": 
                 mediumLoad += amount;
