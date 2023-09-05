@@ -1151,6 +1151,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 473d5852678b70d478149740f9613d63, type: 3}
+      propertyPath: m_ScaleInLightmap
+      value: 0.04
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 473d5852678b70d478149740f9613d63, type: 3}
       propertyPath: m_Name
       value: ConcretePanel (1)
@@ -1525,6 +1529,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: b3d71c962a2fe96498107c5d9ca0825e, type: 3}
+      propertyPath: m_ScaleInLightmap
+      value: 0.65
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: b3d71c962a2fe96498107c5d9ca0825e, type: 3}
       propertyPath: m_Name
       value: Cube.005 (2)
@@ -1672,6 +1680,10 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: b3d71c962a2fe96498107c5d9ca0825e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: b3d71c962a2fe96498107c5d9ca0825e, type: 3}
+      propertyPath: m_ScaleInLightmap
+      value: 0.65
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: b3d71c962a2fe96498107c5d9ca0825e, type: 3}
       propertyPath: m_Name
@@ -2047,6 +2059,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 180.015
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 70f7e80a767753942bb0988f2b264b5c, type: 3}
+      propertyPath: m_ScaleInLightmap
+      value: 0.82
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 70f7e80a767753942bb0988f2b264b5c, type: 3}
       propertyPath: m_Name
       value: Cube.006 (1)
@@ -2124,6 +2140,10 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 6adc8d0b4311a7a4695ea3862b595228, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: -90.011
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 6adc8d0b4311a7a4695ea3862b595228, type: 3}
+      propertyPath: m_ScaleInLightmap
+      value: 0.48
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 6adc8d0b4311a7a4695ea3862b595228, type: 3}
       propertyPath: m_Name
@@ -2343,6 +2363,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 180.03
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: b3d71c962a2fe96498107c5d9ca0825e, type: 3}
+      propertyPath: m_ScaleInLightmap
+      value: 0.65
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: b3d71c962a2fe96498107c5d9ca0825e, type: 3}
       propertyPath: m_Name
       value: Cube.005 (5)
@@ -2495,6 +2519,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 473d5852678b70d478149740f9613d63, type: 3}
+      propertyPath: m_ScaleInLightmap
+      value: 0.04
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 473d5852678b70d478149740f9613d63, type: 3}
       propertyPath: m_Name
       value: ConcretePanel (2)
@@ -2568,6 +2596,10 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: b3d71c962a2fe96498107c5d9ca0825e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: -180.03
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: b3d71c962a2fe96498107c5d9ca0825e, type: 3}
+      propertyPath: m_ScaleInLightmap
+      value: 0.65
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: b3d71c962a2fe96498107c5d9ca0825e, type: 3}
       propertyPath: m_Name
@@ -2647,6 +2679,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 473d5852678b70d478149740f9613d63, type: 3}
+      propertyPath: m_ScaleInLightmap
+      value: 0.04
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 473d5852678b70d478149740f9613d63, type: 3}
       propertyPath: m_Name
       value: ConcretePanel (3)
@@ -2724,6 +2760,10 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 6d5f77f7632a14d49ac95ed7c4a4dfb0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 6d5f77f7632a14d49ac95ed7c4a4dfb0, type: 3}
+      propertyPath: m_ScaleInLightmap
+      value: 0.04
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 6d5f77f7632a14d49ac95ed7c4a4dfb0, type: 3}
       propertyPath: m_Name
@@ -2877,6 +2917,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 473d5852678b70d478149740f9613d63, type: 3}
+      propertyPath: m_ScaleInLightmap
+      value: 0.04
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 473d5852678b70d478149740f9613d63, type: 3}
       propertyPath: m_Name
       value: ConcretePanel
@@ -3025,6 +3069,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: b3d71c962a2fe96498107c5d9ca0825e, type: 3}
+      propertyPath: m_ScaleInLightmap
+      value: 0.65
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: b3d71c962a2fe96498107c5d9ca0825e, type: 3}
       propertyPath: m_Name
       value: Cube.005 (3)
@@ -3098,6 +3146,10 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: b3d71c962a2fe96498107c5d9ca0825e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: b3d71c962a2fe96498107c5d9ca0825e, type: 3}
+      propertyPath: m_ScaleInLightmap
+      value: 0.65
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: b3d71c962a2fe96498107c5d9ca0825e, type: 3}
       propertyPath: m_Name
@@ -3247,6 +3299,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 180.03
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: b3d71c962a2fe96498107c5d9ca0825e, type: 3}
+      propertyPath: m_ScaleInLightmap
+      value: 0.65
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: b3d71c962a2fe96498107c5d9ca0825e, type: 3}
       propertyPath: m_Name
       value: Cube.005 (4)
@@ -3325,6 +3381,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -179.996
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 6d5f77f7632a14d49ac95ed7c4a4dfb0, type: 3}
+      propertyPath: m_ScaleInLightmap
+      value: 0.04
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 6d5f77f7632a14d49ac95ed7c4a4dfb0, type: 3}
       propertyPath: m_Name
       value: Cube.008 (1)
@@ -3398,6 +3458,10 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: b3d71c962a2fe96498107c5d9ca0825e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: -180.03
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: b3d71c962a2fe96498107c5d9ca0825e, type: 3}
+      propertyPath: m_ScaleInLightmap
+      value: 0.65
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: b3d71c962a2fe96498107c5d9ca0825e, type: 3}
       propertyPath: m_Name
@@ -3678,6 +3742,10 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: e4181c4b2edf62d4aad3b0823a70f502, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: e4181c4b2edf62d4aad3b0823a70f502, type: 3}
+      propertyPath: m_ScaleInLightmap
+      value: 0.55
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: e4181c4b2edf62d4aad3b0823a70f502, type: 3}
       propertyPath: m_Name

@@ -70,7 +70,7 @@ public class Flashbang : MonoBehaviour
         if (currentFlashCount == flashCount)
         {
             GetComponent<EntityHealth>().DecreaseHealth(20);
-            flashbangExplode?.Invoke();
+            if (isParented) flashbangExplode?.Invoke();
             return;
         }
         FlashTImer();

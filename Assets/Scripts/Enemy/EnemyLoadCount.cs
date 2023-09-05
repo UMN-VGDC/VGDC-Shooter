@@ -25,7 +25,7 @@ public class EnemyLoadCount : MonoBehaviour
     {
         maxBossLoad += amount;
         bossLoad += amount;
-        Debug.Log($"{bossLoad}/{maxBossLoad}");
+        //Debug.Log($"{bossLoad}/{maxBossLoad}");
     }
 
     public void IncrementMediumLoad(int amount)
@@ -60,7 +60,7 @@ public class EnemyLoadCount : MonoBehaviour
 
         if (load + amount < 0)
         {
-            Debug.Log($"{type} load exceeded");
+            //Debug.Log($"{type} load exceeded");
             return false;
         }
 
@@ -68,7 +68,7 @@ public class EnemyLoadCount : MonoBehaviour
         {
             case "Boss": 
                 bossLoad += amount;
-                Debug.Log($"{bossLoad}/{maxBossLoad}");
+                //Debug.Log($"{bossLoad}/{maxBossLoad}");
                 break;
             case "Medium": 
                 mediumLoad += amount;

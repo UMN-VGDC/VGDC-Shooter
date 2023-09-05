@@ -46,8 +46,9 @@ public class MilitaryDrone : MultiTargetEnemy
         rigBuilder.Build();
     }
 
-    private void Update()
+    protected override void Update()
     {
+        base.Update();
         gunIkTarget.rotation = Quaternion.Lerp(gunIkTarget.rotation, gunLookAt.rotation, Time.deltaTime * 5);
     }
 

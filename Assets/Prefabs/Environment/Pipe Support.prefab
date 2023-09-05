@@ -17,7 +17,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &4868170461425575161
 Transform:
@@ -115,7 +115,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1141648713490695909
 Transform:
@@ -323,7 +323,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &5351349073664417253
 Transform:
@@ -354,9 +354,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5351349073664417253}
     m_Modifications:
+    - target: {fileID: 655355874907499614, guid: 52d7e9d12b1d69843ad245a1f8c3be54, type: 3}
+      propertyPath: m_ScaleInLightmap
+      value: 0.12
+      objectReference: {fileID: 0}
     - target: {fileID: 1303993036933172619, guid: 52d7e9d12b1d69843ad245a1f8c3be54, type: 3}
       propertyPath: m_Name
       value: Cube.007 (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1303993036933172619, guid: 52d7e9d12b1d69843ad245a1f8c3be54, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 1824914898816882481, guid: 52d7e9d12b1d69843ad245a1f8c3be54, type: 3}
       propertyPath: m_RootOrder
@@ -488,6 +496,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Light.002
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ef14bfe92c568c444b326af6c09ffec1, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ef14bfe92c568c444b326af6c09ffec1, type: 3}
 --- !u!4 &3439547847186714415 stripped
@@ -502,9 +514,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5351349073664417253}
     m_Modifications:
+    - target: {fileID: 655355874907499614, guid: 52d7e9d12b1d69843ad245a1f8c3be54, type: 3}
+      propertyPath: m_ScaleInLightmap
+      value: 0.12
+      objectReference: {fileID: 0}
     - target: {fileID: 1303993036933172619, guid: 52d7e9d12b1d69843ad245a1f8c3be54, type: 3}
       propertyPath: m_Name
       value: Cube.007 (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1303993036933172619, guid: 52d7e9d12b1d69843ad245a1f8c3be54, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 1824914898816882481, guid: 52d7e9d12b1d69843ad245a1f8c3be54, type: 3}
       propertyPath: m_RootOrder
@@ -576,9 +596,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5351349073664417253}
     m_Modifications:
+    - target: {fileID: 655355874907499614, guid: 52d7e9d12b1d69843ad245a1f8c3be54, type: 3}
+      propertyPath: m_ScaleInLightmap
+      value: 0.12
+      objectReference: {fileID: 0}
     - target: {fileID: 1303993036933172619, guid: 52d7e9d12b1d69843ad245a1f8c3be54, type: 3}
       propertyPath: m_Name
       value: Cube.007 (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1303993036933172619, guid: 52d7e9d12b1d69843ad245a1f8c3be54, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 1824914898816882481, guid: 52d7e9d12b1d69843ad245a1f8c3be54, type: 3}
       propertyPath: m_RootOrder
@@ -709,6 +737,10 @@ PrefabInstance:
     - target: {fileID: 4569794429159633989, guid: b21fc620328678f48bef1b170348f456, type: 3}
       propertyPath: m_Name
       value: MetalCrate
+      objectReference: {fileID: 0}
+    - target: {fileID: 4569794429159633989, guid: b21fc620328678f48bef1b170348f456, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b21fc620328678f48bef1b170348f456, type: 3}

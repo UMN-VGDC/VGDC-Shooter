@@ -56,8 +56,13 @@ public abstract class MultiTargetEnemy : MonoBehaviour
     private bool enablePrimaryAttack;
     protected async void AttackLoop()
     {
+        if (!startAttacking) return;
+
+        //Start primary attack on second Attack Loop
         if (enablePrimaryAttack) PrimaryAttack();
         enablePrimaryAttack = true;
+
+        //Spawn targets
         int targetCount = UnityEngine.Random.Range(minTargets, maxTargets);
         points = targetCount * 100;
         currentTargetCount = targetCount;
@@ -83,8 +88,16 @@ public abstract class MultiTargetEnemy : MonoBehaviour
         multiTargetsTimeout?.Invoke();
     }
 
-    void Update()
+    protected virtual void Update()
     {
+        // Prevent enemy from attacking if too far from player
+        float distance = Vector3.Distance(transform.position, player.transform.position);
+        if (distance >= 50)
+        {
+            enablePrimaryAttack = false;
+            startAttacking = false;
+        }
+
         foreach (AimTarget target in aimTargets)
         {
             target.gameObject.transform.LookAt(player.transform);
