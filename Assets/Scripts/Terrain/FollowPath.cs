@@ -12,7 +12,7 @@ public class FollowPath : MonoBehaviour
     [SerializeField] private SetTruckPosition setPosition;
     private float distanceTravelled, speedTarget, speed;
     private bool isMoving;
-    private Vector3 endPoint;
+    private float endDistance;
     private PathCreator mainPath;
 
     // Start is called before the first frame update
@@ -22,8 +22,8 @@ public class FollowPath : MonoBehaviour
         speedTarget = initialSpeed;
         distanceTravelled += setPosition.GetPosition();
         DummyTarget.dummyTargetsDestroyed += StartMoving;
-        endPoint = pathCreator.path.GetPointAtTime(0.999f);
-        Debug.Log(endPoint);
+        GameObject endPoint = pathCreator.transform.Find("Exit Position").gameObject;
+        endDistance = pathCreator.path.GetClosestDistanceAlongPath(endPoint.transform.position);
         mainPath = GameObject.FindGameObjectWithTag("Main Path").GetComponent<PathCreator>();
     }
 
@@ -56,10 +56,9 @@ public class FollowPath : MonoBehaviour
         transform.position = pathCreator.path.GetPointAtDistance(distanceTravelled);
         transform.rotation = pathCreator.path.GetRotationAtDistance(distanceTravelled);
 
-        float distance = Vector3.Distance(transform.position, endPoint);
-        if (distance <= 0.1f)
+        if (distanceTravelled >= endDistance && pathCreator != mainPath)
         {
-            distanceTravelled = mainPath.path.GetClosestDistanceAlongPath(endPoint);
+            distanceTravelled = mainPath.path.GetClosestDistanceAlongPath(transform.position);
             pathCreator = mainPath;
         }
     }
