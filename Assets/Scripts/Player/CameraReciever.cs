@@ -7,6 +7,7 @@ using System.Text;
 using System.Net;
 using System.Net.Sockets;
 using System.Collections.Concurrent;
+using TMPro;
 
 using System.Threading;
 
@@ -41,9 +42,7 @@ public class CameraReciever : MonoBehaviour
             DontDestroyOnLoad(gameObject);
             if (usingCamera)
             {
-                udpClientThread = new Thread(new ThreadStart(RecieveData));
-                udpClientThread.IsBackground = true;
-                udpClientThread.Start();
+                EnableClientListener();
             }
             data = "";
             plane = new Plane(Vector3.forward, planeDistance);
@@ -85,6 +84,52 @@ public class CameraReciever : MonoBehaviour
                 Debug.LogError(err.ToString());
             }
         }
+    }
+    public void ToggleCamera(TMP_Text button_text)
+    {
+        if(usingCamera)
+        {
+            button_text.text = "MOUSE";
+            UseMouse();
+        }else
+        {
+            button_text.text = "CAMERA";
+            UseCamera();
+        }
+    }
+
+    private void EnableClientListener()
+    {
+        CancelClientListener();
+        udpClientThread = new Thread(new ThreadStart(RecieveData));
+        udpClientThread.IsBackground = true;
+        udpClientThread.Start();
+    }
+
+    private void CancelClientListener()
+    {
+        if (udpClientThread != null)
+        {
+            udpClientThread.Abort();
+            udpClientThread = null;
+        }
+        if (client != null)
+        {
+            client.Close();
+            client = null;
+        }
+    }
+    private void UseMouse()
+    {
+        CancelClientListener();
+        usingCamera = false;
+    }
+
+    private void UseCamera()
+    {
+        EnableClientListener();
+
+        usingCamera = true;
     }
 
     // Update is called once per frame
@@ -185,15 +230,7 @@ public class CameraReciever : MonoBehaviour
     }
     public void OnDestroy()
     {
-        if (udpClientThread != null)
-        {
-            udpClientThread.Abort();
-        }
-        if (client != null)
-        {
-            client.Close();
-            client = null;
-        }
+        CancelClientListener();
 
     }
 }
