@@ -1,6 +1,7 @@
 using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.UI;
@@ -12,10 +13,20 @@ public class StartMenu : MonoBehaviour
     [SerializeField] private GameObject startMenu;
     [SerializeField] private RectTransform scoreboardItemPos, panel;
     [SerializeField] private CanvasGroup group;
+
+    [Header("Intro Video")]
+    [SerializeField] private CanvasGroup videoGroup;
+    [SerializeField] private TextMeshProUGUI startText;
+    private bool isStartMenu = true;
+
     private void Start()
     {
         startMenu.SetActive(true);
         GetComponent<HTTPManager>().GetData("", 0);
+
+        videoGroup.alpha = 1;
+        Color col = startText.color;
+        startText.DOColor(new Color(col.r, col.g, col.b, 0.1f), 1f).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.Linear);
     }
     public void StartGame()
     {
@@ -40,6 +51,37 @@ public class StartMenu : MonoBehaviour
         {
             menuObjects[i].SetActive(i == index);
         }
+    }
+
+    public void ResetVideoScreen()
+    {
+        isStartMenu = true;
+        videoGroup.blocksRaycasts = true;
+        videoGroup.interactable = true;
+        DOVirtual.Float(0, 1, 0.5f, e =>
+        {
+            videoGroup.alpha = e;
+        });
+    }
+
+    private void Update()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            if (!isStartMenu) return;
+            isStartMenu = false;
+            videoGroup.blocksRaycasts = false;
+            videoGroup.interactable = false;
+            DOVirtual.Float(1, 0, 0.5f, e =>
+            {
+                videoGroup.alpha = e;
+            });
+        }
+    }
+
+    private void OnDestroy()
+    {
+        DOTween.Kill(startText);
     }
 
     public void Quit()
