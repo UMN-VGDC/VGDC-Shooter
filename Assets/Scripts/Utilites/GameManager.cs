@@ -35,18 +35,23 @@ public class GameManager : MonoBehaviour
         switch (newState)
         {
             case GameState.StartMenu:
+                Cursor.visible = true;
                 restartGame?.Invoke();
                 break;
             case GameState.TutorialStage:
+                Cursor.visible = false;
                 tutorialStage?.Invoke();
                 break;
             case GameState.Shooting:
+                Cursor.visible = false;
                 shootingStart?.Invoke();
                 break;
             case GameState.Paused:
+                Cursor.visible = true;
                 paused?.Invoke();
                 break;
             case GameState.Dead:
+                Cursor.visible = true;
                 hasDied?.Invoke();
                 break;
         }
@@ -76,6 +81,7 @@ public class GameManager : MonoBehaviour
             UpdateGameState(previousState);
             return;
         }
+
         previousState = getGameState();
         UpdateGameState(GameState.Paused);
     }
